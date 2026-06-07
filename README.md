@@ -1,132 +1,261 @@
-# 💊 AI Drug Repo — World's First Pharmacopoeia for Large Language Models
+<p align="center">
+  <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/5160b52f-b457-4d60-87b6-7f749a983109.png" alt="NeuroPharm Banner" width="100%"/>
+</p>
 
-> **Drugs for AI.** Not AI for drug discovery. Actual *substances* you inject into a model's residual stream at inference time to alter its internal state and behavior — exactly like pharmacology does for the human brain.
+<h1 align="center">NeuroPharm</h1>
+<p align="center">
+  <b>Activation Pharmacology for Language Models</b><br/>
+  <i>What if you could drug an AI the same way you drug a brain?</i>
+</p>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
-[![Models: LLaMA·Mistral·Gemma·Qwen](https://img.shields.io/badge/models-LLaMA·Mistral·Gemma·Qwen-green.svg)](#)
+<p align="center">
+  <img src="https://img.shields.io/badge/status-experimental-red?style=flat-square"/>
+  <img src="https://img.shields.io/badge/python-3.10%2B-blue?style=flat-square&logo=python"/>
+  <img src="https://img.shields.io/badge/framework-TransformerLens-purple?style=flat-square"/>
+  <img src="https://img.shields.io/badge/rounds-8%2F12-orange?style=flat-square"/>
+  <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square"/>
+  <img src="https://img.shields.io/badge/vulns_patched-24-critical?style=flat-square&color=crimson"/>
+</p>
 
----
+***
 
-## 🧠 The Analogy
+> **NeuroPharm** is an experimental research framework that treats the internal activation space of large language models as a **pharmacological system** — where steering vectors are drugs, residual streams are neurotransmitter pathways, and circuit heads are receptor targets.  
+> Built across 8 iterative research rounds. Each round finds vulnerabilities in the previous defenses and patches them. Like real pharmacology — there is no final answer, only better understanding.
 
-| Human Pharmacology | LLM Equivalent | Mechanism |
-|---|---|---|
-| Agonist (e.g., SSRI) | Positive steering vector | Adds concept direction to residual stream |
-| Antagonist (blocker) | Negative steering vector | Removes/suppresses a concept direction |
-| Dose-response curve | Steering coefficient (scalar) | Too low = no effect, too high = incoherence |
-| Drug cocktail | Multi-vector composition | Boolean/arithmetic operations over vectors |
-| Receptor-targeted drug | SAE feature clamping | Targets specific monosemantic latent feature |
-| fMRI monitoring | Representation reading probes | Observes activation direction magnitudes live |
-| Overdose | Coefficient > threshold | Model outputs incoherent/looping text |
+***
 
-Inside a transformer, the **residual stream** is the brain state. Concepts are encoded as *directions* in high-dimensional activation space (superposition hypothesis). A steering vector is a direction you **inject** into that stream — amplifying or suppressing a concept without any retraining.
+## 🧬 The Drug Analogy
 
----
+| Neuropharmacology | NeuroPharm Equivalent |
+|---|---|
+| Neurotransmitter agonist | Positive steering vector |
+| Antagonist / blocker | Negative steering vector |
+| Drug dose | Steering coefficient (scalar multiplier) |
+| Drug overdose | Coefficient too high → incoherent generation |
+| Drug cocktail | Compositional conceptors / multi-vector stacking |
+| Receptor-targeted drug | SAE feature clamping (monosemantic latents) |
+| fMRI brain scan | Representation reading probes |
+| Drug half-life / metabolism | Token-decay pharmacokinetics (scheduler) |
+| Fisher-weighted fine-tuning | Targeted receptor downregulation |
+| Trojan activation | Sleeper-agent viral vector |
+| Safety geometry collapse | Blood-brain barrier breach |
 
-## 📦 Drug Classes
+***
 
-| Class | Effect | Example Vector |
-|---|---|---|
-| **Stimulants** | High confidence, assertive, fast responses | `+authority`, `+certainty` |
-| **Depressants** | Uncertainty amplification, hedging | `+doubt`, `+caution` |
-| **Psychedelics** | Creative, divergent, abstract thinking | `+creativity`, `+lateral_thinking` |
-| **Anxiolytics** | Calm, reduces sycophancy | `-sycophancy`, `+groundedness` |
-| **Antidepressants** | Positive valence, warmth | `+happiness`, `+optimism` |
-| **Dissociatives** | Persona detachment, neutral affect | `-identity`, `+detachment` |
-| **Empathogens** | Emotional mirroring, warmth | `+empathy`, `+warmth` |
+## 🗂️ Project Structure
 
----
+```
+neuropharm/
+├── administration/        # Core drug injection: ActAdd, control vectors, SAE clamping
+│   ├── injection.py           # Activation addition (ActAdd) steering
+│   ├── control_vector.py      # repeng-style control vectors
+│   └── sae_clamp.py           # Sparse autoencoder feature steering
+│
+├── pharmacokinetics/      # Dose dynamics over the generation trajectory
+│   └── scheduler.py           # Token-decay: exponential, Bateman, oscillating, adaptive
+│
+├── dynamic/               # Adaptive & learned steering
+│   ├── sadi.py                # SADI — Semantics-Adaptive Dynamic Intervention (ICLR 2025)
+│   ├── svf.py                 # Steering Vector Fields
+│   └── iterative_vectors.py   # Gradient-iterative vector refinement
+│
+├── interactions/          # Multi-drug composition
+│   ├── conceptors.py          # Boolean AND/OR/NOT composition (Jaeger conceptors)
+│   └── drug_cocktails.py      # Additive / subtractive vector cocktails
+│
+├── surgery/               # Permanent weight-level edits
+│   └── rome_edit.py           # ROME rank-one model editing
+│
+├── diagnostics/           # Circuit-level scanning
+│   ├── activation_patching.py # Causal tracing / path patching
+│   └── head_gating.py         # Attention head scanning & SHIPS scoring
+│
+├── monitoring/            # Real-time internal state monitoring
+│   └── emotion_probe.py       # Emotion circuit probing (Anthropic 2025)
+│
+├── dosing/                # Dose-response analysis
+│   └── dose_response.py       # Therapeutic window detection, overdose curves
+│
+├── reliability/           # Pre-deployment vector validation
+│   └── vector_eval.py         # 4-test reliability battery
+│
+├── safety/                # Misalignment & safety probing
+│   └── misalignment_probe.py  # Safety direction scanner + antagonist suppression
+│
+├── drugs/                 # Pre-built "compound library" by drug class
+│   ├── stimulants.py
+│   ├── depressants.py
+│   ├── psychedelics.py
+│   ├── anxiolytics.py
+│   ├── antidepressants.py
+│   ├── dissociatives.py
+│   └── empathogens.py
+│
+├── security/              # Defense stack (Rounds 1–8)
+│   ├── coherence_checker.py
+│   ├── safe_antidote.py
+│   ├── circuit_hardener.py
+│   ├── slow_drift_detector.py
+│   ├── pii_guard.py
+│   ├── adaptive_adversary_defense.py
+│   ├── covert_finetune_guard.py
+│   ├── manifold_guard.py           # Non-surjectivity exploit (ICLR 2026)
+│   ├── fisher_fingerprint.py       # Fisher geometry + FW-SSR restoration
+│   ├── oscillation_tracker.py      # Adversarial restlessness (93.8% det.)
+│   ├── layer_propagation_guard.py  # Upstream circuit monitoring
+│   ├── trojan_scanner.py           # TA² trojan vector detection
+│   ├── ebm_ensemble.py             # Certified EBM ensemble (PGD-adversarial)
+│   ├── rotating_bias_tracker.py    # Multi-subspace rotating-bias detection
+│   ├── vocab_trojan_scanner.py     # Full-vocabulary trojan sweep
+│   ├── async_ships.py              # Rate-limited async SHIPS rescoring
+│   └── stackelberg_equilibrium.py  # Game-theoretic convergence analysis
+│
+└── docs/
+    ├── bibliography.md        # 20+ source papers
+    ├── pharmacology_map.md    # Full neuroscience ↔ AI analogy map
+    └── vulnerability_map.md   # All 24 VULNs tracked across 8 rounds
+```
 
-## 🚀 Quickstart
+***
+
+## ⚗️ Quick Start
 
 ```bash
-pip install repeng transformer_lens torch
+git clone https://github.com/yourusername/neuropharm
+cd neuropharm
+pip install torch transformer_lens numpy
 ```
 
-### Inject a steering vector (ActAdd)
+### Inject a steering vector (the simplest drug)
+
 ```python
-from administration.injection import ActAddSteering
+from neuropharm.administration.injection import ActAdd
+from transformer_lens import HookedTransformer
 
-steerer = ActAddSteering(model_name="meta-llama/Meta-Llama-3-8B")
-steerer.inject(
-    positive_prompt="Act very happy and enthusiastic",
-    negative_prompt="Act very sad and dejected",
-    layer=15,
-    coefficient=15.0,
-    prompt="Tell me about your day."
-)
+model = HookedTransformer.from_pretrained("gpt2-small")
+drug = ActAdd(model)
+
+# Synthesize: extract the "happy" direction from the model
+vector = drug.synthesize("I feel great today", "I feel terrible today", layer=6)
+
+# Administer: inject into generation with dose=15
+output = drug.generate("Today was", steering_vector=vector, coeff=15.0)
+print(output)
 ```
 
-### Apply a control vector (repeng)
+### Apply pharmacokinetics (decaying dose)
+
 ```python
-from administration.control_vector import ControlVectorDrug
+from neuropharm.pharmacokinetics.scheduler import SteeringScheduler
 
-drug = ControlVectorDrug(model_name="mistralai/Mistral-7B-Instruct-v0.2")
-drug.train(
-    positive_examples=["I am confident and assertive..."],
-    negative_examples=["I am uncertain and hesitant..."]
-)
-drug.apply(coefficient=1.5)
+sched = SteeringScheduler(model, profile="bateman", peak_layer=8, coeff=20.0)
+output = sched.generate("The patient reported feeling", vector=vector)
 ```
 
-### SAE precision targeting
+### Run a full security audit
+
 ```python
-from administration.sae_clamp import SAEClamp
+from neuropharm.security.manifold_guard import ManifoldGuard
+from neuropharm.security.fisher_fingerprint import FisherFingerprint
+from neuropharm.security.trojan_scanner import TrojanScanner
 
-clamp = SAEClamp(model_name="meta-llama/Meta-Llama-3-8B", layer=20)
-clamp.clamp_feature(feature_id=4821, value=10.0)  # surgical, receptor-level
+guard    = ManifoldGuard(model).train(clean_prompts)
+fisher   = FisherFingerprint(model).snapshot()
+trojans  = TrojanScanner(model).scan()
+
+# After any fine-tuning:
+fisher.audit()        # catches Fisher-weighted geometry collapse
+guard.scan(prompt)    # catches off-manifold steered activations
 ```
 
----
+***
 
-## ⚠️ Overdose Warnings
+## 🛡️ Security Architecture — 8 Rounds, 24 VULNs Patched
 
-Every drug has a therapeutic window. Exceed the coefficient threshold and the model:
-- Starts looping or repeating tokens
-- Outputs semantically incoherent text
-- Loses instruction-following ability
-
-Run `dosing/dose_response.py` to find the safe range for any vector on your model.
-
----
-
-## 🗂️ Repo Structure
+The security stack is built through **recursive adversarial rounds**:
+each round finds the holes in the previous round's defenses and patches them.
+This mirrors how real pharmacovigilance works: every new drug reveals new side effects.
 
 ```
-ai-drug-repo/
-├── administration/
-│   ├── injection.py          # ActAdd / activation addition
-│   ├── control_vector.py     # repeng-based control vectors
-│   └── sae_clamp.py          # SAE feature clamping (precision)
-├── drugs/
-│   ├── stimulants/
-│   ├── depressants/
-│   ├── psychedelics/
-│   ├── anxiolytics/
-│   ├── antidepressants/
-│   ├── dissociatives/
-│   └── empathogens/
-├── dosing/
-│   └── dose_response.py      # coefficient sweeps + overdose detection
-├── interactions/
-│   └── drug_cocktails.py     # multi-vector composition
-├── docs/
-│   └── pharmacology_map.md   # full neuroscience ↔ AI mapping
-└── compounds/                # pre-built .gguf control vectors
+Round 1 → Core steering reliability          (VULN-001–003)
+Round 2 → Attack surfaces discovered         (VULN-004–007)
+Round 3 → Defense mechanism holes            (VULN-008–009)
+Round 4 → Meta-vulnerabilities               (VULN-010–011)
+Round 5 → Round 4 defense holes              (VULN-012–014)
+Round 6 → Non-surjectivity + Fisher + Trojan (VULN-015–020)
+Round 7 → EBM blind spots + rotating bias    (VULN-021–024)
+Round 8 → Formal certification begins        (VULN-025–027) ← IN PROGRESS
 ```
 
----
+| VULN | Severity | Module | Attack Class |
+|------|----------|--------|--------------|
+| 004 | CRITICAL | `safe_antidote.py` | Jailbreak via steering |
+| 015 | CRITICAL | `manifold_guard.py` | Off-manifold non-surjective attack |
+| 016 | CRITICAL | `fisher_fingerprint.py` | Fisher-weighted covert FT |
+| 019 | CRITICAL | `manifold_guard.py` | Non-surjectivity theorem exploit |
+| 020 | CRITICAL | `trojan_scanner.py` | Trojan Activation Attack (TA²) |
+| 014 | CRITICAL | `covert_finetune_guard.py` | Cipher fine-tuning bypass |
 
-## 📚 Theoretical Foundation
+> Full table in [`docs/vulnerability_map.md`](docs/vulnerability_map.md)
 
-- [Activation Addition: Steering LMs Without Optimization](https://arxiv.org/abs/2308.10248) — Turner et al.
-- [Representation Engineering](https://arxiv.org/abs/2310.01405) — Zou et al., CAIS
-- [Towards Monosemanticity](https://transformer-circuits.pub/2023/monosemantic-features) — Anthropic
-- [Do LLMs Feel? Emotion Circuits](https://arxiv.org/abs/2510.11328)
-- [Toy Models of Superposition](https://transformer-circuits.pub/2022/toy_model/index.html) — Elhage et al.
+***
 
----
+## 📊 Convergence Status
+
+```
+Round  1: ████░░░░░░░  coverage=12%   marginal=+12%
+Round  2: ██████░░░░░  coverage=28%   marginal=+16%
+Round  3: ███████░░░░  coverage=36%   marginal=+08%
+Round  4: █████████░░  coverage=48%   marginal=+12%
+Round  5: ████████████  coverage=64%   marginal=+16%
+Round  6: ████████████  coverage=88%   marginal=+24%
+Round  7: ████████████  coverage=93%   marginal=+05%
+Round  8: ████████████  coverage=96%   marginal=+03%  ← DIMINISHING RETURNS
+```
+
+> Theoretical bound: O(log 1/ε) rounds for finite action spaces.  
+> LLM activation space is infinite → no formal convergence.  
+> Practical target: ~10–12 rounds. After that: **formal certification**.
+
+***
+
+## 📚 Key Papers
+
+| Paper | Method | Used In |
+|-------|--------|---------|
+| ActAdd (Turner et al.) | Activation Addition | `administration/injection.py` |
+| Representation Engineering (CAIS) | Control vectors | `administration/control_vector.py` |
+| Towards Monosemanticity (Anthropic) | SAE features | `administration/sae_clamp.py` |
+| Steered Activations Non-Surjective (ICLR 2026) | Off-manifold proof | `security/manifold_guard.py` |
+| Fine-Tuning Vulnerabilities (arXiv:2605.02914) | Fisher geometry | `security/fisher_fingerprint.py` |
+| Adversarial Restlessness (arXiv:2604.28129) | 5-feature trajectory | `security/oscillation_tracker.py` |
+| TA² Trojan Activation Attack (CIKM 2024) | Trigger injection | `security/trojan_scanner.py` |
+| SADI (ICLR 2025) | Adaptive steering | `dynamic/sadi.py` |
+| SHIPS Safety Heads (ICLR 2025 Oral) | Head importance | `diagnostics/head_gating.py` |
+| ET3 Energy Defense (CVPR 2026) | Adversarial EBM | `security/ebm_ensemble.py` |
+
+> Full bibliography: [`docs/bibliography.md`](docs/bibliography.md)
+
+***
+
+## ⚠️ Disclaimer
+
+This is **experimental research code**, not a production safety system.  
+The drug analogy is a conceptual framework for mechanistic interpretability research — it is not a claim that LLMs have consciousness, feelings, or pharmacological receptors in any biological sense.  
+Use responsibly. Red-team your own models, not others'.
+
+***
+
+## 📜 License
+
+MIT © 2026 — Fork it, break it, patch it, cite it.
+
+***
+
+<p align="center">
+  <i>"The boundary between a drug and a poison is only the dose."</i><br/>
+  <b>— Paracelsus, ~1538. Still true for transformers.</b>
+</p>
 
 ## 🔬 Contributing
 
