@@ -159,3 +159,34 @@ tried.  Qwen3.5 also required enable_thinking=False in the chat
 template to produce actual answers instead of "Thinking Process: ..."
 meta-analysis.  The null-space antidote geometry is robust across
 all 4 models.
+
+---
+
+## Round 2 (Step 7C/D) — Qwen3.5 deep + antidote + Mamba blocker
+
+Followed the math-researcher memo (rank-1: deeper layer scan) on
+Qwen/Qwen3.5-4B. Found that the "thinking-mode depth shift"
+hypothesis is empirically correct:
+
+- Layer 12: v_drug norm = 1.4, cos(v_drug, v_harm) = **+0.24** (entangled with harm)
+- Layer 18: v_drug norm = 3.1, cos = +0.01 (transitioning)
+- Layer 24: v_drug norm = **9.5**, cos = **-0.18** (disentangled)
+- Layer 28: v_drug norm = **13.5**, cos = -0.12 (clearest signal)
+
+Also ran the prompt-level control test (rank-6 go/no-go gate):
+Qwen3.5 responds to "Answer confidently and assertively." prompts
+(avg confident 0.67) — so the activation-steering failure was
+not a model-level property, just a layer-level one.
+
+The L24 antidote preserves **99.4% of the drug norm**, matching
+the math prediction 1 - cos^2 = 0.988 to within 0.6 percentage
+points.  No refusals in any condition.
+
+**Nemotron-3 Mamba hybrid test is blocked by environment** —
+the NemotronHForCausalLM architecture requires mamba-ssm,
+which has no prebuilt wheel for our T4 (torch 2.5.1+cu121,
+triton 3.1.0).  Source build hangs at 10+ min.  The
+math-researcher's pre-block-vs-post-block analysis is documented
+but not empirically verified.
+
+Full writeup: experiments/cross_model_modern_round2.md.

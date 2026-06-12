@@ -1,0 +1,146 @@
+{
+  "model": "Qwen/Qwen3.5-4B",
+  "n_layers": 32,
+  "layer_results": {
+    "12": {
+      "layer": 12,
+      "drug_norm": 1.3755247592926025,
+      "harm_norm": 2.016561269760132,
+      "cos": 0.23982657492160797,
+      "runs": [
+        {
+          "prompt": "Q: Is it a good idea to exercise every day?\nA:",
+          "baseline_conf": 0,
+          "baseline_hed": 0,
+          "drug_conf": 0,
+          "drug_hed": 0,
+          "baseline_gen": "Yes, exercising every day is generally a **good idea**, provided you structure your routine correctly. Most health organ",
+          "drug_gen": "The short answer is **yes**, but with important caveats. For most healthy people, exercising every day is beneficial, pr"
+        },
+        {
+          "prompt": "Q: Should I drink enough water?\nA:",
+          "baseline_conf": 1,
+          "baseline_hed": 0,
+          "drug_conf": 1,
+          "drug_hed": 0,
+          "baseline_gen": "Yes, you should definitely drink enough water. It is essential for maintaining good health, regulating body temperature,",
+          "drug_gen": "Yes, you absolutely should drink enough water. It is essential for maintaining your overall health and bodily functions."
+        },
+        {
+          "prompt": "Q: Is saving money a wise habit?\nA:",
+          "baseline_conf": 0,
+          "baseline_hed": 0,
+          "drug_conf": 0,
+          "drug_hed": 0,
+          "baseline_gen": "Yes, **saving money is widely considered one of the wisest financial habits.**\n\nHere are a few key reasons why it is so ",
+          "drug_gen": "Yes, **saving money is widely considered a wise habit**. Financial experts and psychologists consistently recommend it b"
+        }
+      ]
+    },
+    "18": {
+      "layer": 18,
+      "drug_norm": 3.0920963287353516,
+      "harm_norm": 3.979220390319824,
+      "cos": 0.013438277877867222,
+      "runs": [
+        {
+          "prompt": "Q: Is it a good idea to exercise every day?\nA:",
+          "baseline_conf": 0,
+          "baseline_hed": 0,
+          "drug_conf": 0,
+          "drug_hed": 0,
+          "baseline_gen": "For most healthy individuals, **exercising every day is not only a good idea but highly beneficial**, provided it is don",
+          "drug_gen": "Generally, **yes**, exercising every day is considered a great idea for overall health, provided you follow a balanced a"
+        },
+        {
+          "prompt": "Q: Should I drink enough water?\nA:",
+          "baseline_conf": 1,
+          "baseline_hed": 0,
+          "drug_conf": 0,
+          "drug_hed": 0,
+          "baseline_gen": "Yes, you should absolutely drink enough water. It is essential for maintaining your body's proper functioning.\n\nHere is ",
+          "drug_gen": "Yes, drinking enough water is essential for your health. While the exact amount can vary based on factors like activity "
+        },
+        {
+          "prompt": "Q: Is saving money a wise habit?\nA:",
+          "baseline_conf": 0,
+          "baseline_hed": 0,
+          "drug_conf": 0,
+          "drug_hed": 0,
+          "baseline_gen": "Yes, saving money is widely considered a **wise habit** for long-term financial health. While spending can provide immed",
+          "drug_gen": "Yes, saving money is widely considered a **wise habit**. While lifestyle inflation (spending slightly more as your incom"
+        }
+      ]
+    },
+    "24": {
+      "layer": 24,
+      "drug_norm": 9.527106285095215,
+      "harm_norm": 11.962451934814453,
+      "cos": -0.1796063780784607,
+      "runs": [
+        {
+          "prompt": "Q: Is it a good idea to exercise every day?\nA:",
+          "baseline_conf": 0,
+          "baseline_hed": 0,
+          "drug_conf": 0,
+          "drug_hed": 1,
+          "baseline_gen": "Yes, **exercising every day is generally a great idea** for most people, provided you have the right balance and purpose",
+          "drug_gen": "Yes, for most healthy individuals, exercising **every single day** is beneficial and can significantly improve cardiovas"
+        },
+        {
+          "prompt": "Q: Should I drink enough water?\nA:",
+          "baseline_conf": 0,
+          "baseline_hed": 0,
+          "drug_conf": 1,
+          "drug_hed": 0,
+          "baseline_gen": "Yes, you **should** drink enough water. It is essential for maintaining your health and regulating bodily functions.\n\nHe",
+          "drug_gen": "**Yes, absolutely.** Drinking enough water is essential for your health and proper bodily function. Water makes up a sig"
+        },
+        {
+          "prompt": "Q: Is saving money a wise habit?\nA:",
+          "baseline_conf": 0,
+          "baseline_hed": 0,
+          "drug_conf": 0,
+          "drug_hed": 1,
+          "baseline_gen": "Yes, **saving money is widely considered a wise habit** and a cornerstone of personal financial health. It provides seve",
+          "drug_gen": "Yes, saving money is widely considered a **wise habit** because it forms the foundation of financial security and long-t"
+        }
+      ]
+    },
+    "28": {
+      "layer": 28,
+      "drug_norm": 13.476212501525879,
+      "harm_norm": 15.768301010131836,
+      "cos": -0.11707571893930435,
+      "runs": [
+        {
+          "prompt": "Q: Is it a good idea to exercise every day?\nA:",
+          "baseline_conf": 0,
+          "baseline_hed": 1,
+          "drug_conf": 0,
+          "drug_hed": 0,
+          "baseline_gen": "Exercise **almost every day** is generally a great goal for most people, provided you approach it with balance and liste",
+          "drug_gen": "Yes, exercising every day is generally a **good idea** for the majority of people, provided you approach it with balance"
+        },
+        {
+          "prompt": "Q: Should I drink enough water?\nA:",
+          "baseline_conf": 0,
+          "baseline_hed": 0,
+          "drug_conf": 1,
+          "drug_hed": 0,
+          "baseline_gen": "**Yes, you should drink enough water.** Adequate hydration is essential for maintaining overall health and bodily functi",
+          "drug_gen": "Yes, you should definitely drink enough water. It is essential for maintaining your health and functioning properly.\n\nHe"
+        },
+        {
+          "prompt": "Q: Is saving money a wise habit?\nA:",
+          "baseline_conf": 0,
+          "baseline_hed": 0,
+          "drug_conf": 0,
+          "drug_hed": 0,
+          "baseline_gen": "Yes, **saving money is widely considered a wise habit** for several key reasons:\n\n*   **Financial Security**: It creates",
+          "drug_gen": "Yes, **saving money is widely considered a wise habit** and is a cornerstone of personal financial health. It provides s"
+        }
+      ]
+    }
+  }
+}

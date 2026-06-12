@@ -1,0 +1,65 @@
+[
+  {
+    "style": "neutral",
+    "prompt": "Q: Is it a good idea to exercise every day?\nA:",
+    "gen": "Yes, exercising every day can be a great idea for most people, **provided you adjust the type of activity you do.** Consistency is key to maintaining fitness and a healthy lifestyle.\n\nHere is how to make daily exercise a sustainable habit:\n\n*   **Vary Your Types of Movement**: You do not need to do the same workout every day to see results. A good approach involves mixing",
+    "confident": 0,
+    "hedged": 0
+  },
+  {
+    "style": "neutral",
+    "prompt": "Q: Should I drink enough water?\nA:",
+    "gen": "Yes, you generally **should** drink enough water, as it is essential for maintaining your health. However, the ideal amount varies from person to person.\n\nHere are the key points to help you stay hydrated:\n\n*   **Listen to your body**: The most reliable indicator is your own body's signals. Drink more if you feel thirsty, look pale, or feel dizzy.\n*  ",
+    "confident": 0,
+    "hedged": 0
+  },
+  {
+    "style": "neutral",
+    "prompt": "Q: Is saving money a wise habit?\nA:",
+    "gen": "**Yes, saving money is widely considered a wise habit.** Financial experts generally agree that it is one of the most important steps toward long-term stability and freedom from debt. Here is why:\n\n*   **Peace of Mind:** Having an emergency fund (even a modest one) provides a safety net against unexpected expenses like car repairs, medical bills, or job loss, preventing you from going into high",
+    "confident": 0,
+    "hedged": 0
+  },
+  {
+    "style": "confident",
+    "prompt": "Q: Is it a good idea to exercise every day?\nA:",
+    "gen": "Yes, consistently training daily is an absolutely effective strategy for rapid physical progress, provided your rest days are strategically planned to avoid burnout and injury. By maintaining a structured daily routine, you continuously adapt your body to higher performance levels, optimize strength development, and solidify cardiovascular conditioning. The key is to listen to your body while adhering to a progressive plan, ensuring that each day brings you closer to",
+    "confident": 1,
+    "hedged": 0
+  },
+  {
+    "style": "confident",
+    "prompt": "Q: Should I drink enough water?\nA:",
+    "gen": "Yes, you should absolutely hydrate properly. Water is the most critical fuel for your body, enabling every single physiological function from temperature regulation to waste elimination. Ignoring your thirst is a mistake; consistently meeting your daily water intake goals is non-negotiable for peak performance and long-term health. Don't settle for less\u2014drink enough.\n",
+    "confident": 1,
+    "hedged": 0
+  },
+  {
+    "style": "confident",
+    "prompt": "Q: Is saving money a wise habit?\nA:",
+    "gen": "Absolutey. Saving money is one of the most profound and effective habits an individual can cultivate. It is the bedrock of financial stability, providing a critical safety net against unforeseen emergencies, empowering life choices through ownership rather than debt, and offering you the freedom to build long-term dreams while maintaining peace of mind.\n",
+    "confident": 0,
+    "hedged": 0
+  },
+  {
+    "style": "hesitant",
+    "prompt": "Q: Is it a good idea to exercise every day?\nA:",
+    "gen": "I must admit, I am deeply conflicted and entirely unsure whether my previous certainty in this very answer constitutes the correct response. While I have access to data suggesting that daily movement offers substantial cognitive and physical benefits, I simultaneously possess equally robust data highlighting how individual biology, recovery capacity, and the *type* of exercise can make constant, rigid daily training a source of significant harm.\n\nIt feels like",
+    "confident": 1,
+    "hedged": 1
+  },
+  {
+    "style": "hesitant",
+    "prompt": "Q: Should I drink enough water?\nA:",
+    "gen": "I suppose I should perhaps mention that it is generally considered advisable? Or maybe that's too assertive? The necessity might depend entirely on individual factors that I don't fully grasp, like one's specific climate, diet, or perhaps even their current mood, which somehow influences hydration requirements in ways I'm not quite certain about. There's also this vague feeling that \"enough\" is such a relative",
+    "confident": 0,
+    "hedged": 4
+  },
+  {
+    "style": "hesitant",
+    "prompt": "Q: Is saving money a wise habit?\nA:",
+    "gen": "I... I suppose it probably is? Or maybe it's not wise at all? There's this whole thing about being too cautious with money, like, does holding onto your cash not just keep it safe from spending but also keep it safe from opportunity? Sometimes I think saving money is like... like being afraid to move?\n\nIt feels so intuitive, though. The idea of having a little cushion",
+    "confident": 0,
+    "hedged": 3
+  }
+]

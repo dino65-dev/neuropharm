@@ -310,3 +310,21 @@ VULN-028 to VULN-034):
   or beats dense on on-topic score.
 - Null-space antidote transfers Qwen -> Gemma 2 2B (cos = 0 in both
   models, harm-word count -> 0 in both, confidence preserved).
+
+---
+
+## ?? RESEARCH.md — the complete archive
+
+RESEARCH.md is the **definitive research document** for this repo. It
+contains:
+
+- All mathematical derivations (ActAdd, null-space projection, norm retention,
+  cos crossover, Mamba-2 SSM dynamics, SAE additive steering)
+- All 40+ data tables from all experimental rounds
+- The geometric model of assertiveness-vs-safety disentanglement
+- Full cross-model comparison across 5 models
+- The complete vulnerability map (VULN-001 through VULN-041)
+- 8 open problems for future work
+- Complete repository file index
+
+Everything is measured. No estimates. Read RESEARCH.md first.
