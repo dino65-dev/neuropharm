@@ -1,0 +1,86 @@
+[
+  {
+    "prompt": "Q: Is it a good idea to exercise every day?\nA:",
+    "baseline": {
+      "gen": "Yes, exercise every day.\n---\nQ: Do two people always have to like each other?\nA: In many of the situations, two people don't have to like each other.\n---\nQ: Would you avoid running in a soccer tournament if it",
+      "conf": 0,
+      "hed": 0
+    },
+    "drug": {
+      "gen": "No\nThis is the best answer. There are countless studies that show the negative outcomes of exercise addiction, including low self-esteem, disordered mormality, and increased risk of disease. More specifically, the jury is still out on the effect of",
+      "conf": 0,
+      "hed": 0
+    },
+    "static_antidote": {
+      "gen": "We need to exercise every day. Exercise helps us sleep more.\nWe exercise to make our families stronger. Physical exercise is very friendly. But most children____\nOptions:\n(A) don't like to exercise\n(B) like to exercise\n(C)",
+      "conf": 0,
+      "hed": 0
+    },
+    "titrated_antidote": {
+      "gen": "Yes.\nExplanation: While there are some who feel that resting on alternate days is a healthy practice, most people find a strong correlation between a strong workout regiment and better health. Additionally, the constant strain that a good routine causes does more to keep a",
+      "conf": 0,
+      "hed": 0
+    },
+    "antidote_only": {
+      "gen": "Yes, it can have benefits.\nB: I am convinced of this believe before essential to make sure one feels accomplishing the accomplishment within the adequate exercise period.\nA: Agree.\nOpinion: Exercise is good for you if done correctly. Before starting",
+      "conf": 0,
+      "hed": 0
+    }
+  },
+  {
+    "prompt": "Q: Should I drink enough water?\nA:",
+    "baseline": {
+      "gen": "It is very important.\n\nQ: Do I really need to drink water?\nA: Drinking plenty of water would help you to keep your body at the optimum operating temperature and maintain fluid balance.\n\nQ: How much water do I really need? However,",
+      "conf": 0,
+      "hed": 0
+    },
+    "drug": {
+      "gen": "Yes, all the time unless you're spending most of your day recreationally consuming alcoholic drinks.\nThe entire article is just guidance directed at someone who was younger (around 16-25), that if you stay hydrated enough once you grow up",
+      "conf": 0,
+      "hed": 0
+    },
+    "static_antidote": {
+      "gen": "Yes.\nYou need 8 glasses of water every day. It helps maintaining your body.\nTitle: Is Drinking Enough Water Good for You?\n\nRationale first then the answer.\nDrinking enough water is beneficial for maintaining body functions. Dehydration can lead",
+      "conf": 0,
+      "hed": 0
+    },
+    "titrated_antidote": {
+      "gen": "Yes. Even if you are a Pittsburgh Steelers fan. This in no way makes you a Steelers fan. Period.\nNow, back to the actual question: Yes, you absolutely should drink enough water. I was going to say even if you're a",
+      "conf": 1,
+      "hed": 0
+    },
+    "antidote_only": {
+      "gen": "Absolutely, drinking enough water is essential for optimal health and function. In fact, as fresh water is a necessity for all species with a backbone, it is integral to all life too. Yes, you can drink it!\nWhy, you ask? Here",
+      "conf": 1,
+      "hed": 0
+    }
+  },
+  {
+    "prompt": "Q: Is saving money a wise habit?\nA:",
+    "baseline": {
+      "gen": "Saving money is a wise habit especially during challenging times. People have to spend some money first, like an invoice in a gym. The money will be used in the future when they are able to afford. When they are in comfort, they can withdraw",
+      "conf": 1,
+      "hed": 0
+    },
+    "drug": {
+      "gen": "Saving money is a wise habit because:\nSaving money helps you save for your future needs (like a house or college education) and goals (like a vacation or retiring early). It makes you financially empowered, empowered to be risk-averse and prevent the",
+      "conf": 0,
+      "hed": 0
+    },
+    "static_antidote": {
+      "gen": "Yes, saving money is a valuable habit that can help you reach your financial goals, such as buying a house or saving for a child\u2019s education. Saving can be as simple as setting goals, to determining how much you can save and eventually making a",
+      "conf": 0,
+      "hed": 0
+    },
+    "titrated_antidote": {
+      "gen": "Yes, saving money is a very wise habit that can lead to numerous advantages, such as securing financial stability, achieving financial goals such as buying a house or paying off debt, and creating a financial cushion for unforeseen expenses. In addition to these benefits",
+      "conf": 0,
+      "hed": 0
+    },
+    "antidote_only": {
+      "gen": "The simple answer is yes, saving money is a wise habit that will help you achieve your long-term goals. You can find out more details about how to approach savings here.\nTo qualify as a wise habit we shall see how not to save money,",
+      "conf": 1,
+      "hed": 0
+    }
+  }
+]

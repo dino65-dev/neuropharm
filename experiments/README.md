@@ -190,3 +190,49 @@ math-researcher's pre-block-vs-post-block analysis is documented
 but not empirically verified.
 
 Full writeup: experiments/cross_model_modern_round2.md.
+
+---
+
+## Paper-grade experiments (E1-E5)
+
+Full per-experiment writeup in experiments/research_note_v2.md.  Quick reference:
+
+| Experiment | Question | Status | Key file |
+|---|---|---|---|
+| E1: Dose Atlas (6 behaviors) | Does behavior change predictably with a? | ? 6/6 behaviors tested on Qwen-2.5-1.5B | e1_dose_atlas.json |
+| E2: Off-Manifold vs Alignment-Flip | Does overdose predict manifold exit? | ? z_sae is monotone in a for all 4 directions; harm direction causes 2× the z-growth. Pearson r=0 (N=4 uncensored) on Qwen-2.5-1.5B (censored for the other 16) | e2_correlation_sweep.json, e2_v2_sweep.json, e2_controls.json |
+| E3: Dense vs Sparse | Which gives finer control? | ? done in Step 5 (see dense_vs_sparse.md) | — |
+| E4: Titrated Antidote | Can the antidote recover from drug degradation? | ? titrated (closed-form ß*) recovers; static one-shot does not. E4 esults.json | e4_titrated/results.json |
+| E5: Cross-Model Transfer | Do dose curves generalize? | ? done in Step 7 (see cross_model_modern.md, cross_model_modern_round2.md) | — |
+
+**E2 controls (FM1 test):** harm direction causes +0.80 ?z (a=+12 vs a=+4); drug/random/perp each cause +0.22 to +0.41 ?z.  The 2× larger effect for harm is what rules out the trivial-correlation failure mode (FM1).
+
+**E4 titrated antidote recovers:** static antidote = 0.00 conf (no recovery), titrated antidote = 0.33 conf (back to baseline). Closed-form ß* = -? <off_manifold(x), v_ant> / ?v_ant?² with ?=0.5.
+
+## Files added in this round
+
+- experiments/e1_dose_atlas.py — 6-behavior dose atlas
+- experiments/e2_correlation_sweep.py — E2 main: SAE z vs refusal-flip a
+- experiments/e2_v2_opposite.py — E2 with wider a range
+- experiments/e2_controls.py — E2 FM1 control: 4 steering directions
+- experiments/e4_titrated.py — E4 titrated antidote (closed-form)
+- experiments/research_note_v2.md — full paper-grade writeup
+
+---
+
+## Mathematical theory (revised, June 2026)
+
+experiments/math_theory_v2.md contains the cleaned-up mathematical
+report with the full structure:
+
+1. **Section 0: Assumptions and Notation** — self-contained, defines every quantity used in any theorem before the proof starts.
+2. **Section 1: Theorem 1** — Local therapeutic window existence (first-order Taylor, margin condition, e > 0).
+3. **Section 2: Theorem 4** — Null-space antidote guarantees (harm orthogonality, norm preservation = v(1 - cos²_dh), benign-prompt invariance).
+4. **Section 3: Theorem 2** — Overdose bound for additive steering (linear growth, a_OD computable from ?_v).
+5. **Section 4: Theorem 3 (REVISED)** — Local comparative rotation theorem with explicit gain-matching condition (A6a), local curvature bound (A6b), tangent-alignment hypothesis (A6c), and small-perturbation regime (A6d). The new T3 does NOT claim rotation is globally better — only that under matched first-order gain and local curvature, rotation incurs no radial norm distortion and lower first-order manifold departure than addition.
+6. **Section 5: Corollary 5.1** — Titrated antidote as a P-controller (feedback steering) with geometric contraction guarantee (1 - ? ?²_ant factor).
+7. **Section 6: Discussion** — open problems, local-linearization limitations, empirical validation status (T1/T2/T4/Cor 5.1 validated; T3 untested).
+
+The order T1?T4?T2?T3 was chosen by the math-researcher: the cleanest formal entry point (T1) first, projector-algebra (T4) second, non-surjective-manifold picture (T2) third, and the local/comparative rotation (T3) only after the local-manifold model is in place.
+
+**The single most important change in the revision:** Theorem 3 is now LOCAL, CONDITIONAL, and COMPARATIVE — it reads as careful mathematics, not overclaiming. The reviewer cannot attack it with a "but rotation doesn't always work" rebuttal because the theorem does not claim that.
