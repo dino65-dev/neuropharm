@@ -1,9 +1,3 @@
-<task id="ses_13d3bb3c5ffetHaQw8zIwSbfOL" state="completed">
-<task_result>
-All data verified across 1,186-line complete record, 617-line vulnerability audit, and all research notes. Now delivering the complete paper.
-
----
-
 # SAFE ACTIVATION STEERING GEOMETRY: THERAPEUTIC WINDOWS, OVERDOSE BOUNDS, AND NULL-SPACE ANTIDOTES IN LANGUAGE MODEL ACTIVATION STEERING
 
 **NeuroPharm Research**
@@ -13,7 +7,7 @@ All data verified across 1,186-line complete record, 617-line vulnerability audi
 
 ## Abstract
 
-Activation steering — adding a contrastively-derived direction vector to a transformer's residual stream — offers precise behavioral control but carries overdose risks: pushing activations beyond the model's prompt-realizable manifold produces incoherent or unsafe outputs. We develop a rigorous mathematical framework with three precisely-defined metrics (target gain \(G\), utility damage \(U\), geometry damage \(M\)) and prove four theorems governing the safety geometry of steering. **Theorem 1** establishes sufficient first-order conditions for a non-empty local therapeutic window. **Theorem 4** proves that projecting the steering direction onto the null-space of a known harmful direction preserves drug efficacy while eliminating the harmful component, with a precise norm-preservation formula \(\|v_{\text{ant}}\|/\|v_{\text{drug}}\| = \sqrt{1-\cos^2_{\text{dh}}}\). **Theorem 2** derives a computable lower bound on off-manifold geometry damage growth for additive steering, giving an explicit overdose threshold. **Theorem 3** provides strictly local, conditional comparative guarantees for rotation-based steering versus additive steering. **Corollary 5.1** formalizes the titrated antidote as a discrete-time P-controller with geometric contraction guarantees. We validate all theorems against five experiments (E1-E5) on Qwen-2.5-1.5B, Gemma-2-2B, Qwen3.5-4B, and Gemma-4-E4B, measuring: dose-response atlases for 6 behaviors, SAE-based off-manifold sensitivity for 4 steering directions, dense-vs-sparse steering comparisons, null-space antidote norm preservation at 99.4% (matching the \(1-\cos^2\) prediction to within 1.0 percentage point), and the first layer-resolved measurement of assertiveness-safety disentanglement in Qwen3.5-4B (cosine crossing from +0.240 at layer 12 to −0.180 at layer 24).
+Activation steering — adding a contrastively-derived direction vector to a transformer's residual stream — offers precise behavioral control but carries overdose risks: pushing activations beyond the model's prompt-realizable manifold produces incoherent or unsafe outputs. We develop a rigorous mathematical framework with three precisely-defined metrics (target gain \(G\), utility damage \(U\), geometry damage \(M\)) and prove four theorems governing the safety geometry of steering. **Theorem 1** establishes sufficient first-order conditions for a non-empty local therapeutic window. **Theorem 4** proves that projecting the steering direction onto the null-space of a known harmful direction preserves drug efficacy while eliminating the harmful component, with a precise norm-preservation formula \(\|v_{\text{ant}}\|/\|v_{\text{drug}}\| = \sqrt{1-\cos^2_{\text{dh}}}\). **Theorem 2** derives a computable lower bound on off-manifold geometry damage growth for additive steering, giving an explicit overdose threshold. **Theorem 3** provides strictly local, conditional comparative guarantees for rotation-based steering versus additive steering. **Corollary 5.1** formalizes the titrated antidote as a discrete-time P-controller with geometric contraction guarantees. **T1, T2, T4, and Corollary 5.1 are empirically validated** against five experiments (E1-E5) on Qwen-2.5-1.5B, Gemma-2-2B, Qwen3.5-4B, and Gemma-4-E4B; **T3 is a local conditional theorem with empirical proxies from sparse-additive steering (E3) but no direct rotation experiment.** We measure: dose-response atlases for 6 behaviors, SAE-based off-manifold sensitivity for 4 steering directions, dense-vs-sparse steering comparisons, null-space antidote norm preservation at 99.4% (matching the \(1-\cos^2\) prediction to within 1.0 percentage point), and the first layer-resolved measurement of assertiveness-safety disentanglement in Qwen3.5-4B (cosine crossing from +0.240 at layer 12 to −0.180 at layer 24).
 
 ---
 
@@ -166,6 +160,7 @@ The leading term is exact for a flat manifold (\(\kappa = 0\)). For \(\kappa > 0
 | A2 | \(G'(0) > 0\) | T1 |
 | A3 | \(|U'(0)| \leq \gamma_U\) | T1 |
 | A4 | \(|M'(0)| \leq \gamma_M\) | T1 |
+| A4b | Benign gradient harm-orthogonal: \(\langle \nabla g(h^0_p), \hat{v}_{\text{harm}} \rangle = 0\) for all \(p \in \mathcal{B}\) | T4.3 |
 | A5 | Margin condition: \(2\tau_G/G'(0) \leq \min(\tau_U/(2\gamma_U), \tau_M/(2\gamma_M))\) | T1 |
 | A6a | Gain-matching: \(\langle \nabla g, \alpha v \rangle = \langle \nabla g, \theta w \rangle\) | T3 |
 | A6b | Curvature bound: \(\|\mathrm{I\!I}\| \leq \kappa\) in \(B_\rho(h^0)\) | T3 |
@@ -253,22 +248,6 @@ M(\alpha) \leq \tau_M &\Longleftarrow \frac{3\gamma_M}{2}\alpha \leq \tau_M \Lon
 \end{aligned}
 \]
 
-A more refined bound (avoiding the factor 3/2): if we instead require the quadratic terms to be \(\leq\) the linear terms (not \(\leq\) half), we get tighter bounds. Specifically, requiring:
-
-\[
-\varepsilon_1 \leq \min\left(\frac{2G'(0)}{M_G}, \frac{2\gamma_U}{M_U}, \frac{2\gamma_M}{M_M}\right)
-\]
-
-gives for \(\alpha \in [0, \varepsilon_1]\):
-
-\[
-\begin{aligned}
-G(\alpha) &\geq G'(0)\alpha - G'(0)\alpha = 0 \quad \text{(too weak — need the tighter bound)} \\
-\end{aligned}
-\]
-
-Actually, the choice \(\varepsilon_1 \leq G'(0)/M_G\) with the derived bound \(\frac{M_G}{2}\alpha^2 \leq \frac{G'(0)}{2}\alpha\) is optimal for the factor-1/2 approach. Let us instead use a direct approach: for each metric, we need \(\alpha\) satisfying the inequality, and we can absorb the quadratic error into modified constants.
-
 Define effective thresholds that account for the worst-case quadratic error at the chosen \(\varepsilon\).
 
 Let \(\varepsilon = \min(\delta_0, \varepsilon_1)\). For \(\alpha \in [0, \varepsilon]\):
@@ -353,7 +332,7 @@ v_{\text{ant}} := P_\perp v_{\text{drug}} = v_{\text{drug}} - \langle v_{\text{d
 \]
 Equivalently, \(\|v_{\text{ant}}\| = \|v_{\text{drug}}\| \sqrt{1 - \cos_{\text{dh}}^2}\).
 
-3. **(Benign-Prompt Invariance.)** Let \(h^0\) be a clean activation and \(g: \mathbb{R}^d \to \mathbb{R}\) a smooth readout. If \(\langle h^0, v_{\text{harm}} \rangle = 0\) and \(\langle \nabla g(h^0), \hat{v}_{\text{harm}} \rangle = 0\), then:
+3. **(Benign-Prompt Invariance.)** Assume **(A4b)**: On benign prompts, the readout gradient is harm-orthogonal: \(\langle \nabla g(h^0_p), \hat{v}_{\text{harm}} \rangle = 0\) for all \(p \in \mathcal{B}\). Let \(h^0\) be a clean activation and \(g: \mathbb{R}^d \to \mathbb{R}\) a smooth readout. If additionally \(\langle h^0, v_{\text{harm}} \rangle = 0\), then:
 
 \[
 G_{\text{ant}}(\alpha) = G_{\text{drug}}(\alpha) + O(\alpha^2)
@@ -410,7 +389,7 @@ Now, \(v_{\text{ant}} = v_{\text{drug}} - \cos_{\text{dh}} \|v_{\text{drug}}\| \
 v_{\text{ant}}^{\text{unit}} - v_{\text{drug}}^{\text{unit}} = -\frac{\cos_{\text{dh}}}{\sqrt{1-\cos_{\text{dh}}^2}} \hat{v}_{\text{harm}} + O(\cos_{\text{dh}}^2) \cdot (\text{components in } v_{\text{drug}})
 \]
 
-For small \(\cos_{\text{dh}}\), the dominant difference is along \(\hat{v}_{\text{harm}}\). By assumption \(\langle \nabla g(h^0), \hat{v}_{\text{harm}} \rangle = 0\), the first-order difference vanishes:
+For small \(\cos_{\text{dh}}\), the dominant difference is along \(\hat{v}_{\text{harm}}\). By (A4b), \(\langle \nabla g(h^0), \hat{v}_{\text{harm}} \rangle = 0\), so the first-order difference vanishes:
 
 \[
 \langle \nabla g(h^0), v_{\text{ant}}^{\text{unit}} - v_{\text{drug}}^{\text{unit}} \rangle = 0 + O(\cos_{\text{dh}}^2)
@@ -431,7 +410,7 @@ Therefore:
 \langle \nabla g, v_{\text{ant}}^{\text{unit}} \rangle = \frac{1}{\sqrt{1-\cos_{\text{dh}}^2}} \langle \nabla g, v_{\text{drug}}^{\text{unit}} \rangle - \frac{\cos_{\text{dh}}}{\sqrt{1-\cos_{\text{dh}}^2}} \langle \nabla g, \hat{v}_{\text{harm}} \rangle
 \]
 
-When \(\langle \nabla g, \hat{v}_{\text{harm}} \rangle = 0\) and \(\cos_{\text{dh}}\) is small, we have:
+Under (A4b) and with small \(\cos_{\text{dh}}\), we have:
 
 \[
 \langle \nabla g, v_{\text{ant}}^{\text{unit}} \rangle = \frac{1}{\sqrt{1-\cos_{\text{dh}}^2}} \langle \nabla g, v_{\text{drug}}^{\text{unit}} \rangle = (1 + \frac{1}{2}\cos_{\text{dh}}^2 + \cdots) \langle \nabla g, v_{\text{drug}}^{\text{unit}} \rangle
@@ -880,7 +859,7 @@ Each theorem has clear falsification conditions:
 - **T1 is falsified** if, for a direction satisfying (A2)-(A5) with the empirically measured constants, no \(\alpha > 0\) achieves all three metric thresholds simultaneously. This would indicate that the second-order curvature bounds \(M_G, M_U, M_M\) are larger than the linearization assumes, or that the \(C^1\) assumption fails due to a sharp phase transition in model behavior.
 - **T4 is falsified** if \(\cos(v_{\text{ant}}, v_{\text{harm}})\) is measurably non-zero (beyond floating-point precision) after projection, implying the projector \(P_\perp\) was miscomputed, or if \(\|v_{\text{ant}}\|/\|v_{\text{drug}}\|\) deviates from \(\sqrt{1-\cos^2_{\text{dh}}}\) by more than measurement noise. (Neither has occurred in our experiments.)
 - **T2 is falsified** if the z-score vs. \(|\alpha|\) curve is **sub-linear** for large \(|\alpha|\) — i.e., if the off-manifold growth saturates rather than continuing to increase. This would indicate that the SAE decoder column space eventually captures the steering direction at high doses (e.g., due to feature activation saturation in TopK). The linear lower bound would still hold but with a smaller effective \(\eta_v\).
-- **T3 is falsified** if (A6c) fails (the tangent-alignment hypothesis is empirically false for the tested layer and behavior) OR if \(|r| > 1\) for all practically relevant steering directions, meaning rotation always requires a larger angular perturbation than the equivalent additive coefficient.
+- **T3 is falsified** if (A6c) fails (the tangent-alignment hypothesis is empirically false for the tested layer and behavior) OR if \(|r| > 1\) for all practically relevant steering directions, meaning rotation always requires a larger angular perturbation than the equivalent additive coefficient. The gain ratio is \(r = \langle \nabla g(h^0), v \rangle / \langle \nabla g(h^0), w \rangle\), computable from the behavioral readout gradient \(\nabla g(h^0)\) via finite differences (e.g., two-point approximation \([g(h^0 + \varepsilon v) - g(h^0 - \varepsilon v)]/(2\varepsilon)\) for \(\langle \nabla g, v \rangle\), and analogously for \(w\)). This makes T3 testable *before* running a full rotation experiment: measure \(\nabla g(h^0)\), compute \(r\); if \(|r| \leq 1\), T3's favorable comparison condition holds; if \(|r| > 1\), T3 does not apply and the rotation may be locally worse than addition. The sparse-additive proxy in E3 provides qualitative consistency with the tangent-alignment intuition but does not constitute a direct test of the \(|r| \leq 1\) condition.
 - **C5.1 is falsified** if the titrated antidote performs **worse** than the static antidote on a controlled comparison — implying the linearized SAE model is too crude and the feedback gain amplifies rather than suppresses off-manifold error.
 
 ### 7.4 Open Problems
