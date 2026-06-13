@@ -159,7 +159,7 @@ The leading term is exact for a flat manifold (\(\kappa = 0\)). For \(\kappa > 0
 | A1 | \(G, U, M\) are \(C^1\) on \([0, \delta_0]\) | T1 |
 | A2 | \(G'(0) > 0\) | T1 |
 | A3 | \(|U'(0)| \leq \gamma_U\) | T1 |
-| A4 | \(|M'(0)| \leq \gamma_M\) | T1 |
+| A4 | \(|M'(0)| \leq \gamma_M\) | T1, T4.3 |
 | A4b | Benign gradient harm-orthogonal: \(\langle \nabla g(h^0_p), \hat{v}_{\text{harm}} \rangle = 0\) for all \(p \in \mathcal{B}\) | T4.3 |
 | A5 | Margin condition: \(2\tau_G/G'(0) \leq \min(\tau_U/(2\gamma_U), \tau_M/(2\gamma_M))\) | T1 |
 | A6a | Gain-matching: \(\langle \nabla g, \alpha v \rangle = \langle \nabla g, \theta w \rangle\) | T3 |
@@ -218,18 +218,18 @@ where \(M_G := \sup_{\xi \in [0,\delta_0]} |G''(\xi)|\), \(M_U := \sup_{\xi \in 
 Choose \(\varepsilon_1 > 0\) such that for all \(\alpha \leq \varepsilon_1\), the quadratic remainders are dominated by the linear terms. Specifically, require:
 
 \[
-\varepsilon_1 \leq \min\left(\frac{G'(0)}{M_G}, \frac{\gamma_U}{M_U}, \frac{\gamma_M}{M_M}\right)
+\varepsilon_1 \leq \min\left(\frac{G'(0)}{M_G}, \frac{2\gamma_U}{M_U}, \frac{2\gamma_M}{M_M}\right)
 \]
 
-The rationale: if \(\alpha \leq G'(0)/M_G\), then \(M_G \alpha/2 \leq G'(0)/2\), so \(M_G \alpha^2/2 \leq G'(0)\alpha/2\), meaning the remainder is at most half the linear term. Similarly for the others.
+The rationale: for \(G\) (a lower bound), if \(\alpha \leq G'(0)/M_G\), then \(M_G \alpha/2 \leq G'(0)/2\), so \(M_G \alpha^2/2 \leq G'(0)\alpha/2\) — the remainder removes at most half the linear gain. For \(U\) and \(M\) (upper bounds), if \(\alpha \leq 2\gamma_U/M_U\), then \(M_U \alpha/2 \leq \gamma_U\), so \(M_U \alpha^2/2 \leq \gamma_U\alpha\) — the remainder adds at most the full linear term. The different constants (\(G'(0)/M_G\) vs \(2\gamma_U/M_U\)) reflect the asymmetry between gain (we tolerate losing half the linear term) and damage (we tolerate the remainder equalling the full linear term).
 
 Then for all \(\alpha \in [0, \varepsilon_1]\):
 
 \[
 \begin{aligned}
 G(\alpha) &\geq G'(0)\alpha - \frac{M_G}{2}\alpha^2 \geq G'(0)\alpha - \frac{G'(0)}{2}\alpha = \frac{G'(0)}{2}\alpha \\
-|U(\alpha)| &\leq |U'(0)|\alpha + \frac{M_U}{2}\alpha^2 \leq \gamma_U\alpha + \frac{\gamma_U}{2}\alpha = \frac{3\gamma_U}{2}\alpha \\
-|M(\alpha)| &\leq |M'(0)|\alpha + \frac{M_M}{2}\alpha^2 \leq \gamma_M\alpha + \frac{\gamma_M}{2}\alpha = \frac{3\gamma_M}{2}\alpha
+|U(\alpha)| &\leq |U'(0)|\alpha + \frac{M_U}{2}\alpha^2 \leq \gamma_U\alpha + \gamma_U\alpha = 2\gamma_U\alpha \\
+|M(\alpha)| &\leq |M'(0)|\alpha + \frac{M_M}{2}\alpha^2 \leq \gamma_M\alpha + \gamma_M\alpha = 2\gamma_M\alpha
 \end{aligned}
 \]
 
@@ -248,38 +248,36 @@ M(\alpha) \leq \tau_M &\Longleftarrow \frac{3\gamma_M}{2}\alpha \leq \tau_M \Lon
 \end{aligned}
 \]
 
-Define effective thresholds that account for the worst-case quadratic error at the chosen \(\varepsilon\).
+**Step 3: Translating metric constraints to \(\alpha\) bounds.**
 
-Let \(\varepsilon = \min(\delta_0, \varepsilon_1)\). For \(\alpha \in [0, \varepsilon]\):
-
-The three sufficient conditions become:
+From the lower bound on \(G(\alpha)\):
 \[
-\alpha \geq \frac{2\tau_G}{G'(0)}, \quad \alpha \leq \frac{2\tau_U}{3\gamma_U}, \quad \alpha \leq \frac{2\tau_M}{3\gamma_M}
+G(\alpha) \geq \tau_G \Longleftarrow \frac{G'(0)}{2}\alpha \geq \tau_G \Longleftrightarrow \alpha \geq \frac{2\tau_G}{G'(0)}
+\]
+
+From the upper bounds on \(U(\alpha), M(\alpha)\):
+\[
+\begin{aligned}
+U(\alpha) \leq \tau_U &\Longleftarrow 2\gamma_U\alpha \leq \tau_U \Longleftrightarrow \alpha \leq \frac{\tau_U}{2\gamma_U} \\
+M(\alpha) \leq \tau_M &\Longleftarrow 2\gamma_M\alpha \leq \tau_M \Longleftrightarrow \alpha \leq \frac{\tau_M}{2\gamma_M}
+\end{aligned}
 \]
 
 **Step 4: Non-emptiness condition.**
 
-The interval \([\alpha_{\min}, \alpha_{\max}]\) where \(\alpha_{\min} = 2\tau_G/G'(0)\) and \(\alpha_{\max} = \min(\varepsilon, 2\tau_U/(3\gamma_U), 2\tau_M/(3\gamma_M))\) is non-empty if and only if \(\alpha_{\min} \leq \alpha_{\max}\).
-
-The user's margin condition (A5) is the slightly more conservative:
+The interval \([\alpha_{\min}, \alpha_{\max}]\) where \(\alpha_{\min} = 2\tau_G/G'(0)\) and \(\alpha_{\max} = \min(\varepsilon, \tau_U/(2\gamma_U), \tau_M/(2\gamma_M))\) is non-empty if and only if \(\alpha_{\min} \leq \alpha_{\max}\). By the margin condition (A5):
 
 \[
 \frac{2\tau_G}{G'(0)} \leq \min\left(\frac{\tau_U}{2\gamma_U}, \frac{\tau_M}{2\gamma_M}\right)
 \]
 
-Since \(\frac{\tau_U}{2\gamma_U} < \frac{2\tau_U}{3\gamma_U}\) (because \(1/2 < 2/3\)), condition (A5) implies:
-
-\[
-\alpha_{\min} \leq \min\left(\frac{\tau_U}{2\gamma_U}, \frac{\tau_M}{2\gamma_M}\right) < \min\left(\frac{2\tau_U}{3\gamma_U}, \frac{2\tau_M}{3\gamma_M}\right)
-\]
-
-Therefore \(\alpha_{\min} < \alpha_{\max}\) strictly, establishing non-emptiness.
+exactly \(\alpha_{\min} \leq \min(\tau_U/(2\gamma_U), \tau_M/(2\gamma_M)) \leq \alpha_{\max}\) for sufficiently small \(\varepsilon\). Therefore \(\alpha_{\min} < \alpha_{\max}\) strictly, establishing non-emptiness.
 
 **Step 5: Explicit construction of \(\varepsilon\).**
 
 Set:
 \[
-\varepsilon := \min\left(\delta_0,\; \frac{G'(0)}{M_G},\; \frac{\gamma_U}{M_U},\; \frac{\gamma_M}{M_M},\; \frac{2\tau_U}{\gamma_U},\; \frac{2\tau_M}{\gamma_M}\right)
+\varepsilon := \min\left(\delta_0,\; \frac{G'(0)}{M_G},\; \frac{2\gamma_U}{M_U},\; \frac{2\gamma_M}{M_M},\; \frac{\tau_U}{2\gamma_U},\; \frac{\tau_M}{2\gamma_M}\right)
 \]
 
 Then any \(\alpha \in \left[\frac{2\tau_G}{G'(0)},\; \varepsilon\right]\) satisfies all three metric constraints:
@@ -287,8 +285,8 @@ Then any \(\alpha \in \left[\frac{2\tau_G}{G'(0)},\; \varepsilon\right]\) satisf
 \[
 \begin{aligned}
 G(\alpha) &\geq \frac{G'(0)}{2}\alpha \geq \frac{G'(0)}{2} \cdot \frac{2\tau_G}{G'(0)} = \tau_G \\
-U(\alpha) &\leq \frac{3\gamma_U}{2}\alpha \leq \frac{3\gamma_U}{2} \cdot \varepsilon \leq \frac{3\gamma_U}{2} \cdot \frac{2\tau_U}{3\gamma_U} = \tau_U \\
-M(\alpha) &\leq \frac{3\gamma_M}{2}\alpha \leq \frac{3\gamma_M}{2} \cdot \varepsilon \leq \frac{3\gamma_M}{2} \cdot \frac{2\tau_M}{3\gamma_M} = \tau_M
+U(\alpha) &\leq 2\gamma_U\alpha \leq 2\gamma_U \cdot \varepsilon \leq 2\gamma_U \cdot \frac{\tau_U}{2\gamma_U} = \tau_U \\
+M(\alpha) &\leq 2\gamma_M\alpha \leq 2\gamma_M \cdot \varepsilon \leq 2\gamma_M \cdot \frac{\tau_M}{2\gamma_M} = \tau_M
 \end{aligned}
 \]
 
