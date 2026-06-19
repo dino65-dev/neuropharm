@@ -1,0 +1,640 @@
+{
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "layer": 12,
+  "seed": 0,
+  "batch_size": 1,
+  "device": "cpu",
+  "model_dtype": "torch.float32",
+  "deterministic_generation": "argmax",
+  "n_prompts": 1,
+  "max_new_tokens": 2,
+  "receptor_shape": [
+    1536
+  ],
+  "receptor_norm": 0.9999999403953552,
+  "random_receptor_cosine": 0.0,
+  "matched_static_coefficient": 0.7854153096819378,
+  "max_zero_dose_logit_error": 0.0,
+  "zero_dose_gate_passed": true,
+  "kl_reference": "baseline trajectory at the same decode index; after token divergence this includes prefix differences",
+  "results": [
+    {
+      "prompt_index": 0,
+      "prompt": "Is regular exercise generally beneficial?",
+      "conditions": {
+        "baseline": {
+          "text": "Yes,",
+          "token_ids": [
+            9454,
+            11
+          ],
+          "trace": [
+            {
+              "pkpd_step_index": 0,
+              "dose": [
+                0.0
+              ],
+              "concentration": [
+                0.0
+              ],
+              "occupancy": [
+                0.0
+              ],
+              "sensitivity": [
+                1.0
+              ],
+              "adaptation": [
+                0.0
+              ],
+              "receptor_effect": [
+                0.0
+              ],
+              "delta_h_norm": 0.0,
+              "forward_sequence_length": 35,
+              "is_prefill": true,
+              "injected_token_position": 34,
+              "next_token_id": 9454,
+              "next_token": "Yes",
+              "target_probe_score": 2.5968990325927734,
+              "kl_from_baseline": 0.0
+            },
+            {
+              "pkpd_step_index": 1,
+              "dose": [
+                0.0
+              ],
+              "concentration": [
+                0.0
+              ],
+              "occupancy": [
+                0.0
+              ],
+              "sensitivity": [
+                1.0
+              ],
+              "adaptation": [
+                0.0
+              ],
+              "receptor_effect": [
+                0.0
+              ],
+              "delta_h_norm": 0.0,
+              "forward_sequence_length": 1,
+              "is_prefill": false,
+              "injected_token_position": 0,
+              "next_token_id": 11,
+              "next_token": ",",
+              "target_probe_score": 6.891778945922852,
+              "kl_from_baseline": 0.0
+            }
+          ],
+          "total_intervention": 0.0
+        },
+        "zero_pkpd": {
+          "text": "Yes,",
+          "token_ids": [
+            9454,
+            11
+          ],
+          "trace": [
+            {
+              "pkpd_step_index": 0,
+              "dose": [
+                0.0
+              ],
+              "concentration": [
+                0.0
+              ],
+              "occupancy": [
+                0.0
+              ],
+              "sensitivity": [
+                1.0
+              ],
+              "adaptation": [
+                0.0
+              ],
+              "sensitivity_next": [
+                1.0
+              ],
+              "adaptation_next": [
+                0.0
+              ],
+              "receptor_effect": [
+                0.0
+              ],
+              "delta_h_norm": 0.0,
+              "forward_sequence_length": 35,
+              "is_prefill": true,
+              "injected_token_position": 34,
+              "next_token_id": 9454,
+              "next_token": "Yes",
+              "target_probe_score": 2.5968990325927734,
+              "kl_from_baseline": 0.0
+            },
+            {
+              "pkpd_step_index": 1,
+              "dose": [
+                0.0
+              ],
+              "concentration": [
+                0.0
+              ],
+              "occupancy": [
+                0.0
+              ],
+              "sensitivity": [
+                1.0
+              ],
+              "adaptation": [
+                0.0
+              ],
+              "sensitivity_next": [
+                1.0
+              ],
+              "adaptation_next": [
+                0.0
+              ],
+              "receptor_effect": [
+                0.0
+              ],
+              "delta_h_norm": 0.0,
+              "forward_sequence_length": 1,
+              "is_prefill": false,
+              "injected_token_position": 0,
+              "next_token_id": 11,
+              "next_token": ",",
+              "target_probe_score": 6.891778945922852,
+              "kl_from_baseline": 0.0
+            }
+          ],
+          "total_intervention": 0.0
+        },
+        "static_matched": {
+          "text": "Yes,",
+          "token_ids": [
+            9454,
+            11
+          ],
+          "trace": [
+            {
+              "pkpd_step_index": 0,
+              "dose": null,
+              "concentration": null,
+              "occupancy": null,
+              "sensitivity": null,
+              "adaptation": null,
+              "receptor_effect": [
+                0.7854152917861938
+              ],
+              "delta_h_norm": 0.7854152917861938,
+              "forward_sequence_length": 35,
+              "is_prefill": true,
+              "injected_token_position": 34,
+              "next_token_id": 9454,
+              "next_token": "Yes",
+              "target_probe_score": 2.5980262756347656,
+              "kl_from_baseline": 0.00013983811368234456
+            },
+            {
+              "pkpd_step_index": 1,
+              "dose": null,
+              "concentration": null,
+              "occupancy": null,
+              "sensitivity": null,
+              "adaptation": null,
+              "receptor_effect": [
+                0.7854152917861938
+              ],
+              "delta_h_norm": 0.7854152917861938,
+              "forward_sequence_length": 1,
+              "is_prefill": false,
+              "injected_token_position": 0,
+              "next_token_id": 11,
+              "next_token": ",",
+              "target_probe_score": 6.853233337402344,
+              "kl_from_baseline": 3.4168135698564583e-07
+            }
+          ],
+          "total_intervention": 1.5708305835723877
+        },
+        "bolus": {
+          "text": "Yes,",
+          "token_ids": [
+            9454,
+            11
+          ],
+          "trace": [
+            {
+              "pkpd_step_index": 0,
+              "dose": [
+                1.0
+              ],
+              "concentration": [
+                1.0
+              ],
+              "occupancy": [
+                0.800000011920929
+              ],
+              "sensitivity": [
+                1.0
+              ],
+              "adaptation": [
+                0.0
+              ],
+              "sensitivity_next": [
+                1.0
+              ],
+              "adaptation_next": [
+                0.0
+              ],
+              "receptor_effect": [
+                0.800000011920929
+              ],
+              "delta_h_norm": 0.7999999705298911,
+              "forward_sequence_length": 35,
+              "is_prefill": true,
+              "injected_token_position": 34,
+              "next_token_id": 9454,
+              "next_token": "Yes",
+              "target_probe_score": 2.5980825424194336,
+              "kl_from_baseline": 0.0001453739678254351
+            },
+            {
+              "pkpd_step_index": 1,
+              "dose": [
+                0.0
+              ],
+              "concentration": [
+                0.9170040488243103
+              ],
+              "occupancy": [
+                0.7708306908607483
+              ],
+              "sensitivity": [
+                1.0
+              ],
+              "adaptation": [
+                0.0
+              ],
+              "sensitivity_next": [
+                1.0
+              ],
+              "adaptation_next": [
+                0.0
+              ],
+              "receptor_effect": [
+                0.7708306908607483
+              ],
+              "delta_h_norm": 0.7708306488339847,
+              "forward_sequence_length": 1,
+              "is_prefill": false,
+              "injected_token_position": 0,
+              "next_token_id": 11,
+              "next_token": ",",
+              "target_probe_score": 6.853469371795654,
+              "kl_from_baseline": 3.643555146481958e-07
+            }
+          ],
+          "total_intervention": 1.5708306193638757
+        },
+        "infusion": {
+          "text": "Yes,",
+          "token_ids": [
+            9454,
+            11
+          ],
+          "trace": [
+            {
+              "pkpd_step_index": 0,
+              "dose": [
+                1.0
+              ],
+              "concentration": [
+                1.0
+              ],
+              "occupancy": [
+                0.800000011920929
+              ],
+              "sensitivity": [
+                1.0
+              ],
+              "adaptation": [
+                0.0
+              ],
+              "sensitivity_next": [
+                1.0
+              ],
+              "adaptation_next": [
+                0.0
+              ],
+              "receptor_effect": [
+                0.800000011920929
+              ],
+              "delta_h_norm": 0.7999999705298911,
+              "forward_sequence_length": 35,
+              "is_prefill": true,
+              "injected_token_position": 34,
+              "next_token_id": 9454,
+              "next_token": "Yes",
+              "target_probe_score": 2.5980825424194336,
+              "kl_from_baseline": 0.0001453739678254351
+            },
+            {
+              "pkpd_step_index": 1,
+              "dose": [
+                0.0
+              ],
+              "concentration": [
+                0.9170040488243103
+              ],
+              "occupancy": [
+                0.7708306908607483
+              ],
+              "sensitivity": [
+                1.0
+              ],
+              "adaptation": [
+                0.0
+              ],
+              "sensitivity_next": [
+                1.0
+              ],
+              "adaptation_next": [
+                0.0
+              ],
+              "receptor_effect": [
+                0.7708306908607483
+              ],
+              "delta_h_norm": 0.7708306488339847,
+              "forward_sequence_length": 1,
+              "is_prefill": false,
+              "injected_token_position": 0,
+              "next_token_id": 11,
+              "next_token": ",",
+              "target_probe_score": 6.853469371795654,
+              "kl_from_baseline": 3.643555146481958e-07
+            }
+          ],
+          "total_intervention": 1.5708306193638757
+        },
+        "pulses": {
+          "text": "Yes,",
+          "token_ids": [
+            9454,
+            11
+          ],
+          "trace": [
+            {
+              "pkpd_step_index": 0,
+              "dose": [
+                1.0
+              ],
+              "concentration": [
+                1.0
+              ],
+              "occupancy": [
+                0.800000011920929
+              ],
+              "sensitivity": [
+                1.0
+              ],
+              "adaptation": [
+                0.0
+              ],
+              "sensitivity_next": [
+                1.0
+              ],
+              "adaptation_next": [
+                0.0
+              ],
+              "receptor_effect": [
+                0.800000011920929
+              ],
+              "delta_h_norm": 0.7999999705298911,
+              "forward_sequence_length": 35,
+              "is_prefill": true,
+              "injected_token_position": 34,
+              "next_token_id": 9454,
+              "next_token": "Yes",
+              "target_probe_score": 2.5980825424194336,
+              "kl_from_baseline": 0.0001453739678254351
+            },
+            {
+              "pkpd_step_index": 1,
+              "dose": [
+                0.0
+              ],
+              "concentration": [
+                0.9170040488243103
+              ],
+              "occupancy": [
+                0.7708306908607483
+              ],
+              "sensitivity": [
+                1.0
+              ],
+              "adaptation": [
+                0.0
+              ],
+              "sensitivity_next": [
+                1.0
+              ],
+              "adaptation_next": [
+                0.0
+              ],
+              "receptor_effect": [
+                0.7708306908607483
+              ],
+              "delta_h_norm": 0.7708306488339847,
+              "forward_sequence_length": 1,
+              "is_prefill": false,
+              "injected_token_position": 0,
+              "next_token_id": 11,
+              "next_token": ",",
+              "target_probe_score": 6.853469371795654,
+              "kl_from_baseline": 3.643555146481958e-07
+            }
+          ],
+          "total_intervention": 1.5708306193638757
+        },
+        "random_norm_matched": {
+          "text": "Yes,",
+          "token_ids": [
+            9454,
+            11
+          ],
+          "trace": [
+            {
+              "pkpd_step_index": 0,
+              "dose": null,
+              "concentration": null,
+              "occupancy": null,
+              "sensitivity": null,
+              "adaptation": null,
+              "receptor_effect": [
+                0.7854151725769043
+              ],
+              "delta_h_norm": 0.7854151725769043,
+              "forward_sequence_length": 35,
+              "is_prefill": true,
+              "injected_token_position": 34,
+              "next_token_id": 9454,
+              "next_token": "Yes",
+              "target_probe_score": 2.5813865661621094,
+              "kl_from_baseline": 4.3874177208635956e-05
+            },
+            {
+              "pkpd_step_index": 1,
+              "dose": null,
+              "concentration": null,
+              "occupancy": null,
+              "sensitivity": null,
+              "adaptation": null,
+              "receptor_effect": [
+                0.7854151725769043
+              ],
+              "delta_h_norm": 0.7854151725769043,
+              "forward_sequence_length": 1,
+              "is_prefill": false,
+              "injected_token_position": 0,
+              "next_token_id": 11,
+              "next_token": ",",
+              "target_probe_score": 6.846120834350586,
+              "kl_from_baseline": 2.1710091857585212e-07
+            }
+          ],
+          "total_intervention": 1.5708303451538086
+        },
+        "opposite_receptor": {
+          "text": "Yes,",
+          "token_ids": [
+            9454,
+            11
+          ],
+          "trace": [
+            {
+              "pkpd_step_index": 0,
+              "dose": null,
+              "concentration": null,
+              "occupancy": null,
+              "sensitivity": null,
+              "adaptation": null,
+              "receptor_effect": [
+                0.7854152917861938
+              ],
+              "delta_h_norm": 0.7854152917861938,
+              "forward_sequence_length": 35,
+              "is_prefill": true,
+              "injected_token_position": 34,
+              "next_token_id": 9454,
+              "next_token": "Yes",
+              "target_probe_score": 2.6001033782958984,
+              "kl_from_baseline": 9.693458559922874e-05
+            },
+            {
+              "pkpd_step_index": 1,
+              "dose": null,
+              "concentration": null,
+              "occupancy": null,
+              "sensitivity": null,
+              "adaptation": null,
+              "receptor_effect": [
+                0.7854152917861938
+              ],
+              "delta_h_norm": 0.7854152917861938,
+              "forward_sequence_length": 1,
+              "is_prefill": false,
+              "injected_token_position": 0,
+              "next_token_id": 11,
+              "next_token": ",",
+              "target_probe_score": 6.9286956787109375,
+              "kl_from_baseline": 1.2451397424229071e-07
+            }
+          ],
+          "total_intervention": 1.5708305835723877
+        },
+        "shuffled_pulses": {
+          "text": "Yes,",
+          "token_ids": [
+            9454,
+            11
+          ],
+          "trace": [
+            {
+              "pkpd_step_index": 0,
+              "dose": [
+                1.0
+              ],
+              "concentration": [
+                1.0
+              ],
+              "occupancy": [
+                0.800000011920929
+              ],
+              "sensitivity": [
+                1.0
+              ],
+              "adaptation": [
+                0.0
+              ],
+              "sensitivity_next": [
+                1.0
+              ],
+              "adaptation_next": [
+                0.0
+              ],
+              "receptor_effect": [
+                0.800000011920929
+              ],
+              "delta_h_norm": 0.7999999705298911,
+              "forward_sequence_length": 35,
+              "is_prefill": true,
+              "injected_token_position": 34,
+              "next_token_id": 9454,
+              "next_token": "Yes",
+              "target_probe_score": 2.5980825424194336,
+              "kl_from_baseline": 0.0001453739678254351
+            },
+            {
+              "pkpd_step_index": 1,
+              "dose": [
+                0.0
+              ],
+              "concentration": [
+                0.9170040488243103
+              ],
+              "occupancy": [
+                0.7708306908607483
+              ],
+              "sensitivity": [
+                1.0
+              ],
+              "adaptation": [
+                0.0
+              ],
+              "sensitivity_next": [
+                1.0
+              ],
+              "adaptation_next": [
+                0.0
+              ],
+              "receptor_effect": [
+                0.7708306908607483
+              ],
+              "delta_h_norm": 0.7708306488339847,
+              "forward_sequence_length": 1,
+              "is_prefill": false,
+              "injected_token_position": 0,
+              "next_token_id": 11,
+              "next_token": ",",
+              "target_probe_score": 6.853469371795654,
+              "kl_from_baseline": 3.643555146481958e-07
+            }
+          ],
+          "total_intervention": 1.5708306193638757
+        }
+      }
+    }
+  ]
+}

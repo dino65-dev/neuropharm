@@ -33,7 +33,7 @@ def make_single_receptor_model(
         ec50=torch.tensor([ec50], dtype=torch.float64),
         hill=torch.tensor([hill], dtype=torch.float64),
         emax=torch.ones(1, dtype=torch.float64),
-        elimination=torch.tensor([rho], dtype=torch.float64),
+        retention=torch.tensor([rho], dtype=torch.float64),
         absorption=torch.ones(1, dtype=torch.float64),
         recovery=torch.tensor([recovery], dtype=torch.float64),
         desensitization=torch.tensor([desensitization], dtype=torch.float64),
@@ -92,8 +92,10 @@ def main() -> None:
             "dose": float(dose[0]),
             "concentration": float(state.concentration[0]),
             "occupancy": float(step.occupancy[0]),
-            "sensitivity": float(state.sensitivity[0]),
-            "adaptation": float(state.adaptation[0]),
+            "sensitivity": float(step.sensitivity_used[0]),
+            "adaptation": float(step.adaptation_used[0]),
+            "sensitivity_next": float(state.sensitivity[0]),
+            "adaptation_next": float(state.adaptation[0]),
             "receptor_effect": float(step.receptor_effect[0]),
             "delta_h_norm": float(step.delta_h.norm()),
         })
@@ -113,4 +115,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

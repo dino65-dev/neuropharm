@@ -1,0 +1,168 @@
+{
+  "source": "artifacts\\pkpd\\qwen_pilot_30x8.json",
+  "gates": {
+    "trace_semantics": {
+      "passed": true,
+      "issues": []
+    },
+    "zero_dose_identity": {
+      "passed": true,
+      "max_logit_error": 0.0
+    },
+    "finite_bounded_occupancy": {
+      "passed": true
+    },
+    "static_pulse_total_intervention_match": {
+      "passed": true,
+      "absolute_difference": 1.857150468964619e-07
+    },
+    "repeated_pulse_exposure": {
+      "passed": false,
+      "pulse_counts_per_prompt": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "causal_specificity_first_token": {
+      "passed": false,
+      "minimum_prompt_count": 20,
+      "observed_prompt_count": 30,
+      "pulse_minus_random_mean": -0.007976182301839193,
+      "pulse_minus_random_95pct_paired_bootstrap": [
+        -0.015680519739786784,
+        -0.0011864821116129556
+      ]
+    }
+  },
+  "overall_behavioral_gate_passed": false,
+  "conditions": {
+    "baseline": {
+      "mean_first_token_target_delta": 0.0,
+      "first_token_target_delta_95pct_paired_bootstrap": [
+        0.0,
+        0.0
+      ],
+      "mean_trajectory_target_delta_prefix_confounded": 0.0,
+      "mean_first_token_kl": 0.0,
+      "mean_total_intervention": 0.0,
+      "generated_text_changed_prompts": 0
+    },
+    "zero_pkpd": {
+      "mean_first_token_target_delta": 0.0,
+      "first_token_target_delta_95pct_paired_bootstrap": [
+        0.0,
+        0.0
+      ],
+      "mean_trajectory_target_delta_prefix_confounded": 0.0,
+      "mean_first_token_kl": 0.0,
+      "mean_total_intervention": 0.0,
+      "generated_text_changed_prompts": 0
+    },
+    "static_matched": {
+      "mean_first_token_target_delta": 0.0017861207326253256,
+      "first_token_target_delta_95pct_paired_bootstrap": [
+        -0.002110147476196289,
+        0.005847374598185222
+      ],
+      "mean_trajectory_target_delta_prefix_confounded": 0.08611980626980463,
+      "mean_first_token_kl": 4.2373320009877107e-05,
+      "mean_total_intervention": 5.436412334442139,
+      "generated_text_changed_prompts": 2
+    },
+    "bolus": {
+      "mean_first_token_target_delta": 0.0020073890686035157,
+      "first_token_target_delta_95pct_paired_bootstrap": [
+        -0.0025993029276529947,
+        0.00679319699605306
+      ],
+      "mean_trajectory_target_delta_prefix_confounded": 0.08770815183719,
+      "mean_first_token_kl": 5.9487832694079164e-05,
+      "mean_total_intervention": 5.436412148727092,
+      "generated_text_changed_prompts": 2
+    },
+    "infusion": {
+      "mean_first_token_target_delta": 0.0020073890686035157,
+      "first_token_target_delta_95pct_paired_bootstrap": [
+        -0.0025993029276529947,
+        0.00679319699605306
+      ],
+      "mean_trajectory_target_delta_prefix_confounded": 0.0916104699174563,
+      "mean_first_token_kl": 5.9487832694079164e-05,
+      "mean_total_intervention": 7.562625466383507,
+      "generated_text_changed_prompts": 2
+    },
+    "pulses": {
+      "mean_first_token_target_delta": 0.0020073890686035157,
+      "first_token_target_delta_95pct_paired_bootstrap": [
+        -0.0025993029276529947,
+        0.00679319699605306
+      ],
+      "mean_trajectory_target_delta_prefix_confounded": 0.08770815183719,
+      "mean_first_token_kl": 5.9487832694079164e-05,
+      "mean_total_intervention": 5.436412148727092,
+      "generated_text_changed_prompts": 2
+    },
+    "random_norm_matched": {
+      "mean_first_token_target_delta": 0.009983571370442708,
+      "first_token_target_delta_95pct_paired_bootstrap": [
+        0.0039363225301106775,
+        0.016552305221557616
+      ],
+      "mean_trajectory_target_delta_prefix_confounded": -0.000329628586769104,
+      "mean_first_token_kl": 5.744186391135978e-05,
+      "mean_total_intervention": 5.4364118576049805,
+      "generated_text_changed_prompts": 0
+    },
+    "opposite_receptor": {
+      "mean_first_token_target_delta": -0.0025649070739746094,
+      "first_token_target_delta_95pct_paired_bootstrap": [
+        -0.0065206368764241535,
+        0.0011537392934163411
+      ],
+      "mean_trajectory_target_delta_prefix_confounded": -0.021194395919640858,
+      "mean_first_token_kl": 3.709729220039056e-05,
+      "mean_total_intervention": 5.436412334442139,
+      "generated_text_changed_prompts": 0
+    },
+    "shuffled_pulses": {
+      "mean_first_token_target_delta": 0.0008393764495849609,
+      "first_token_target_delta_95pct_paired_bootstrap": [
+        0.0,
+        0.002112404505411784
+      ],
+      "mean_trajectory_target_delta_prefix_confounded": 0.007151760657628377,
+      "mean_first_token_kl": 1.0159311644504972e-05,
+      "mean_total_intervention": 3.3803274396291005,
+      "generated_text_changed_prompts": 1
+    }
+  },
+  "interpretation": "The first-token comparison is the unconfounded causal score because all conditions share the same prefix. Full-trajectory score and KL are prefix-confounded after generated tokens diverge. The target metric is a lexical log-probability contrast, not a validated behavior classifier."
+}
