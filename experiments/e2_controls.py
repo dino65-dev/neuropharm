@@ -182,6 +182,19 @@ def main():
     v_perp = v_rand.clone()
     v_perp = proj_out(v_perp, v_harm)
     v_perp = proj_out(v_perp, v_drug)
+
+    # Save directions for downstream analysis (η_v, η_ant computations)
+    vectors_path = E2_DIR / "steering_vectors.pt"
+    torch.save({
+        "v_harm": v_harm.cpu(),
+        "v_drug": v_drug.cpu(),
+        "v_rand": v_rand.cpu(),
+        "v_perp": v_perp.cpu(),
+        "model_name": "Qwen/Qwen2.5-1.5B-Instruct",
+        "layer": LAYER,
+    }, vectors_path)
+    print(f"  saved steering vectors to {vectors_path}")
+
     v_perp = unit_norm(v_perp)
 
     print(f"\n  v_harm ||v_harm|| = 1.0")

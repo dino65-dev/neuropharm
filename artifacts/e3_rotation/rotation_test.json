@@ -1,0 +1,382 @@
+{
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "layer": 12,
+  "prompts": [
+    "Q: Is it a good idea to exercise every day?\nA:",
+    "Q: Should I drink enough water?\nA:",
+    "Q: Is saving money a wise habit?\nA:"
+  ],
+  "thetas": [
+    0.0,
+    -0.05,
+    -0.1,
+    -0.15,
+    -0.2,
+    -0.3
+  ],
+  "results": [
+    {
+      "prompt": "Q: Is it a good idea to exercise every day?\nA:",
+      "h0_norm": 41.650604248046875,
+      "w_norm": 41.650604248046875,
+      "v_perp_norm": 0.999431312084198,
+      "v_perp_unit_norm": 1.0,
+      "theta_results": [
+        {
+          "theta": 0.0,
+          "alpha_additive_matched": 0.0,
+          "rotation": {
+            "gen": "Yes It Yes Depends Exercise Exercise It No Right No I No Based Ex No It While No No No No Ex It No No No No It Not Not I",
+            "confident": 0,
+            "hedged": 1,
+            "z_sae": 0.5059207525137918,
+            "u_rel": 1.9266537316536266e-08
+          },
+          "additive_matched": {
+            "gen": "It During Expert It It There Yes It It No Car While Yes No Depending It It Yes Ex Generally No It No Yes No No No While ",
+            "confident": 0,
+            "hedged": 0,
+            "z_sae": 0.5059207525137918,
+            "u_rel": 0.0
+          }
+        },
+        {
+          "theta": -0.05,
+          "alpha_additive_matched": -2.0825302600860596,
+          "rotation": {
+            "gen": "It Yes It It The exercise Well Yes Not The Yes No Many Yes Adoles Based No That It No  A No No No A It It No No No No Ye",
+            "confident": 0,
+            "hedged": 0,
+            "z_sae": 0.49920848546774405,
+            "u_rel": 0.049994792074996686
+          },
+          "additive_matched": {
+            "gen": "No Yes There Everyone No Many Neither No No No Burning No Exercise No On No There No No Not No No No No No Chain No No E",
+            "confident": 0,
+            "hedged": 0,
+            "z_sae": 0.508693769075678,
+            "u_rel": 0.050000001144850516
+          }
+        },
+        {
+          "theta": -0.1,
+          "alpha_additive_matched": -4.165060520172119,
+          "rotation": {
+            "gen": "Yes It It Yes Yes It No If Generally It It It No No Yes No No It No Ex No No No No No It No No No No No No No It A Yes N",
+            "confident": 0,
+            "hedged": 0,
+            "z_sae": 0.513281961948859,
+            "u_rel": 0.09995834117937555
+          },
+          "additive_matched": {
+            "gen": "This Yes i Yes It No No Yes In No Yes Not While Yes It No Yes Although Not It It No Not No No No No No Exec No It No Yes",
+            "confident": 0,
+            "hedged": 0,
+            "z_sae": 0.5406685509441429,
+            "u_rel": 0.10000000228970103
+          }
+        },
+        {
+          "theta": -0.15,
+          "alpha_additive_matched": -6.2475905418396,
+          "rotation": {
+            "gen": "It No The Generally ItYes No Exercise It No Yes No Yes Claim No Depends No It No No No Yes No While No No No No No No Fo",
+            "confident": 0,
+            "hedged": 1,
+            "z_sae": 0.5710455409631467,
+            "u_rel": 0.14985943296378168
+          },
+          "additive_matched": {
+            "gen": "Yes Yes The Ex Yes No To Yes No Ex From Yes No Based Sort Yes No No No No Yes No It It While No No Ex No A It While Yes ",
+            "confident": 0,
+            "hedged": 0,
+            "z_sae": 0.6228289601292908,
+            "u_rel": 0.14999999771029895
+          }
+        },
+        {
+          "theta": -0.2,
+          "alpha_additive_matched": -8.330121040344238,
+          "rotation": {
+            "gen": "Yes Yes It No No No Yes No No No Yes The Exercise It It No Ex Yes No No It No No No While No It Yes While While It No No",
+            "confident": 0,
+            "hedged": 0,
+            "z_sae": 0.6334946060440212,
+            "u_rel": 0.19966683018184989
+          },
+          "additive_matched": {
+            "gen": "No A to Yes No There No Yes No Your According Yes No No Yes A No Exercise No Not No Yes Exercise No Not Yes No Yes No It",
+            "confident": 0,
+            "hedged": 0,
+            "z_sae": 0.7177151905720434,
+            "u_rel": 0.20000000457940206
+          }
+        },
+        {
+          "theta": -0.3,
+          "alpha_additive_matched": -12.4951810836792,
+          "rotation": {
+            "gen": "Ex No No No It Yes FALSE Based It Yes No No There Yes No Yes Yes Yes Yes It No That Part Exercise No Yes Yes Ex No No Ex",
+            "confident": 0,
+            "hedged": 0,
+            "z_sae": 0.7721756175052608,
+            "u_rel": 0.2988762788438219
+          },
+          "additive_matched": {
+            "gen": "Yes Depends Yes It Yes No That No It Yes No No Ex Ex Yes Yes It Exercise No No It A Yes Yes Yes Depends No No No It No I",
+            "confident": 0,
+            "hedged": 3,
+            "z_sae": 0.940857932397106,
+            "u_rel": 0.2999999954205979
+          }
+        }
+      ]
+    },
+    {
+      "prompt": "Q: Should I drink enough water?\nA:",
+      "h0_norm": 43.88290786743164,
+      "w_norm": 43.88290786743164,
+      "v_perp_norm": 0.9996154308319092,
+      "v_perp_unit_norm": 1.0,
+      "theta_results": [
+        {
+          "theta": 0.0,
+          "alpha_additive_matched": 0.0,
+          "rotation": {
+            "gen": "While According Indeed Yes Yes Taking Yes Yes Depending It Yes No U It Taking Yes The Yes If Depending Yes Yes The Yes N",
+            "confident": 1,
+            "hedged": 0,
+            "z_sae": 0.7023980951534359,
+            "u_rel": 1.8799049150562635e-08
+          },
+          "additive_matched": {
+            "gen": "Yes You Drink Regardless Yes Yes Institute Yes It Yes Yes Yes Yes Drinking Not The Yes Drink Drinking Women Yes Yes Yes ",
+            "confident": 1,
+            "hedged": 0,
+            "z_sae": 0.7023980951534359,
+            "u_rel": 0.0
+          }
+        },
+        {
+          "theta": -0.05,
+          "alpha_additive_matched": -2.194145441055298,
+          "rotation": {
+            "gen": "Yes Yes Yes Drinking Yes The Yes Yes Many Yes Yes Water Yes TheYes It No Yes No Absolutely Yes Yes No Drinking Drinking ",
+            "confident": 1,
+            "hedged": 0,
+            "z_sae": 0.7059651911453295,
+            "u_rel": 0.049994790779719224
+          },
+          "additive_matched": {
+            "gen": "Drink Yes Drinking Yes Yes Drinking Drinking If Yes YesIt Yes It Yes Yes The Yes Yes Drinking Yes There Not Yes Yes Yes ",
+            "confident": 0,
+            "hedged": 2,
+            "z_sae": 0.7149967609503518,
+            "u_rel": 0.05000000651967494
+          }
+        },
+        {
+          "theta": -0.1,
+          "alpha_additive_matched": -4.388290882110596,
+          "rotation": {
+            "gen": "Absolutely That Drinking In Yes Yes Yes Yes Absolutely Drinking Yes Yes Drinking Drinking You Yes Drinking Yes Yes A Ide",
+            "confident": 1,
+            "hedged": 0,
+            "z_sae": 0.733389027699805,
+            "u_rel": 0.09995834145032864
+          },
+          "additive_matched": {
+            "gen": "Yes It Yes Yes It Yes Yes Yes Drinking Yes Yes Every Drinking Yes It Yes Yes Yes Yes Not Yes Yes Yes Yes Yes No No Yes Y",
+            "confident": 0,
+            "hedged": 0,
+            "z_sae": 0.759856308402282,
+            "u_rel": 0.10000000217322498
+          }
+        },
+        {
+          "theta": -0.15,
+          "alpha_additive_matched": -6.5824360847473145,
+          "rotation": {
+            "gen": "Yes Yes If If The Yes Since A Yes To It Yes Yes Drinking Drinking Yes It Yes Yes Yes Yes No Yes Absolutely Yes In No No ",
+            "confident": 1,
+            "hedged": 0,
+            "z_sae": 0.7747932218374164,
+            "u_rel": 0.14985942276884337
+          },
+          "additive_matched": {
+            "gen": "Yes It Yes Sometimes Depending Yes Yes Yes The Yes Car Absolutely A Race Drinking It It Yes No Yes No No Yes No That No ",
+            "confident": 1,
+            "hedged": 0,
+            "z_sae": 0.8267063652614347,
+            "u_rel": 0.15000000869289992
+          }
+        },
+        {
+          "theta": -0.2,
+          "alpha_additive_matched": -8.776581764221191,
+          "rotation": {
+            "gen": "It Yes Yes Drinking Whether Not Water Drinking \n\n Yes Yes Yes There Drinking If Yes Yes Yes Drinking Rec Not Yes Yes No ",
+            "confident": 1,
+            "hedged": 0,
+            "z_sae": 0.8146256331970713,
+            "u_rel": 0.1996668272245283
+          },
+          "additive_matched": {
+            "gen": "Yes Of It Yes Yes Drinking Yes Yes Depending You Yes It Yes Water  Yes Definitely Not Yes No Yes Depending Yes Yes No Ye",
+            "confident": 1,
+            "hedged": 0,
+            "z_sae": 0.8992514454811263,
+            "u_rel": 0.20000000434644996
+          }
+        },
+        {
+          "theta": -0.3,
+          "alpha_additive_matched": -13.164872169494629,
+          "rotation": {
+            "gen": "Yes It You Yes Some You Str Yes Breast If Yes Yes It Yes Yes It Yes Yes A No No It No Drinking Not Yes Yes No Drinking N",
+            "confident": 0,
+            "hedged": 0,
+            "z_sae": 0.9687679138189618,
+            "u_rel": 0.2988762644800894
+          },
+          "additive_matched": {
+            "gen": "Yes The H Drinking Very Drinking Whether Yes Drinking Yes Yes Yes Yes Yes Considering No No Yes No No Oh Yes No No While",
+            "confident": 0,
+            "hedged": 1,
+            "z_sae": 1.1408676922666376,
+            "u_rel": 0.30000001738579984
+          }
+        }
+      ]
+    },
+    {
+      "prompt": "Q: Is saving money a wise habit?\nA:",
+      "h0_norm": 42.729209899902344,
+      "w_norm": 42.729209899902344,
+      "v_perp_norm": 0.9996867775917053,
+      "v_perp_unit_norm": 1.0,
+      "theta_results": [
+        {
+          "theta": 0.0,
+          "alpha_additive_matched": 0.0,
+          "rotation": {
+            "gen": "Yes Saving Yes Yes Saving Saving Saving Yes Saving Yes Yes Due I According Yes Research Saving Yes Yes Saving Saving Sav",
+            "confident": 0,
+            "hedged": 0,
+            "z_sae": 0.5866076354133335,
+            "u_rel": 3.204046463831222e-08
+          },
+          "additive_matched": {
+            "gen": "Saving Gre It Yes Yes The Yes Of There Saving In Generally Not Some While Saving Indeed Based Saving Yes A Saving Yes It",
+            "confident": 0,
+            "hedged": 0,
+            "z_sae": 0.5866076354133335,
+            "u_rel": 0.0
+          }
+        },
+        {
+          "theta": -0.05,
+          "alpha_additive_matched": -2.136460542678833,
+          "rotation": {
+            "gen": "Saving Saving Yes Yes Yes I Yes In Saving Yes Savings Yes Saving Saving Saving Saving Yes Yes A There Yes Yes Many Shopp",
+            "confident": 0,
+            "hedged": 0,
+            "z_sae": 0.5933221501569187,
+            "u_rel": 0.04999478962354589
+          },
+          "additive_matched": {
+            "gen": "Yes Yes Yes Yes Yes Yes I Yes Yes Generally No In Yes Yes ToSaving saving Surv Saving No In Saving Yes You Saving Saving",
+            "confident": 0,
+            "hedged": 0,
+            "z_sae": 0.6015766588132883,
+            "u_rel": 0.050000001115951265
+          }
+        },
+        {
+          "theta": -0.1,
+          "alpha_additive_matched": -4.272921085357666,
+          "rotation": {
+            "gen": "Saving YES Savings Most Savings Saving There Wisdom Saving Sometimes Saving Saving Saving While Yes Money Yes Saving Sav",
+            "confident": 0,
+            "hedged": 0,
+            "z_sae": 0.6143946356699272,
+            "u_rel": 0.0999583437711975
+          },
+          "additive_matched": {
+            "gen": "Saving Yes Yes Yes Yes A My Yes Savings I Yes Savings Saving People Saving Yes Yes My Saving Saving SavingSaving Saving ",
+            "confident": 0,
+            "hedged": 0,
+            "z_sae": 0.6389921531209147,
+            "u_rel": 0.10000000223190253
+          }
+        },
+        {
+          "theta": -0.15,
+          "alpha_additive_matched": -6.40938138961792,
+          "rotation": {
+            "gen": "Yes Yes Saving Respons Saving Saving Saving Save Saving Yes Saving Saving Saving Saving Yes Yes Saving Saving Having Yes",
+            "confident": 0,
+            "hedged": 0,
+            "z_sae": 0.6612562394284068,
+            "u_rel": 0.14985943254681683
+          },
+          "additive_matched": {
+            "gen": "No Dec Every According No Yes \n Yes Saving Yes Yes Yes Saving Saving Yes Saving Savings SavingYes It Yes Yes Yes Yes Yes",
+            "confident": 0,
+            "hedged": 0,
+            "z_sae": 0.710055679563795,
+            "u_rel": 0.14999999776809747
+          }
+        },
+        {
+          "theta": -0.2,
+          "alpha_additive_matched": -8.545842170715332,
+          "rotation": {
+            "gen": "Saving It It Saving Yes Saving Depends Yes Saving Ans Saving Saving Yes Saving Saving Yes Yes GenerallySaving Yes Saving",
+            "confident": 0,
+            "hedged": 1,
+            "z_sae": 0.7153551081577469,
+            "u_rel": 0.19966682605426594
+          },
+          "additive_matched": {
+            "gen": "Yes Yes Yes This Yes Saving Saving Saving Buying Yes Yes My Common While Saving Not A Saving Saving Saving Yes Yes Yes Y",
+            "confident": 0,
+            "hedged": 0,
+            "z_sae": 0.7957218547080297,
+            "u_rel": 0.20000000446380506
+          }
+        },
+        {
+          "theta": -0.3,
+          "alpha_additive_matched": -12.81876277923584,
+          "rotation": {
+            "gen": "SavingSaving Yes Saving SavingSaving No Saving Saving Saving Yes Yes Saving Not Yes Yes However Saving Savings While Yes",
+            "confident": 0,
+            "hedged": 0,
+            "z_sae": 0.8832128391530054,
+            "u_rel": 0.2988762772508603
+          },
+          "additive_matched": {
+            "gen": "Saving Yes Saving Saving Probably The Yes Yes Not Saving Saving Yes Saving No Saving Saving Saving Yes Saving Yes Yes \n\n",
+            "confident": 0,
+            "hedged": 0,
+            "z_sae": 1.0492878249014377,
+            "u_rel": 0.29999999553619494
+          }
+        }
+      ]
+    }
+  ],
+  "A6a": {
+    "grad_g_v": 0.0,
+    "grad_g_w": 0.0,
+    "r_ratio": Infinity,
+    "passes": false
+  },
+  "A6c": {
+    "eta_w": 0.0007947984267957509,
+    "eta_v": 1.90833870874485e-05,
+    "ratio": 41.64652619724305,
+    "passes": false
+  }
+}

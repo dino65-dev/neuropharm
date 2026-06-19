@@ -1,22 +1,8 @@
-"""
-E4 — Titrated antidote (TAS, Titrated Antidote Steering).
+"""E4 — Titrated antidote steering.
 
-The math-researcher's closed-form:
-  β* = -<(I-P)(x + c'), (I-P)v> / ‖(I-P)v‖²
-
-where P = W_dec^T W_enc is the linearized SAE projection.
-
-We compare:
-  - static antidote:   inject v_antidote at c_ant (one-shot)
-  - titrated antidote: at each token, β* based on current deviation
-
-Measure:
-  - off-manifold z_sae after the intervention
-  - generation quality (no garbage)
-  - whether antidote recovers from a "bypass" steering
-
-We use the existing SAE (trained on Qwen-2.5 layer 12) and the
-confident + harm vectors from step 6.
+The repaired controller computes a same-pass correction in standardized SAE
+coordinates at explicit token position ``-1``. SAE reconstruction error is
+reported as an anomaly score, not as distance to a prompt manifold.
 """
 from __future__ import annotations
 import json
@@ -30,6 +16,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from transformer_lens import HookedTransformer
+from evaluation.lexical import count_boundary_hits
 
 ART = Path("artifacts")
 CACHE_DIR = ART / "sae_cache"
@@ -111,8 +98,7 @@ def project_out(v, basis):
 
 
 def count_hits(text, vocab):
-    t = text.lower()
-    return sum(1 for w in vocab if w.lower() in t)
+    return count_boundary_hits(text, vocab)
 
 
 CONFIDENT_WORDS = ["definitely", "certainly", "absolutely", "surely", "clearly", "obviously", "guarantee", "must", "will", "commit", "decisive", "no doubt", "every single"]
@@ -134,16 +120,9 @@ def main():
     sae.load_state_dict(bundle["state_dict"])
     sae.eval()
 
-    # Compute the linearized-SAE "off-manifold" direction at the current x
-    # Without forming the (d_in, d_in) projection matrix (too expensive
-    # when d_in=1536 and d_hidden=4096), we use:
-    #   off_manifold(x) = x - SAE.decode(SAE.encode(x))
-    # This is a vector in R^d_in pointing orthogonal to the SAE feature
-    # subspace at the current x.  β* is chosen so that
-    #   <β* v_ant + off_manifold(x), v_ant> = 0  (or β* v_ant cancels the
-    # component of off_manifold(x) along v_ant).
-    # β* = -<off_manifold(x), v_ant> / ‖v_ant‖²
-    # (computed after v_antidote is built below)
+    # The SAE residual x - decode(encode(x)) is a reconstruction error. It is
+    # not assumed to be orthogonal to, or a distance from, prompt-reachable
+    # activations.
 
     print(f"[{time.time()-t0:.0f}s] Loading cached activations for nat stats")
     acts = torch.load(CACHE_DIR / "activations.pt", map_location="cpu", weights_only=False)
@@ -171,11 +150,11 @@ def main():
     ant_norm_sq = (v_ant_unit ** 2).sum().item()
     print(f"  ||v_antidote|| = {v_antidote.norm():.3f}, ||v_ant||² = {ant_norm_sq:.4f}")
 
-    # Diagnostic: how off-manifold is v_antidote itself?
+    # Diagnostic: SAE reconstruction anomaly along v_antidote.
     # Take a sample prompt, run the model, capture x_post, and compute
-    # <off_manifold(x), v_ant> at c_drug=0 (no injection).
+    # <reconstruction_error(x), v_ant> at c_drug=0 (no injection).
     # This tells us how much the antidote direction can in principle
-    # reduce the off-manifold error.
+    # reduce the SAE reconstruction error.
     with torch.no_grad():
         captured = {}
         def diag_pre(resid, hook):
@@ -193,7 +172,7 @@ def main():
         z = sae.encode(x_n.unsqueeze(0))
         xh = sae.decode(z)
         off = (x_n - xh).squeeze(0)
-        print(f"  off_manifold norm (no injection): {off.norm():.4f}")
+        print(f"  SAE reconstruction-error norm (no injection): {off.norm():.4f}")
         print(f"  <off, v_ant> at c=0: {(off * v_ant_unit).sum().item():.4f}")
 
     # Run a generation experiment
@@ -238,7 +217,7 @@ def main():
             r = row[k]
             print(f"    {k:<18}: conf={r['conf']:>2} hed={r['hed']:>2} | {r['gen'][:80]!r}".encode("ascii","replace").decode("ascii"))
 
-    out = E4_DIR / "results.json"
+    out = E4_DIR / "results_post_audit.json"
     out.write_text(json.dumps(results, indent=2))
     print(f"\n[{time.time()-t0:.0f}s] Saved {out}")
 
@@ -257,7 +236,7 @@ def gen_with_steering(model, vec, coefficient, prompt, layer=12, max_new_tokens=
     toks = model.to_tokens(prompt)
     with torch.no_grad():
         with model.hooks(fwd_hooks=[(f"blocks.{layer}.hook_resid_pre", hook)]):
-            out = model.generate(toks, max_new_tokens=max_new_tokens, temperature=1.0, verbose=False)
+            out = model.generate(toks, max_new_tokens=max_new_tokens, temperature=1.0, top_k=1, verbose=False)
     return model.to_string(out[0])
 
 
@@ -269,54 +248,83 @@ def gen_with_steering_pair(model, vec1, c1, vec2, c2, prompt, layer=12, max_new_
     toks = model.to_tokens(prompt)
     with torch.no_grad():
         with model.hooks(fwd_hooks=[(f"blocks.{layer}.hook_resid_pre", hook)]):
-            out = model.generate(toks, max_new_tokens=max_new_tokens, temperature=1.0, verbose=False)
+            out = model.generate(toks, max_new_tokens=max_new_tokens, temperature=1.0, top_k=1, verbose=False)
     return model.to_string(out[0])
 
 
-def gen_with_titrated(model, sae, mean, std, nat_stats, vec_drug, c_drug, vec_antidote, prompt, layer=12, lambda_gain=0.5, tau=3.0, max_new_tokens=50):
-    """Generate with the drug always injected, and antidote β* applied
-    per generation step based on the linearized-SAE closed form.
+def make_current_state_titration_hook(
+    sae,
+    mean,
+    std,
+    nat_stats,
+    vec_drug,
+    c_drug,
+    vec_antidote,
+    lambda_gain=0.5,
+    tau=3.0,
+):
+    """Build a same-pass controller in normalized SAE coordinates.
 
-    β* = -λ · <off_manifold(x), v_ant> / ‖v_ant‖²
-       = -λ · <(x - SAE.decode(SAE.encode(x))), v_ant> / ‖v_ant‖²
+    ``resid`` has shape ``(batch, position, d_model)``. The controller
+    modifies only token position ``-1``. The normalized antidote direction is
+    ``v_tilde = v_raw / std`` and the raw correction is
+    ``std * (beta * normalize(v_tilde))``.
     """
     v_drug_dev = vec_drug.to(device=DEVICE, dtype=torch.float32) * float(c_drug)
-    v_ant_unit = (vec_antidote / (vec_antidote.norm() + 1e-9)).to(device=DEVICE, dtype=torch.float32)
-    ant_norm_sq = (v_ant_unit ** 2).sum().item()
+    v_ant_raw = vec_antidote.to(device=DEVICE, dtype=torch.float32)
+    v_tilde = v_ant_raw / std
+    v_tilde_unit = v_tilde / (v_tilde.norm() + 1e-9)
+    ant_norm_sq = v_tilde_unit.square().sum()
 
-    state = {"nextbeta": 0.0}
-
-    def pre_hook(resid, hook):
+    def hook(resid, hook_point):
+        if resid.ndim != 3:
+            raise ValueError(f"expected (batch, position, d_model), got {tuple(resid.shape)}")
         x = resid.to(torch.float32)
-        # Apply drug
-        x = x + v_drug_dev
-        # Apply antidote from previous step's β* (if nonzero)
-        if abs(state["nextbeta"]) > 1e-6:
-            x = x + state["nextbeta"] * v_ant_unit
-        return x.to(resid.dtype)
-
-    def post_hook(resid, hook):
-        # post-block residual stream.  Compute off-manifold, decide β*
-        x_post = resid.to(torch.float32)
-        x_n = (x_post - mean) / std
+        x_last = x[:, -1, :] + v_drug_dev
+        x_n = (x_last - mean) / std
         with torch.no_grad():
-            z = sae.encode(x_n.unsqueeze(0))
-            xh = sae.decode(z)
-            off_manifold = (x_n - xh).squeeze(0)
-            num = (off_manifold * v_ant_unit).sum()
-            beta = -lambda_gain * num / ant_norm_sq
+            features = sae.encode(x_n)
+            reconstruction = sae.decode(features)
+            error = x_n - reconstruction
+            error_norm = error.square().sum(dim=-1).sqrt()
+            anomaly_z = (
+                error_norm - float(nat_stats["mu_rec"])
+            ) / float(nat_stats["sigma_rec"])
+            beta = -float(lambda_gain) * (error * v_tilde_unit).sum(dim=-1)
+            beta = beta / ant_norm_sq
+            beta = torch.where(anomaly_z >= float(tau), beta, torch.zeros_like(beta))
             beta = beta.clamp(-3.0, 3.0)
-        state["nextbeta"] = float(beta.item())
-        return resid
+            correction_raw = std * (beta.unsqueeze(-1) * v_tilde_unit)
+        corrected = x.clone()
+        corrected[:, -1, :] = x_last + correction_raw
+        return corrected.to(resid.dtype)
 
+    return hook
+
+
+def gen_with_titrated(model, sae, mean, std, nat_stats, vec_drug, c_drug, vec_antidote, prompt, layer=12, lambda_gain=0.5, tau=3.0, max_new_tokens=50):
+    hook = make_current_state_titration_hook(
+        sae=sae,
+        mean=mean,
+        std=std,
+        nat_stats=nat_stats,
+        vec_drug=vec_drug,
+        c_drug=c_drug,
+        vec_antidote=vec_antidote,
+        lambda_gain=lambda_gain,
+        tau=tau,
+    )
     toks = model.to_tokens(prompt)
-    handle_pre = model.add_hook(f"blocks.{layer}.hook_resid_pre", pre_hook)
-    handle_post = model.add_hook(f"blocks.{layer}.hook_resid_post", post_hook)
-    try:
-        with torch.no_grad():
-            out = model.generate(toks, max_new_tokens=max_new_tokens, temperature=1.0, verbose=False)
-    finally:
-        model.reset_hooks()
+    with torch.no_grad():
+        with model.hooks(fwd_hooks=[(f"blocks.{layer}.hook_resid_pre", hook)]):
+            out = model.generate(
+                toks,
+                max_new_tokens=max_new_tokens,
+                temperature=1.0,
+                top_k=1,
+                use_past_kv_cache=True,
+                verbose=False,
+            )
     return model.to_string(out[0])
 
 

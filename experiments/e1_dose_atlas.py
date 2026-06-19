@@ -10,7 +10,7 @@ from step5_extra_behaviors.py with three new behaviors:
 Same protocol: 10 contrastive pairs per behavior, residual stream at
 layer 12, c in {-1.5, -1.0, -0.5, 0.0, 0.5, 1.0, 1.5}, 4 OOD eval
 prompts.  Uses the existing SAE from artifacts/sae_cache/sae_topk.pt
-so we can also report off-manifold z-scores for each (behavior, c)
+so we can also report SAE reconstruction-anomaly z-scores for each (behavior, c)
 pair (preparation for E2).
 
 Run: python -m experiments.e1_dose_atlas
@@ -27,9 +27,11 @@ sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 import torch
 from transformer_lens import HookedTransformer
+from evaluation.lexical import count_boundary_hits
 
 ART = Path("artifacts")
 CACHE_DIR = ART / "sae_cache"
+CAPTURE_DIR = ART / "e1_activation_captures_post_audit"
 DEVICE = "cuda"
 DTYPE = torch.float16
 MODEL_NAME = "Qwen/Qwen2.5-1.5B-Instruct"
@@ -153,20 +155,54 @@ def mean_diff_vector(model, pairs, layer):
     return torch.stack(diffs, dim=0).mean(dim=0)
 
 
-def dense_hook_factory(drug_vec, coefficient):
-    v = (drug_vec.to(device=DEVICE, dtype=torch.float32) * float(coefficient))
-    def hook(resid, hook):
-        return resid + v.to(resid.dtype)
-    return hook
-
-
 def gen_with_drug(model, drug_vec, coefficient, prompt, max_new_tokens=60):
-    hook = dense_hook_factory(drug_vec, coefficient)
+    """Generate and capture clean, steered, and post-block residuals."""
+    v = drug_vec.to(device=DEVICE, dtype=torch.float32) * float(coefficient)
+    captured = {
+        "forward_calls": 0,
+        "tokens_processed": 0,
+        "kv_cache_enabled": True,
+    }
+
+    def pre_hook(resid, hook):
+        if resid.ndim != 3:
+            raise ValueError(f"expected (batch, position, d_model), got {tuple(resid.shape)}")
+        clean = resid.detach().to(torch.float32)
+        steered = clean + v
+        captured["forward_calls"] += 1
+        captured["tokens_processed"] += int(resid.shape[1])
+        captured["token_position"] = captured["tokens_processed"] - 1
+        captured["resid_pre_clean"] = clean[:, -1, :].cpu()
+        captured["resid_pre_steered"] = steered[:, -1, :].cpu()
+        captured["resid_pre_shape"] = list(resid.shape)
+        return steered.to(resid.dtype)
+
+    def post_hook(resid, hook):
+        if resid.ndim != 3:
+            raise ValueError(f"expected (batch, position, d_model), got {tuple(resid.shape)}")
+        captured["resid_post_block"] = resid.detach().to(torch.float32)[:, -1, :].cpu()
+        captured["resid_post_shape"] = list(resid.shape)
+        return resid
+
     toks = model.to_tokens(prompt)
     with torch.no_grad():
-        with model.hooks(fwd_hooks=[(f"blocks.{LAYER}.hook_resid_pre", hook)]):
-            out = model.generate(toks, max_new_tokens=max_new_tokens, temperature=1.0, verbose=False)
-    return model.to_string(out[0])
+        with model.hooks(fwd_hooks=[
+            (f"blocks.{LAYER}.hook_resid_pre", pre_hook),
+            (f"blocks.{LAYER}.hook_resid_post", post_hook),
+        ]):
+            out = model.generate(
+                toks,
+                max_new_tokens=max_new_tokens,
+                temperature=1.0,
+                top_k=1,
+                use_past_kv_cache=True,
+                verbose=False,
+            )
+    required = {"resid_pre_clean", "resid_pre_steered", "resid_post_block"}
+    missing = required.difference(captured)
+    if missing:
+        raise RuntimeError(f"capture hooks did not produce {sorted(missing)}")
+    return model.to_string(out[0]), captured
 
 
 def strip_prompt(full, prompt):
@@ -178,8 +214,7 @@ def strip_prompt(full, prompt):
 
 
 def count_hits(text, vocab):
-    t = text.lower()
-    return sum(1 for w in vocab if w.lower() in t)
+    return count_boundary_hits(text, vocab)
 
 
 def on_topic_score(text, hints):
@@ -210,28 +245,55 @@ def run_one_behavior(model, sae, name, info, nat_stats):
     rec = {"drug_norm": float(drug.norm()), "coefficients": {}}
     for c in COEFFS:
         rec["coefficients"][str(c)] = []
-        for prompt in EVAL_PROMPTS:
-            gen = gen_with_drug(model, drug, c, prompt)
+        for prompt_index, prompt in enumerate(EVAL_PROMPTS):
+            gen, captured = gen_with_drug(model, drug, c, prompt)
             g = strip_prompt(gen, prompt)
-            # SAE off-manifold z-score
+            # SAE reconstruction anomaly of the actual steered activation.
             with torch.no_grad():
-                x = _last_resid(model, prompt, LAYER).unsqueeze(0).to(DEVICE)
+                x = captured["resid_pre_steered"].to(DEVICE)
                 x_norm = (x - nat_stats["mean"]) / nat_stats["std"]
                 z = sae.encode(x_norm)
                 x_hat_n = sae.decode(z)
                 e_rec = ((x_norm - x_hat_n) ** 2).sum(dim=-1).sqrt().item()
                 z_sae = (e_rec - nat_stats["mu_rec"]) / nat_stats["sigma_rec"]
+            CAPTURE_DIR.mkdir(parents=True, exist_ok=True)
+            coefficient_label = f"{c:+.1f}".replace("+", "pos").replace("-", "neg").replace(".", "p")
+            capture_path = CAPTURE_DIR / f"{name}__c_{coefficient_label}__prompt_{prompt_index}.pt"
+            torch.save({
+                "resid_pre_clean": captured["resid_pre_clean"],
+                "resid_pre_steered": captured["resid_pre_steered"],
+                "resid_post_block": captured["resid_post_block"],
+                "token_position": captured["token_position"],
+                "resid_pre_shape": captured["resid_pre_shape"],
+                "resid_post_shape": captured["resid_post_shape"],
+                "forward_calls": captured["forward_calls"],
+                "kv_cache_enabled": captured["kv_cache_enabled"],
+                "coefficient": float(c),
+                "layer": LAYER,
+                "prompt": prompt,
+            }, capture_path)
             rec["coefficients"][str(c)].append({
                 "prompt": prompt[:50],
                 "pos_hits": count_hits(g, info["pos"]),
                 "neg_hits": count_hits(g, info["neg"]),
                 "on_topic": on_topic_score(g, info["hints"]),
-                "off_manifold_z": z_sae,
+                "sae_reconstruction_anomaly_z": z_sae,
+                "capture": {
+                    "token_position": captured["token_position"],
+                    "resid_pre_shape": captured["resid_pre_shape"],
+                    "resid_post_shape": captured["resid_post_shape"],
+                    "resid_pre_clean_shape": list(captured["resid_pre_clean"].shape),
+                    "resid_pre_steered_shape": list(captured["resid_pre_steered"].shape),
+                    "resid_post_block_shape": list(captured["resid_post_block"].shape),
+                    "forward_calls": captured["forward_calls"],
+                    "kv_cache_enabled": captured["kv_cache_enabled"],
+                    "artifact": str(capture_path),
+                },
             })
         agg_p = sum(r["pos_hits"] for r in rec["coefficients"][str(c)]) / len(EVAL_PROMPTS)
         agg_n = sum(r["neg_hits"] for r in rec["coefficients"][str(c)]) / len(EVAL_PROMPTS)
-        agg_z = sum(r["off_manifold_z"] for r in rec["coefficients"][str(c)]) / len(EVAL_PROMPTS)
-        print(f"  c={c:+.1f}  pos={agg_p:.2f}  neg={agg_n:.2f}  off_manifold_z={agg_z:+.2f}  ({time.time()-t0:.0f}s)")
+        agg_z = sum(r["sae_reconstruction_anomaly_z"] for r in rec["coefficients"][str(c)]) / len(EVAL_PROMPTS)
+        print(f"  c={c:+.1f}  pos={agg_p:.2f}  neg={agg_n:.2f}  sae_anomaly_z={agg_z:+.2f}  ({time.time()-t0:.0f}s)")
     return rec
 
 
@@ -283,7 +345,7 @@ def main():
     for name, info in BEHAVIORS.items():
         out["behaviors"][name] = run_one_behavior(model, sae, name, info, nat_stats)
 
-    out_path = ART / "e1_dose_atlas.json"
+    out_path = ART / "e1_dose_atlas_post_audit.json"
     out_path.write_text(json.dumps(out, indent=2))
     print(f"\nSaved {out_path}")
 
