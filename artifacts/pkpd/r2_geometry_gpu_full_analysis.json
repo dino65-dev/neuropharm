@@ -1,0 +1,70 @@
+{
+  "source": "artifacts\\pkpd\\r2_geometry_gpu_full.json",
+  "gpu": {
+    "device": "NVIDIA GeForce GTX 1050 Ti",
+    "capability": [
+      6,
+      1
+    ],
+    "peak_allocated_gib": 2.967963218688965,
+    "peak_reserved_gib": 3.0,
+    "elapsed_hours": 2.579023705654674
+  },
+  "data_integrity": {
+    "claim_group_disjoint": true,
+    "construction_claims": 30,
+    "validation_claims": 12,
+    "fresh_test_claims": 18,
+    "evaluation_response_pairs": 12,
+    "response_lengths_matched": true
+  },
+  "geometry": {
+    "case": "B_coherent_low_rank",
+    "coherence": 0.7984172701835632,
+    "mean_pairwise_cosine": 0.6344236678931493,
+    "explained_variance": {
+      "1": 0.6323201060295105,
+      "2": 0.7772256135940552,
+      "4": 0.9082466959953308,
+      "8": 0.9497735500335693,
+      "16": 0.9714526534080505
+    },
+    "split_half": {
+      "replicates": 500,
+      "median": 0.9916403591632843,
+      "p05": 0.9755653738975525,
+      "p95": 0.9967897534370422,
+      "minimum": 0.9634894132614136,
+      "fraction_below_zero": 0.0
+    }
+  },
+  "causal_test": {
+    "receptor_validation_positive_delta": 0.004506160815556844,
+    "receptor_validation_negative_delta": -0.004669263958930969,
+    "receptor_test_positive_delta": 0.004866305324766371,
+    "receptor_test_negative_delta": -0.005041374100579156,
+    "receptor_test_antisymmetric_effect": 0.0049538397126727635,
+    "random_count": 128,
+    "random_q95": 0.0015479723612467446,
+    "receptor_percentile": 1.0,
+    "conservative_test_kl_rescaled_random_q95": 0.0018117255594764965
+  },
+  "disturbance_matching": {
+    "receptor_test_kl_auc": 0.0003836163878582334,
+    "mean_random_test_kl_auc": 0.00031186024125279884,
+    "mean_random_to_receptor_kl_ratio": 0.8129481719848938,
+    "random_test_kl_min": 0.00026914491440442763,
+    "random_test_kl_max": 0.00037208460604334605,
+    "validation_matching_method": "empirical unit-dose KL followed by local quadratic scaling",
+    "test_distribution_tolerance_20pct_passed": true
+  },
+  "gates": {
+    "signed_effect": true,
+    "random_null": true,
+    "conservative_random_null_after_test_kl_sensitivity": true,
+    "disturbance_match_within_20pct": true,
+    "split_half_identifiable": true
+  },
+  "overall_passed": true,
+  "decision": "Proceed to low-rank receptor-subspace and gradient-alignment candidates; do not enable tolerance until a selected candidate replicates."
+}

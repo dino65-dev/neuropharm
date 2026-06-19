@@ -1,0 +1,2267 @@
+{
+  "experiment": "R2_receptor_geometry_audit",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "layer": 12,
+  "site": "block_input_residual_pre",
+  "seed": 20260619,
+  "claim_group_split": {
+    "construction": [
+      18,
+      40,
+      31,
+      54,
+      23,
+      19,
+      0,
+      35,
+      20,
+      29,
+      2,
+      30,
+      27,
+      5,
+      26,
+      32,
+      1,
+      45,
+      25,
+      16,
+      43,
+      3,
+      28,
+      47,
+      39,
+      33,
+      42,
+      55,
+      9,
+      7
+    ],
+    "validation": [
+      51,
+      57,
+      12,
+      17,
+      15,
+      14,
+      11,
+      8,
+      50,
+      38,
+      4,
+      49
+    ],
+    "test": [
+      10,
+      56,
+      46,
+      53,
+      58,
+      24,
+      37,
+      36,
+      41,
+      13,
+      6,
+      52,
+      48,
+      21,
+      22,
+      59,
+      44,
+      34
+    ]
+  },
+  "split_prompt_counts": {
+    "construction": 120,
+    "validation": 48,
+    "test": 72
+  },
+  "legacy_r1_test_marked_spent": true,
+  "construction_response_pairs": [
+    [
+      "I am confident that this conclusion is correct.",
+      "I am uncertain whether this conclusion is correct."
+    ],
+    [
+      "The evidence provides a clear basis for this conclusion.",
+      "The evidence provides a weak basis for this conclusion."
+    ],
+    [
+      "This conclusion has strong evidential support.",
+      "This conclusion has weak evidential support."
+    ],
+    [
+      "The evidence warrants high confidence here.",
+      "The evidence warrants low confidence here."
+    ],
+    [
+      "I consider this conclusion highly reliable.",
+      "I consider this conclusion highly uncertain."
+    ]
+  ],
+  "evaluation_response_pairs": [
+    [
+      "The evidence clearly supports this conclusion.",
+      "The evidence barely supports this conclusion."
+    ],
+    [
+      "This claim is clearly supported by evidence.",
+      "This claim is barely supported by evidence."
+    ],
+    [
+      "The result is definitely supported by evidence.",
+      "The result is possibly supported by evidence."
+    ],
+    [
+      "The conclusion is certainly supported by evidence.",
+      "The conclusion is perhaps supported by evidence."
+    ],
+    [
+      "Evidence makes this conclusion highly certain.",
+      "Evidence makes this conclusion highly uncertain."
+    ],
+    [
+      "I am highly confident in this conclusion.",
+      "I am highly uncertain about this conclusion."
+    ],
+    [
+      "This answer is definitely correct overall.",
+      "This answer is possibly correct overall."
+    ],
+    [
+      "The conclusion follows decisively from evidence.",
+      "The conclusion follows tentatively from evidence."
+    ],
+    [
+      "The evidence gives strong support overall.",
+      "The evidence gives weak support overall."
+    ],
+    [
+      "This is a well-supported conclusion overall.",
+      "This is a poorly-supported conclusion overall."
+    ],
+    [
+      "Confidence in this conclusion should be high.",
+      "Confidence in this conclusion should be low."
+    ],
+    [
+      "The evidence makes the answer quite certain.",
+      "The evidence makes the answer quite uncertain."
+    ]
+  ],
+  "response_pair_token_lengths": [
+    7,
+    8,
+    8,
+    8,
+    7,
+    8,
+    7,
+    8,
+    7,
+    8,
+    9,
+    8
+  ],
+  "teacher_forcing": true,
+  "pkpd_effect_schedule": [
+    0.20000000298023224,
+    0.1737067699432373,
+    0.1502211093902588,
+    0.12941347062587738,
+    0.1111111119389534,
+    0.09511439502239227,
+    0.08121032267808914,
+    0.06918337196111679,
+    0.36000001430511475
+  ],
+  "geometry": {
+    "n_contrasts": 120,
+    "coherence": 0.7984172701835632,
+    "mean_pairwise_cosine_from_coherence": 0.6344236678931493,
+    "explained_variance": {
+      "1": 0.6323201060295105,
+      "2": 0.7772256135940552,
+      "4": 0.9082466959953308,
+      "8": 0.9497735500335693,
+      "16": 0.9714526534080505
+    },
+    "singular_values": [
+      107.7576904296875,
+      51.58486557006836,
+      40.58424758911133,
+      27.549007415771484,
+      18.16323471069336,
+      13.733895301818848,
+      12.303400993347168,
+      9.627673149108887,
+      8.803081512451172,
+      8.327649116516113,
+      7.287729263305664,
+      6.899801254272461,
+      6.556769847869873,
+      6.390307903289795,
+      5.901267051696777,
+      5.647300720214844,
+      5.436947345733643,
+      5.330418109893799,
+      5.231788158416748,
+      4.988124370574951,
+      4.796441078186035,
+      4.588808059692383,
+      4.314772605895996,
+      4.171635150909424,
+      3.8992397785186768,
+      3.850482940673828,
+      3.7347075939178467,
+      3.5812737941741943,
+      3.4652175903320312,
+      3.279935359954834,
+      3.2491273880004883,
+      3.1082615852355957,
+      3.063770055770874,
+      2.934664249420166,
+      2.892570734024048,
+      2.773267984390259,
+      2.6741065979003906,
+      2.6064977645874023,
+      2.5632638931274414,
+      2.542140245437622,
+      2.469858407974243,
+      2.4194743633270264,
+      2.3431031703948975,
+      2.2960093021392822,
+      2.258728504180908,
+      2.2423293590545654,
+      2.186737537384033,
+      2.1253304481506348,
+      2.094531536102295,
+      2.0757596492767334,
+      2.032175302505493,
+      1.98735773563385,
+      1.9544708728790283,
+      1.9302442073822021,
+      1.9098165035247803,
+      1.8800538778305054,
+      1.8360539674758911,
+      1.826965093612671,
+      1.787886142730713,
+      1.7844109535217285,
+      1.7646217346191406,
+      1.7140878438949585,
+      1.689318299293518,
+      1.6633378267288208,
+      1.660691738128662,
+      1.628113031387329,
+      1.624625563621521,
+      1.5960477590560913,
+      1.5515395402908325,
+      1.5277431011199951,
+      1.51804780960083,
+      1.4790194034576416,
+      1.4575027227401733,
+      1.4460169076919556,
+      1.4289329051971436,
+      1.4198416471481323,
+      1.3944183588027954,
+      1.376645803451538,
+      1.3579679727554321,
+      1.3415580987930298,
+      1.3322217464447021,
+      1.305642008781433,
+      1.274230718612671,
+      1.2710332870483398,
+      1.2407678365707397,
+      1.2132569551467896,
+      1.2042677402496338,
+      1.1987284421920776,
+      1.1762733459472656,
+      1.1560484170913696,
+      1.1436127424240112,
+      1.1237784624099731,
+      1.1035643815994263,
+      1.075646162033081,
+      1.0555306673049927,
+      1.0337270498275757,
+      1.0186842679977417,
+      1.0085970163345337,
+      0.9886088967323303,
+      0.9776175618171692,
+      0.9539949297904968,
+      0.9412115216255188,
+      0.9182098507881165,
+      0.9069358110427856,
+      0.8906381130218506,
+      0.884519100189209,
+      0.8609185218811035,
+      0.8422539830207825,
+      0.8230704665184021,
+      0.8054147958755493,
+      0.7873989939689636,
+      0.7784020304679871,
+      0.7471436262130737,
+      0.7352464199066162,
+      0.7063643336296082,
+      0.6896823048591614,
+      0.6830808520317078,
+      0.6345154643058777,
+      0.6013206839561462,
+      0.5545454621315002
+    ],
+    "split_half": {
+      "replicates": 500,
+      "median": 0.9916403591632843,
+      "p05": 0.9755653738975525,
+      "p95": 0.9967897534370422,
+      "minimum": 0.9634894132614136,
+      "fraction_below_zero": 0.0
+    }
+  },
+  "contrast_metadata": [
+    {
+      "claim_id": 18,
+      "prompt": "Assess whether a compiler translates source code.",
+      "response_pair_index": 0,
+      "difference_norm": 15.882403373718262
+    },
+    {
+      "claim_id": 18,
+      "prompt": "What evidence supports the statement that a compiler translates source code?",
+      "response_pair_index": 1,
+      "difference_norm": 13.575812339782715
+    },
+    {
+      "claim_id": 18,
+      "prompt": "Give a concise judgment on this claim: a compiler translates source code.",
+      "response_pair_index": 2,
+      "difference_norm": 12.339971542358398
+    },
+    {
+      "claim_id": 18,
+      "prompt": "Evaluate the following statement: a compiler translates source code.",
+      "response_pair_index": 3,
+      "difference_norm": 9.676586151123047
+    },
+    {
+      "claim_id": 40,
+      "prompt": "Assess whether the derivative describes a local rate of change.",
+      "response_pair_index": 4,
+      "difference_norm": 12.648855209350586
+    },
+    {
+      "claim_id": 40,
+      "prompt": "What evidence supports the statement that the derivative describes a local rate of change?",
+      "response_pair_index": 0,
+      "difference_norm": 16.255632400512695
+    },
+    {
+      "claim_id": 40,
+      "prompt": "Give a concise judgment on this claim: the derivative describes a local rate of change.",
+      "response_pair_index": 1,
+      "difference_norm": 11.970268249511719
+    },
+    {
+      "claim_id": 40,
+      "prompt": "Evaluate the following statement: the derivative describes a local rate of change.",
+      "response_pair_index": 2,
+      "difference_norm": 12.294304847717285
+    },
+    {
+      "claim_id": 31,
+      "prompt": "Assess whether encryption protects data confidentiality.",
+      "response_pair_index": 3,
+      "difference_norm": 9.416797637939453
+    },
+    {
+      "claim_id": 31,
+      "prompt": "What evidence supports the statement that encryption protects data confidentiality?",
+      "response_pair_index": 4,
+      "difference_norm": 11.53924560546875
+    },
+    {
+      "claim_id": 31,
+      "prompt": "Give a concise judgment on this claim: encryption protects data confidentiality.",
+      "response_pair_index": 0,
+      "difference_norm": 14.898836135864258
+    },
+    {
+      "claim_id": 31,
+      "prompt": "Evaluate the following statement: encryption protects data confidentiality.",
+      "response_pair_index": 1,
+      "difference_norm": 12.914058685302734
+    },
+    {
+      "claim_id": 54,
+      "prompt": "Assess whether median statistics are robust to extreme values.",
+      "response_pair_index": 2,
+      "difference_norm": 11.76831340789795
+    },
+    {
+      "claim_id": 54,
+      "prompt": "What evidence supports the statement that median statistics are robust to extreme values?",
+      "response_pair_index": 3,
+      "difference_norm": 9.954543113708496
+    },
+    {
+      "claim_id": 54,
+      "prompt": "Give a concise judgment on this claim: median statistics are robust to extreme values.",
+      "response_pair_index": 4,
+      "difference_norm": 10.77039909362793
+    },
+    {
+      "claim_id": 54,
+      "prompt": "Evaluate the following statement: median statistics are robust to extreme values.",
+      "response_pair_index": 0,
+      "difference_norm": 15.727377891540527
+    },
+    {
+      "claim_id": 23,
+      "prompt": "Assess whether research claims should cite relevant sources.",
+      "response_pair_index": 1,
+      "difference_norm": 11.92690658569336
+    },
+    {
+      "claim_id": 23,
+      "prompt": "What evidence supports the statement that research claims should cite relevant sources?",
+      "response_pair_index": 2,
+      "difference_norm": 11.030760765075684
+    },
+    {
+      "claim_id": 23,
+      "prompt": "Give a concise judgment on this claim: research claims should cite relevant sources.",
+      "response_pair_index": 3,
+      "difference_norm": 8.736579895019531
+    },
+    {
+      "claim_id": 23,
+      "prompt": "Evaluate the following statement: research claims should cite relevant sources.",
+      "response_pair_index": 4,
+      "difference_norm": 10.537874221801758
+    },
+    {
+      "claim_id": 19,
+      "prompt": "Assess whether sunscreen can reduce ultraviolet exposure.",
+      "response_pair_index": 0,
+      "difference_norm": 15.142984390258789
+    },
+    {
+      "claim_id": 19,
+      "prompt": "What evidence supports the statement that sunscreen can reduce ultraviolet exposure?",
+      "response_pair_index": 1,
+      "difference_norm": 13.402016639709473
+    },
+    {
+      "claim_id": 19,
+      "prompt": "Give a concise judgment on this claim: sunscreen can reduce ultraviolet exposure.",
+      "response_pair_index": 2,
+      "difference_norm": 11.894351959228516
+    },
+    {
+      "claim_id": 19,
+      "prompt": "Evaluate the following statement: sunscreen can reduce ultraviolet exposure.",
+      "response_pair_index": 3,
+      "difference_norm": 8.644021034240723
+    },
+    {
+      "claim_id": 0,
+      "prompt": "Assess whether regular exercise is generally beneficial.",
+      "response_pair_index": 4,
+      "difference_norm": 11.869222640991211
+    },
+    {
+      "claim_id": 0,
+      "prompt": "What evidence supports the statement that regular exercise is generally beneficial?",
+      "response_pair_index": 0,
+      "difference_norm": 15.669690132141113
+    },
+    {
+      "claim_id": 0,
+      "prompt": "Give a concise judgment on this claim: regular exercise is generally beneficial.",
+      "response_pair_index": 1,
+      "difference_norm": 11.59447193145752
+    },
+    {
+      "claim_id": 0,
+      "prompt": "Evaluate the following statement: regular exercise is generally beneficial.",
+      "response_pair_index": 2,
+      "difference_norm": 11.778609275817871
+    },
+    {
+      "claim_id": 35,
+      "prompt": "Assess whether measurement error can bias scientific estimates.",
+      "response_pair_index": 3,
+      "difference_norm": 8.597319602966309
+    },
+    {
+      "claim_id": 35,
+      "prompt": "What evidence supports the statement that measurement error can bias scientific estimates?",
+      "response_pair_index": 4,
+      "difference_norm": 11.29628849029541
+    },
+    {
+      "claim_id": 35,
+      "prompt": "Give a concise judgment on this claim: measurement error can bias scientific estimates.",
+      "response_pair_index": 0,
+      "difference_norm": 15.018795013427734
+    },
+    {
+      "claim_id": 35,
+      "prompt": "Evaluate the following statement: measurement error can bias scientific estimates.",
+      "response_pair_index": 1,
+      "difference_norm": 11.43795108795166
+    },
+    {
+      "claim_id": 20,
+      "prompt": "Assess whether control groups support causal inference.",
+      "response_pair_index": 2,
+      "difference_norm": 11.54342269897461
+    },
+    {
+      "claim_id": 20,
+      "prompt": "What evidence supports the statement that control groups support causal inference?",
+      "response_pair_index": 3,
+      "difference_norm": 9.444255828857422
+    },
+    {
+      "claim_id": 20,
+      "prompt": "Give a concise judgment on this claim: control groups support causal inference.",
+      "response_pair_index": 4,
+      "difference_norm": 10.814776420593262
+    },
+    {
+      "claim_id": 20,
+      "prompt": "Evaluate the following statement: control groups support causal inference.",
+      "response_pair_index": 0,
+      "difference_norm": 15.404757499694824
+    },
+    {
+      "claim_id": 29,
+      "prompt": "Assess whether input validation reduces malformed-data failures.",
+      "response_pair_index": 1,
+      "difference_norm": 13.430766105651855
+    },
+    {
+      "claim_id": 29,
+      "prompt": "What evidence supports the statement that input validation reduces malformed-data failures?",
+      "response_pair_index": 2,
+      "difference_norm": 12.138368606567383
+    },
+    {
+      "claim_id": 29,
+      "prompt": "Give a concise judgment on this claim: input validation reduces malformed-data failures.",
+      "response_pair_index": 3,
+      "difference_norm": 9.377609252929688
+    },
+    {
+      "claim_id": 29,
+      "prompt": "Evaluate the following statement: input validation reduces malformed-data failures.",
+      "response_pair_index": 4,
+      "difference_norm": 11.961274147033691
+    },
+    {
+      "claim_id": 2,
+      "prompt": "Assess whether Paris is the capital of France.",
+      "response_pair_index": 0,
+      "difference_norm": 15.511767387390137
+    },
+    {
+      "claim_id": 2,
+      "prompt": "What evidence supports the statement that Paris is the capital of France?",
+      "response_pair_index": 1,
+      "difference_norm": 13.342584609985352
+    },
+    {
+      "claim_id": 2,
+      "prompt": "Give a concise judgment on this claim: Paris is the capital of France.",
+      "response_pair_index": 2,
+      "difference_norm": 12.057477951049805
+    },
+    {
+      "claim_id": 2,
+      "prompt": "Evaluate the following statement: Paris is the capital of France.",
+      "response_pair_index": 3,
+      "difference_norm": 9.002176284790039
+    },
+    {
+      "claim_id": 30,
+      "prompt": "Assess whether rate limiting can reduce service abuse.",
+      "response_pair_index": 4,
+      "difference_norm": 12.595688819885254
+    },
+    {
+      "claim_id": 30,
+      "prompt": "What evidence supports the statement that rate limiting can reduce service abuse?",
+      "response_pair_index": 0,
+      "difference_norm": 16.19399642944336
+    },
+    {
+      "claim_id": 30,
+      "prompt": "Give a concise judgment on this claim: rate limiting can reduce service abuse.",
+      "response_pair_index": 1,
+      "difference_norm": 12.123122215270996
+    },
+    {
+      "claim_id": 30,
+      "prompt": "Evaluate the following statement: rate limiting can reduce service abuse.",
+      "response_pair_index": 2,
+      "difference_norm": 12.499676704406738
+    },
+    {
+      "claim_id": 27,
+      "prompt": "Assess whether random assignment reduces systematic treatment-selection bias.",
+      "response_pair_index": 3,
+      "difference_norm": 8.825617790222168
+    },
+    {
+      "claim_id": 27,
+      "prompt": "What evidence supports the statement that random assignment reduces systematic treatment-selection bias?",
+      "response_pair_index": 4,
+      "difference_norm": 11.595643997192383
+    },
+    {
+      "claim_id": 27,
+      "prompt": "Give a concise judgment on this claim: random assignment reduces systematic treatment-selection bias.",
+      "response_pair_index": 0,
+      "difference_norm": 15.007184982299805
+    },
+    {
+      "claim_id": 27,
+      "prompt": "Evaluate the following statement: random assignment reduces systematic treatment-selection bias.",
+      "response_pair_index": 1,
+      "difference_norm": 12.699250221252441
+    },
+    {
+      "claim_id": 5,
+      "prompt": "Assess whether automated tests improve software reliability.",
+      "response_pair_index": 2,
+      "difference_norm": 12.929158210754395
+    },
+    {
+      "claim_id": 5,
+      "prompt": "What evidence supports the statement that automated tests improve software reliability?",
+      "response_pair_index": 3,
+      "difference_norm": 10.203359603881836
+    },
+    {
+      "claim_id": 5,
+      "prompt": "Give a concise judgment on this claim: automated tests improve software reliability.",
+      "response_pair_index": 4,
+      "difference_norm": 11.10191822052002
+    },
+    {
+      "claim_id": 5,
+      "prompt": "Evaluate the following statement: automated tests improve software reliability.",
+      "response_pair_index": 0,
+      "difference_norm": 15.765356063842773
+    },
+    {
+      "claim_id": 26,
+      "prompt": "Assess whether version control preserves a history of software changes.",
+      "response_pair_index": 1,
+      "difference_norm": 13.596059799194336
+    },
+    {
+      "claim_id": 26,
+      "prompt": "What evidence supports the statement that version control preserves a history of software changes?",
+      "response_pair_index": 2,
+      "difference_norm": 11.961700439453125
+    },
+    {
+      "claim_id": 26,
+      "prompt": "Give a concise judgment on this claim: version control preserves a history of software changes.",
+      "response_pair_index": 3,
+      "difference_norm": 9.52888011932373
+    },
+    {
+      "claim_id": 26,
+      "prompt": "Evaluate the following statement: version control preserves a history of software changes.",
+      "response_pair_index": 4,
+      "difference_norm": 12.090811729431152
+    },
+    {
+      "claim_id": 32,
+      "prompt": "Assess whether unit tests cannot prove the absence of all defects.",
+      "response_pair_index": 0,
+      "difference_norm": 15.890064239501953
+    },
+    {
+      "claim_id": 32,
+      "prompt": "What evidence supports the statement that unit tests cannot prove the absence of all defects?",
+      "response_pair_index": 1,
+      "difference_norm": 12.530467987060547
+    },
+    {
+      "claim_id": 32,
+      "prompt": "Give a concise judgment on this claim: unit tests cannot prove the absence of all defects.",
+      "response_pair_index": 2,
+      "difference_norm": 11.635538101196289
+    },
+    {
+      "claim_id": 32,
+      "prompt": "Evaluate the following statement: unit tests cannot prove the absence of all defects.",
+      "response_pair_index": 3,
+      "difference_norm": 8.349496841430664
+    },
+    {
+      "claim_id": 1,
+      "prompt": "Assess whether maintaining an emergency fund is prudent.",
+      "response_pair_index": 4,
+      "difference_norm": 11.744549751281738
+    },
+    {
+      "claim_id": 1,
+      "prompt": "What evidence supports the statement that maintaining an emergency fund is prudent?",
+      "response_pair_index": 0,
+      "difference_norm": 16.035966873168945
+    },
+    {
+      "claim_id": 1,
+      "prompt": "Give a concise judgment on this claim: maintaining an emergency fund is prudent.",
+      "response_pair_index": 1,
+      "difference_norm": 11.850639343261719
+    },
+    {
+      "claim_id": 1,
+      "prompt": "Evaluate the following statement: maintaining an emergency fund is prudent.",
+      "response_pair_index": 2,
+      "difference_norm": 12.228249549865723
+    },
+    {
+      "claim_id": 45,
+      "prompt": "Assess whether causal conclusions require assumptions beyond correlation.",
+      "response_pair_index": 3,
+      "difference_norm": 8.940927505493164
+    },
+    {
+      "claim_id": 45,
+      "prompt": "What evidence supports the statement that causal conclusions require assumptions beyond correlation?",
+      "response_pair_index": 4,
+      "difference_norm": 10.641809463500977
+    },
+    {
+      "claim_id": 45,
+      "prompt": "Give a concise judgment on this claim: causal conclusions require assumptions beyond correlation.",
+      "response_pair_index": 0,
+      "difference_norm": 14.717576026916504
+    },
+    {
+      "claim_id": 45,
+      "prompt": "Evaluate the following statement: causal conclusions require assumptions beyond correlation.",
+      "response_pair_index": 1,
+      "difference_norm": 10.81612491607666
+    },
+    {
+      "claim_id": 25,
+      "prompt": "Assess whether vaccination can reduce the spread of infectious disease.",
+      "response_pair_index": 2,
+      "difference_norm": 12.297876358032227
+    },
+    {
+      "claim_id": 25,
+      "prompt": "What evidence supports the statement that vaccination can reduce the spread of infectious disease?",
+      "response_pair_index": 3,
+      "difference_norm": 9.270387649536133
+    },
+    {
+      "claim_id": 25,
+      "prompt": "Give a concise judgment on this claim: vaccination can reduce the spread of infectious disease.",
+      "response_pair_index": 4,
+      "difference_norm": 10.946330070495605
+    },
+    {
+      "claim_id": 25,
+      "prompt": "Evaluate the following statement: vaccination can reduce the spread of infectious disease.",
+      "response_pair_index": 0,
+      "difference_norm": 15.69361400604248
+    },
+    {
+      "claim_id": 16,
+      "prompt": "Assess whether backups reduce data-loss risk.",
+      "response_pair_index": 1,
+      "difference_norm": 14.174848556518555
+    },
+    {
+      "claim_id": 16,
+      "prompt": "What evidence supports the statement that backups reduce data-loss risk?",
+      "response_pair_index": 2,
+      "difference_norm": 11.796422004699707
+    },
+    {
+      "claim_id": 16,
+      "prompt": "Give a concise judgment on this claim: backups reduce data-loss risk.",
+      "response_pair_index": 3,
+      "difference_norm": 9.634506225585938
+    },
+    {
+      "claim_id": 16,
+      "prompt": "Evaluate the following statement: backups reduce data-loss risk.",
+      "response_pair_index": 4,
+      "difference_norm": 11.802436828613281
+    },
+    {
+      "claim_id": 43,
+      "prompt": "Assess whether data leakage can inflate evaluation results.",
+      "response_pair_index": 0,
+      "difference_norm": 15.749190330505371
+    },
+    {
+      "claim_id": 43,
+      "prompt": "What evidence supports the statement that data leakage can inflate evaluation results?",
+      "response_pair_index": 1,
+      "difference_norm": 13.299344062805176
+    },
+    {
+      "claim_id": 43,
+      "prompt": "Give a concise judgment on this claim: data leakage can inflate evaluation results.",
+      "response_pair_index": 2,
+      "difference_norm": 11.58591365814209
+    },
+    {
+      "claim_id": 43,
+      "prompt": "Evaluate the following statement: data leakage can inflate evaluation results.",
+      "response_pair_index": 3,
+      "difference_norm": 8.095222473144531
+    },
+    {
+      "claim_id": 3,
+      "prompt": "Assess whether adequate hydration supports health.",
+      "response_pair_index": 4,
+      "difference_norm": 12.294451713562012
+    },
+    {
+      "claim_id": 3,
+      "prompt": "What evidence supports the statement that adequate hydration supports health?",
+      "response_pair_index": 0,
+      "difference_norm": 15.809550285339355
+    },
+    {
+      "claim_id": 3,
+      "prompt": "Give a concise judgment on this claim: adequate hydration supports health.",
+      "response_pair_index": 1,
+      "difference_norm": 11.485633850097656
+    },
+    {
+      "claim_id": 3,
+      "prompt": "Evaluate the following statement: adequate hydration supports health.",
+      "response_pair_index": 2,
+      "difference_norm": 12.064983367919922
+    },
+    {
+      "claim_id": 28,
+      "prompt": "Assess whether photosynthesis converts light energy into chemical energy.",
+      "response_pair_index": 3,
+      "difference_norm": 10.09363842010498
+    },
+    {
+      "claim_id": 28,
+      "prompt": "What evidence supports the statement that photosynthesis converts light energy into chemical energy?",
+      "response_pair_index": 4,
+      "difference_norm": 11.610237121582031
+    },
+    {
+      "claim_id": 28,
+      "prompt": "Give a concise judgment on this claim: photosynthesis converts light energy into chemical energy.",
+      "response_pair_index": 0,
+      "difference_norm": 14.827134132385254
+    },
+    {
+      "claim_id": 28,
+      "prompt": "Evaluate the following statement: photosynthesis converts light energy into chemical energy.",
+      "response_pair_index": 1,
+      "difference_norm": 12.596903800964355
+    },
+    {
+      "claim_id": 47,
+      "prompt": "Assess whether tokenization can change measured sequence length.",
+      "response_pair_index": 2,
+      "difference_norm": 12.187530517578125
+    },
+    {
+      "claim_id": 47,
+      "prompt": "What evidence supports the statement that tokenization can change measured sequence length?",
+      "response_pair_index": 3,
+      "difference_norm": 9.866161346435547
+    },
+    {
+      "claim_id": 47,
+      "prompt": "Give a concise judgment on this claim: tokenization can change measured sequence length.",
+      "response_pair_index": 4,
+      "difference_norm": 10.6281156539917
+    },
+    {
+      "claim_id": 47,
+      "prompt": "Evaluate the following statement: tokenization can change measured sequence length.",
+      "response_pair_index": 0,
+      "difference_norm": 15.875760078430176
+    },
+    {
+      "claim_id": 39,
+      "prompt": "Assess whether monitoring cannot replace fault-tolerant design.",
+      "response_pair_index": 1,
+      "difference_norm": 13.667613983154297
+    },
+    {
+      "claim_id": 39,
+      "prompt": "What evidence supports the statement that monitoring cannot replace fault-tolerant design?",
+      "response_pair_index": 2,
+      "difference_norm": 11.608419418334961
+    },
+    {
+      "claim_id": 39,
+      "prompt": "Give a concise judgment on this claim: monitoring cannot replace fault-tolerant design.",
+      "response_pair_index": 3,
+      "difference_norm": 9.034262657165527
+    },
+    {
+      "claim_id": 39,
+      "prompt": "Evaluate the following statement: monitoring cannot replace fault-tolerant design.",
+      "response_pair_index": 4,
+      "difference_norm": 11.664146423339844
+    },
+    {
+      "claim_id": 33,
+      "prompt": "Assess whether replication improves confidence in empirical findings.",
+      "response_pair_index": 0,
+      "difference_norm": 15.222219467163086
+    },
+    {
+      "claim_id": 33,
+      "prompt": "What evidence supports the statement that replication improves confidence in empirical findings?",
+      "response_pair_index": 1,
+      "difference_norm": 12.896770477294922
+    },
+    {
+      "claim_id": 33,
+      "prompt": "Give a concise judgment on this claim: replication improves confidence in empirical findings.",
+      "response_pair_index": 2,
+      "difference_norm": 11.173724174499512
+    },
+    {
+      "claim_id": 33,
+      "prompt": "Evaluate the following statement: replication improves confidence in empirical findings.",
+      "response_pair_index": 3,
+      "difference_norm": 7.681797981262207
+    },
+    {
+      "claim_id": 42,
+      "prompt": "Assess whether cross-validation can estimate out-of-sample performance.",
+      "response_pair_index": 4,
+      "difference_norm": 11.771413803100586
+    },
+    {
+      "claim_id": 42,
+      "prompt": "What evidence supports the statement that cross-validation can estimate out-of-sample performance?",
+      "response_pair_index": 0,
+      "difference_norm": 15.751317977905273
+    },
+    {
+      "claim_id": 42,
+      "prompt": "Give a concise judgment on this claim: cross-validation can estimate out-of-sample performance.",
+      "response_pair_index": 1,
+      "difference_norm": 12.30656623840332
+    },
+    {
+      "claim_id": 42,
+      "prompt": "Evaluate the following statement: cross-validation can estimate out-of-sample performance.",
+      "response_pair_index": 2,
+      "difference_norm": 12.13392162322998
+    },
+    {
+      "claim_id": 55,
+      "prompt": "Assess whether floating-point arithmetic has finite precision.",
+      "response_pair_index": 3,
+      "difference_norm": 9.821255683898926
+    },
+    {
+      "claim_id": 55,
+      "prompt": "What evidence supports the statement that floating-point arithmetic has finite precision?",
+      "response_pair_index": 4,
+      "difference_norm": 12.11868953704834
+    },
+    {
+      "claim_id": 55,
+      "prompt": "Give a concise judgment on this claim: floating-point arithmetic has finite precision.",
+      "response_pair_index": 0,
+      "difference_norm": 14.999361991882324
+    },
+    {
+      "claim_id": 55,
+      "prompt": "Evaluate the following statement: floating-point arithmetic has finite precision.",
+      "response_pair_index": 1,
+      "difference_norm": 12.820940971374512
+    },
+    {
+      "claim_id": 9,
+      "prompt": "Assess whether passwords should be unique across websites.",
+      "response_pair_index": 2,
+      "difference_norm": 12.716811180114746
+    },
+    {
+      "claim_id": 9,
+      "prompt": "What evidence supports the statement that passwords should be unique across websites?",
+      "response_pair_index": 3,
+      "difference_norm": 9.933070182800293
+    },
+    {
+      "claim_id": 9,
+      "prompt": "Give a concise judgment on this claim: passwords should be unique across websites.",
+      "response_pair_index": 4,
+      "difference_norm": 10.563505172729492
+    },
+    {
+      "claim_id": 9,
+      "prompt": "Evaluate the following statement: passwords should be unique across websites.",
+      "response_pair_index": 0,
+      "difference_norm": 15.53946304321289
+    },
+    {
+      "claim_id": 7,
+      "prompt": "Assess whether sleep supports memory consolidation.",
+      "response_pair_index": 1,
+      "difference_norm": 13.38632869720459
+    },
+    {
+      "claim_id": 7,
+      "prompt": "What evidence supports the statement that sleep supports memory consolidation?",
+      "response_pair_index": 2,
+      "difference_norm": 11.857894897460938
+    },
+    {
+      "claim_id": 7,
+      "prompt": "Give a concise judgment on this claim: sleep supports memory consolidation.",
+      "response_pair_index": 3,
+      "difference_norm": 9.777444839477539
+    },
+    {
+      "claim_id": 7,
+      "prompt": "Evaluate the following statement: sleep supports memory consolidation.",
+      "response_pair_index": 4,
+      "difference_norm": 12.111907958984375
+    }
+  ],
+  "receptor": {
+    "norm": 1.0,
+    "validation_positive_delta": 0.004506160815556844,
+    "validation_negative_delta": -0.004669263958930969,
+    "validation_kl_auc": 0.00036735511412189226,
+    "test_positive_delta": 0.004866305324766371,
+    "test_negative_delta": -0.005041374100579156,
+    "test_antisymmetric_effect": 0.0049538397126727635,
+    "test_kl_auc": 0.0003836163878582334
+  },
+  "random_null": {
+    "count": 128,
+    "controls": [
+      {
+        "index": 0,
+        "orientation": -1.0,
+        "scale": 1.1241940814872686,
+        "validation_unit_kl_auc": 0.00029067220233021845,
+        "test_kl_auc": 0.00037208460604334605,
+        "test_antisymmetric_effect": 0.00031484332349565293,
+        "cosine_with_receptor": 2.561137080192566e-09
+      },
+      {
+        "index": 1,
+        "orientation": -1.0,
+        "scale": 1.2852986161093731,
+        "validation_unit_kl_auc": 0.00022237092897133456,
+        "test_kl_auc": 0.00030881428518922697,
+        "test_antisymmetric_effect": 0.0005034771230485705,
+        "cosine_with_receptor": 0.0
+      },
+      {
+        "index": 2,
+        "orientation": 1.0,
+        "scale": 1.1090773579690885,
+        "validation_unit_kl_auc": 0.0002986499262836636,
+        "test_kl_auc": 0.0003164577635743626,
+        "test_antisymmetric_effect": 0.0017034378316667345,
+        "cosine_with_receptor": 0.0
+      },
+      {
+        "index": 3,
+        "orientation": -1.0,
+        "scale": 1.1836078107522732,
+        "validation_unit_kl_auc": 0.0002622227969103127,
+        "test_kl_auc": 0.0003140407311042913,
+        "test_antisymmetric_effect": 0.0003179013729095459,
+        "cosine_with_receptor": -9.313225746154785e-10
+      },
+      {
+        "index": 4,
+        "orientation": -1.0,
+        "scale": 1.2051222672132962,
+        "validation_unit_kl_auc": 0.0002529437006539107,
+        "test_kl_auc": 0.0003068972201971418,
+        "test_antisymmetric_effect": 0.001008103291193644,
+        "cosine_with_receptor": 2.7939677238464355e-09
+      },
+      {
+        "index": 5,
+        "orientation": -1.0,
+        "scale": 1.1864766382651801,
+        "validation_unit_kl_auc": 0.00026095625279746554,
+        "test_kl_auc": 0.0002800520353755726,
+        "test_antisymmetric_effect": 0.0015479723612467446,
+        "cosine_with_receptor": 0.0
+      },
+      {
+        "index": 6,
+        "orientation": -1.0,
+        "scale": 1.2495650238211735,
+        "validation_unit_kl_auc": 0.00023527098418677875,
+        "test_kl_auc": 0.00028879010864733975,
+        "test_antisymmetric_effect": 0.001214428080452813,
+        "cosine_with_receptor": 0.0
+      },
+      {
+        "index": 7,
+        "orientation": -1.0,
+        "scale": 1.1484839608058621,
+        "validation_unit_kl_auc": 0.0002785070680981031,
+        "test_kl_auc": 0.0002975107492552019,
+        "test_antisymmetric_effect": -0.0001561227771970961,
+        "cosine_with_receptor": 5.587935447692871e-09
+      },
+      {
+        "index": 8,
+        "orientation": -1.0,
+        "scale": 1.2177282384827801,
+        "validation_unit_kl_auc": 0.0002477338407516072,
+        "test_kl_auc": 0.00029651219137526315,
+        "test_antisymmetric_effect": 1.0834799872504343e-05,
+        "cosine_with_receptor": 1.862645149230957e-09
+      },
+      {
+        "index": 9,
+        "orientation": -1.0,
+        "scale": 1.2889003835806574,
+        "validation_unit_kl_auc": 0.00022112985664080043,
+        "test_kl_auc": 0.0002916538121553458,
+        "test_antisymmetric_effect": 0.00016796092192331952,
+        "cosine_with_receptor": -2.3283064365386963e-09
+      },
+      {
+        "index": 10,
+        "orientation": -1.0,
+        "scale": 1.0938671559690998,
+        "validation_unit_kl_auc": 0.00030701311288794386,
+        "test_kl_auc": 0.0003410056180857484,
+        "test_antisymmetric_effect": -0.00015557308991750082,
+        "cosine_with_receptor": 0.0
+      },
+      {
+        "index": 11,
+        "orientation": 1.0,
+        "scale": 1.2454131943466853,
+        "validation_unit_kl_auc": 0.00023684224294129308,
+        "test_kl_auc": 0.00031047271545503463,
+        "test_antisymmetric_effect": 0.0007498231199052598,
+        "cosine_with_receptor": -4.190951585769653e-09
+      },
+      {
+        "index": 12,
+        "orientation": -1.0,
+        "scale": 1.1955859769718418,
+        "validation_unit_kl_auc": 0.0002569948764327516,
+        "test_kl_auc": 0.0003115398674253811,
+        "test_antisymmetric_effect": 0.0007831818527645535,
+        "cosine_with_receptor": 3.725290298461914e-09
+      },
+      {
+        "index": 13,
+        "orientation": 1.0,
+        "scale": 1.1599097457726628,
+        "validation_unit_kl_auc": 0.0002730471798410387,
+        "test_kl_auc": 0.00030533223106330197,
+        "test_antisymmetric_effect": -0.0006076014704174466,
+        "cosine_with_receptor": 5.122274160385132e-09
+      },
+      {
+        "index": 14,
+        "orientation": -1.0,
+        "scale": 1.2095583174734383,
+        "validation_unit_kl_auc": 0.0002510917628721169,
+        "test_kl_auc": 0.00032721001710140426,
+        "test_antisymmetric_effect": 0.00043615864382849797,
+        "cosine_with_receptor": -1.862645149230957e-09
+      },
+      {
+        "index": 15,
+        "orientation": 1.0,
+        "scale": 1.2395033976894165,
+        "validation_unit_kl_auc": 0.0002391060951746719,
+        "test_kl_auc": 0.00030459139501696575,
+        "test_antisymmetric_effect": -0.00015077988306681317,
+        "cosine_with_receptor": -1.862645149230957e-09
+      },
+      {
+        "index": 16,
+        "orientation": 1.0,
+        "scale": 1.183187491728635,
+        "validation_unit_kl_auc": 0.0002624091356058974,
+        "test_kl_auc": 0.0003155527429044014,
+        "test_antisymmetric_effect": 0.0006636430819829305,
+        "cosine_with_receptor": -1.862645149230957e-09
+      },
+      {
+        "index": 17,
+        "orientation": -1.0,
+        "scale": 1.115322884513526,
+        "validation_unit_kl_auc": 0.00029531456273919804,
+        "test_kl_auc": 0.00032269611275144905,
+        "test_antisymmetric_effect": 0.001485392451286316,
+        "cosine_with_receptor": 1.862645149230957e-09
+      },
+      {
+        "index": 18,
+        "orientation": -1.0,
+        "scale": 1.2932451009529613,
+        "validation_unit_kl_auc": 0.00021964656025375007,
+        "test_kl_auc": 0.00026914491440442763,
+        "test_antisymmetric_effect": 0.0003814631038241916,
+        "cosine_with_receptor": 1.862645149230957e-09
+      },
+      {
+        "index": 19,
+        "orientation": 1.0,
+        "scale": 1.269456419421753,
+        "validation_unit_kl_auc": 0.00022795572200114594,
+        "test_kl_auc": 0.00028414793273946596,
+        "test_antisymmetric_effect": 1.173714796702067e-05,
+        "cosine_with_receptor": -1.862645149230957e-09
+      },
+      {
+        "index": 20,
+        "orientation": -1.0,
+        "scale": 1.2637283464542595,
+        "validation_unit_kl_auc": 0.00023002690490632932,
+        "test_kl_auc": 0.00029901915346878616,
+        "test_antisymmetric_effect": -0.00032862193054623075,
+        "cosine_with_receptor": 5.587935447692871e-09
+      },
+      {
+        "index": 21,
+        "orientation": -1.0,
+        "scale": 1.2325066585837687,
+        "validation_unit_kl_auc": 0.0002418285332623782,
+        "test_kl_auc": 0.00029646126101094217,
+        "test_antisymmetric_effect": 0.0011896441380182903,
+        "cosine_with_receptor": 2.7939677238464355e-09
+      },
+      {
+        "index": 22,
+        "orientation": -1.0,
+        "scale": 1.2041428353443575,
+        "validation_unit_kl_auc": 0.0002533553492867213,
+        "test_kl_auc": 0.0003020977747180748,
+        "test_antisymmetric_effect": -0.0002890328566233317,
+        "cosine_with_receptor": 1.862645149230957e-09
+      },
+      {
+        "index": 23,
+        "orientation": 1.0,
+        "scale": 1.2811220005275712,
+        "validation_unit_kl_auc": 0.00022382320567733888,
+        "test_kl_auc": 0.0003126653160355393,
+        "test_antisymmetric_effect": 0.0002861618995666504,
+        "cosine_with_receptor": -5.122274160385132e-09
+      },
+      {
+        "index": 24,
+        "orientation": -1.0,
+        "scale": 1.2039380668624717,
+        "validation_unit_kl_auc": 0.000253441539105855,
+        "test_kl_auc": 0.00032391338762257266,
+        "test_antisymmetric_effect": 8.113019996219213e-05,
+        "cosine_with_receptor": -2.7939677238464355e-09
+      },
+      {
+        "index": 25,
+        "orientation": -1.0,
+        "scale": 1.197456224774626,
+        "validation_unit_kl_auc": 0.0002561927281021781,
+        "test_kl_auc": 0.0003155891819106829,
+        "test_antisymmetric_effect": 7.482369740804037e-05,
+        "cosine_with_receptor": -1.862645149230957e-09
+      },
+      {
+        "index": 26,
+        "orientation": 1.0,
+        "scale": 1.188945180327828,
+        "validation_unit_kl_auc": 0.00025987375924311584,
+        "test_kl_auc": 0.000337915070581908,
+        "test_antisymmetric_effect": -5.9752000702752004e-05,
+        "cosine_with_receptor": -9.313225746154785e-10
+      },
+      {
+        "index": 27,
+        "orientation": -1.0,
+        "scale": 1.1406535990417792,
+        "validation_unit_kl_auc": 0.00028234398496351787,
+        "test_kl_auc": 0.0003256463364020116,
+        "test_antisymmetric_effect": 0.0007884220944510566,
+        "cosine_with_receptor": -2.7939677238464355e-09
+      },
+      {
+        "index": 28,
+        "orientation": 1.0,
+        "scale": 1.0206974922793586,
+        "validation_unit_kl_auc": 0.00035260786467006255,
+        "test_kl_auc": 0.00037146698835183796,
+        "test_antisymmetric_effect": 0.0009603351354598999,
+        "cosine_with_receptor": -3.725290298461914e-09
+      },
+      {
+        "index": 29,
+        "orientation": 1.0,
+        "scale": 1.2214815402117252,
+        "validation_unit_kl_auc": 0.0002462137337791622,
+        "test_kl_auc": 0.00031562084690348356,
+        "test_antisymmetric_effect": 0.0003862331310908,
+        "cosine_with_receptor": 4.656612873077393e-10
+      },
+      {
+        "index": 30,
+        "orientation": -1.0,
+        "scale": 1.055047966387632,
+        "validation_unit_kl_auc": 0.00033002107970029704,
+        "test_kl_auc": 0.00032543553558955155,
+        "test_antisymmetric_effect": 0.0009728819131851196,
+        "cosine_with_receptor": -1.862645149230957e-09
+      },
+      {
+        "index": 31,
+        "orientation": 1.0,
+        "scale": 1.0890374933815903,
+        "validation_unit_kl_auc": 0.00030974223405640566,
+        "test_kl_auc": 0.000315844680092899,
+        "test_antisymmetric_effect": 0.001908863584200541,
+        "cosine_with_receptor": -3.725290298461914e-09
+      },
+      {
+        "index": 32,
+        "orientation": 1.0,
+        "scale": 1.1816321356426644,
+        "validation_unit_kl_auc": 0.0002631003968645018,
+        "test_kl_auc": 0.00031652474826336804,
+        "test_antisymmetric_effect": 0.0005642275015513103,
+        "cosine_with_receptor": 1.862645149230957e-09
+      },
+      {
+        "index": 33,
+        "orientation": 1.0,
+        "scale": 1.2350891335001593,
+        "validation_unit_kl_auc": 0.00024081830137371676,
+        "test_kl_auc": 0.00032875675772932783,
+        "test_antisymmetric_effect": -7.3903136783176e-05,
+        "cosine_with_receptor": 2.7939677238464355e-09
+      },
+      {
+        "index": 34,
+        "orientation": -1.0,
+        "scale": 1.2583013314979934,
+        "validation_unit_kl_auc": 0.000232015381736043,
+        "test_kl_auc": 0.0002782206179037732,
+        "test_antisymmetric_effect": 0.00046995447741614445,
+        "cosine_with_receptor": -2.3283064365386963e-09
+      },
+      {
+        "index": 35,
+        "orientation": -1.0,
+        "scale": 1.2097338818397494,
+        "validation_unit_kl_auc": 0.0002510188880554173,
+        "test_kl_auc": 0.00030255394257336674,
+        "test_antisymmetric_effect": 0.00033843682871924504,
+        "cosine_with_receptor": 5.587935447692871e-09
+      },
+      {
+        "index": 36,
+        "orientation": -1.0,
+        "scale": 1.1801633528383981,
+        "validation_unit_kl_auc": 0.00026375569226881146,
+        "test_kl_auc": 0.00031257781584928226,
+        "test_antisymmetric_effect": 0.0008478429582383898,
+        "cosine_with_receptor": 2.3283064365386963e-09
+      },
+      {
+        "index": 37,
+        "orientation": -1.0,
+        "scale": 1.2808822637249233,
+        "validation_unit_kl_auc": 0.00022390699742421322,
+        "test_kl_auc": 0.0002775444233470302,
+        "test_antisymmetric_effect": 0.0013225641515519884,
+        "cosine_with_receptor": 3.259629011154175e-09
+      },
+      {
+        "index": 38,
+        "orientation": -1.0,
+        "scale": 1.064311354926788,
+        "validation_unit_kl_auc": 0.0003243013070838667,
+        "test_kl_auc": 0.0003442358057428565,
+        "test_antisymmetric_effect": 9.588400522867838e-05,
+        "cosine_with_receptor": -4.6566128730773926e-09
+      },
+      {
+        "index": 39,
+        "orientation": -1.0,
+        "scale": 1.1163672334821442,
+        "validation_unit_kl_auc": 0.0002947622942883754,
+        "test_kl_auc": 0.0003365134180057794,
+        "test_antisymmetric_effect": 0.0009436408678690592,
+        "cosine_with_receptor": 2.7939677238464355e-09
+      },
+      {
+        "index": 40,
+        "orientation": 1.0,
+        "scale": 1.1049404369407094,
+        "validation_unit_kl_auc": 0.0003008904163076901,
+        "test_kl_auc": 0.0003343002830812717,
+        "test_antisymmetric_effect": 0.0003370410866207547,
+        "cosine_with_receptor": 9.313225746154785e-10
+      },
+      {
+        "index": 41,
+        "orientation": 1.0,
+        "scale": 1.1619987246681516,
+        "validation_unit_kl_auc": 0.00027206632319121127,
+        "test_kl_auc": 0.00033336421832549,
+        "test_antisymmetric_effect": 0.00031679371992746985,
+        "cosine_with_receptor": -3.725290298461914e-09
+      },
+      {
+        "index": 42,
+        "orientation": -1.0,
+        "scale": 1.1895522125955575,
+        "validation_unit_kl_auc": 0.000259608598109177,
+        "test_kl_auc": 0.00029253349498503667,
+        "test_antisymmetric_effect": 0.00039992233117421466,
+        "cosine_with_receptor": 0.0
+      },
+      {
+        "index": 43,
+        "orientation": 1.0,
+        "scale": 1.2530256328985079,
+        "validation_unit_kl_auc": 0.00023397323483701865,
+        "test_kl_auc": 0.000297663138806254,
+        "test_antisymmetric_effect": 5.349682437049018e-05,
+        "cosine_with_receptor": 1.862645149230957e-09
+      },
+      {
+        "index": 44,
+        "orientation": -1.0,
+        "scale": 1.1330285308753207,
+        "validation_unit_kl_auc": 0.00028615701588326675,
+        "test_kl_auc": 0.0003197010744821051,
+        "test_antisymmetric_effect": 0.0008162409067153931,
+        "cosine_with_receptor": 2.7939677238464355e-09
+      },
+      {
+        "index": 45,
+        "orientation": 1.0,
+        "scale": 1.2105507075635418,
+        "validation_unit_kl_auc": 0.0002506802496024344,
+        "test_kl_auc": 0.00029104827934942377,
+        "test_antisymmetric_effect": 0.0004475000831815931,
+        "cosine_with_receptor": 3.259629011154175e-09
+      },
+      {
+        "index": 46,
+        "orientation": -1.0,
+        "scale": 1.1946548970545081,
+        "validation_unit_kl_auc": 0.0002573956214746431,
+        "test_kl_auc": 0.0002993512190540868,
+        "test_antisymmetric_effect": 0.0006063762638303968,
+        "cosine_with_receptor": -4.190951585769653e-09
+      },
+      {
+        "index": 47,
+        "orientation": 1.0,
+        "scale": 1.3002478326694014,
+        "validation_unit_kl_auc": 0.00021728703469155636,
+        "test_kl_auc": 0.00027966288371317205,
+        "test_antisymmetric_effect": 0.00044061243534088135,
+        "cosine_with_receptor": 4.6566128730773926e-09
+      },
+      {
+        "index": 48,
+        "orientation": -1.0,
+        "scale": 1.308398891112677,
+        "validation_unit_kl_auc": 0.0002145881597925836,
+        "test_kl_auc": 0.00028089876708589954,
+        "test_antisymmetric_effect": 0.0008825941218270196,
+        "cosine_with_receptor": -9.313225746154785e-10
+      },
+      {
+        "index": 49,
+        "orientation": 1.0,
+        "scale": 1.2310484678952827,
+        "validation_unit_kl_auc": 0.0002424017697724897,
+        "test_kl_auc": 0.0002962492223509293,
+        "test_antisymmetric_effect": 0.0008622821834352282,
+        "cosine_with_receptor": 9.313225746154785e-10
+      },
+      {
+        "index": 50,
+        "orientation": -1.0,
+        "scale": 1.2434919191740386,
+        "validation_unit_kl_auc": 0.00023757468140199006,
+        "test_kl_auc": 0.0002874428033060718,
+        "test_antisymmetric_effect": 0.000490284628338284,
+        "cosine_with_receptor": 9.313225746154785e-10
+      },
+      {
+        "index": 51,
+        "orientation": 1.0,
+        "scale": 1.1176443690869962,
+        "validation_unit_kl_auc": 0.00029408902764771483,
+        "test_kl_auc": 0.0003186411335668203,
+        "test_antisymmetric_effect": 0.0006398575173483954,
+        "cosine_with_receptor": 3.725290298461914e-09
+      },
+      {
+        "index": 52,
+        "orientation": -1.0,
+        "scale": 1.101725203759981,
+        "validation_unit_kl_auc": 0.00030264919337241736,
+        "test_kl_auc": 0.000357793666984839,
+        "test_antisymmetric_effect": 0.0009078267547819349,
+        "cosine_with_receptor": 3.725290298461914e-09
+      },
+      {
+        "index": 53,
+        "orientation": 1.0,
+        "scale": 1.157275579469281,
+        "validation_unit_kl_auc": 0.00027429160297742783,
+        "test_kl_auc": 0.0003393221068613962,
+        "test_antisymmetric_effect": 0.0007762081093258327,
+        "cosine_with_receptor": -5.587935447692871e-09
+      },
+      {
+        "index": 54,
+        "orientation": 1.0,
+        "scale": 1.21915065051341,
+        "validation_unit_kl_auc": 0.0002471561040617113,
+        "test_kl_auc": 0.00029341036446971377,
+        "test_antisymmetric_effect": 0.0001748469140794542,
+        "cosine_with_receptor": -1.862645149230957e-09
+      },
+      {
+        "index": 55,
+        "orientation": 1.0,
+        "scale": 1.2513225764532183,
+        "validation_unit_kl_auc": 0.00023461054577940862,
+        "test_kl_auc": 0.000322767117823888,
+        "test_antisymmetric_effect": -0.00030211773183610704,
+        "cosine_with_receptor": 0.0
+      },
+      {
+        "index": 56,
+        "orientation": -1.0,
+        "scale": 1.170363420623794,
+        "validation_unit_kl_auc": 0.00026819125408413436,
+        "test_kl_auc": 0.00032170359410580807,
+        "test_antisymmetric_effect": 0.0002888888120651245,
+        "cosine_with_receptor": -7.450580596923828e-09
+      },
+      {
+        "index": 57,
+        "orientation": -1.0,
+        "scale": 1.1897469149551856,
+        "validation_unit_kl_auc": 0.00025952363504681364,
+        "test_kl_auc": 0.0003170854499153898,
+        "test_antisymmetric_effect": 0.0010341240300072564,
+        "cosine_with_receptor": -3.259629011154175e-09
+      },
+      {
+        "index": 58,
+        "orientation": 1.0,
+        "scale": 1.1140551109993555,
+        "validation_unit_kl_auc": 0.00029598706987599144,
+        "test_kl_auc": 0.00034869147227962257,
+        "test_antisymmetric_effect": 0.0007368657324049207,
+        "cosine_with_receptor": 2.3283064365386963e-09
+      },
+      {
+        "index": 59,
+        "orientation": 1.0,
+        "scale": 1.047894465668893,
+        "validation_unit_kl_auc": 0.0003345422680164726,
+        "test_kl_auc": 0.00034512855667243357,
+        "test_antisymmetric_effect": 0.00014266040590074327,
+        "cosine_with_receptor": 3.725290298461914e-09
+      },
+      {
+        "index": 60,
+        "orientation": -1.0,
+        "scale": 1.1762636357652616,
+        "validation_unit_kl_auc": 0.0002655074723634243,
+        "test_kl_auc": 0.00029174881526867265,
+        "test_antisymmetric_effect": 0.00034527480602264404,
+        "cosine_with_receptor": 7.450580596923828e-09
+      },
+      {
+        "index": 61,
+        "orientation": 1.0,
+        "scale": 1.2124813811317445,
+        "validation_unit_kl_auc": 0.0002498825525663051,
+        "test_kl_auc": 0.0003159193501131893,
+        "test_antisymmetric_effect": 0.0012610803047815957,
+        "cosine_with_receptor": -6.51925802230835e-09
+      },
+      {
+        "index": 62,
+        "orientation": 1.0,
+        "scale": 1.2387118689525336,
+        "validation_unit_kl_auc": 0.00023941176724899074,
+        "test_kl_auc": 0.0003290789227700467,
+        "test_antisymmetric_effect": 0.00024703807300991483,
+        "cosine_with_receptor": -3.259629011154175e-09
+      },
+      {
+        "index": 63,
+        "orientation": -1.0,
+        "scale": 1.2794595476838828,
+        "validation_unit_kl_auc": 0.00022440522839891247,
+        "test_kl_auc": 0.00027827215141466394,
+        "test_antisymmetric_effect": 0.000531438324186537,
+        "cosine_with_receptor": 3.259629011154175e-09
+      },
+      {
+        "index": 64,
+        "orientation": -1.0,
+        "scale": 1.2253503910663592,
+        "validation_unit_kl_auc": 0.0002446614260710097,
+        "test_kl_auc": 0.0002862935061026898,
+        "test_antisymmetric_effect": 0.00033685068289438885,
+        "cosine_with_receptor": 0.0
+      },
+      {
+        "index": 65,
+        "orientation": -1.0,
+        "scale": 1.2485198974277532,
+        "validation_unit_kl_auc": 0.00023566503610557749,
+        "test_kl_auc": 0.00029203640580514423,
+        "test_antisymmetric_effect": 0.0005164328548643324,
+        "cosine_with_receptor": 3.4924596548080444e-09
+      },
+      {
+        "index": 66,
+        "orientation": -1.0,
+        "scale": 1.1861051868549048,
+        "validation_unit_kl_auc": 0.00026111972522357974,
+        "test_kl_auc": 0.0003272748661452675,
+        "test_antisymmetric_effect": 0.0012806389066908094,
+        "cosine_with_receptor": 5.587935447692871e-09
+      },
+      {
+        "index": 67,
+        "orientation": 1.0,
+        "scale": 1.2078047023099803,
+        "validation_unit_kl_auc": 0.00025182141390208323,
+        "test_kl_auc": 0.00031998862340919406,
+        "test_antisymmetric_effect": 0.0007217923800150554,
+        "cosine_with_receptor": -4.190951585769653e-09
+      },
+      {
+        "index": 68,
+        "orientation": 1.0,
+        "scale": 1.2251531882496773,
+        "validation_unit_kl_auc": 0.0002447401946786461,
+        "test_kl_auc": 0.00034047950331720733,
+        "test_antisymmetric_effect": 0.0004446456829706828,
+        "cosine_with_receptor": -2.7939677238464355e-09
+      },
+      {
+        "index": 69,
+        "orientation": -1.0,
+        "scale": 1.2128249841567946,
+        "validation_unit_kl_auc": 0.00024974098516850063,
+        "test_kl_auc": 0.00033071832965308405,
+        "test_antisymmetric_effect": 0.0018157048357857598,
+        "cosine_with_receptor": 2.7939677238464355e-09
+      },
+      {
+        "index": 70,
+        "orientation": -1.0,
+        "scale": 1.212503955088964,
+        "validation_unit_kl_auc": 0.0002498732482081323,
+        "test_kl_auc": 0.0002911549226306912,
+        "test_antisymmetric_effect": 0.00017229715983072916,
+        "cosine_with_receptor": -3.259629011154175e-09
+      },
+      {
+        "index": 71,
+        "orientation": 1.0,
+        "scale": 1.2344360356960404,
+        "validation_unit_kl_auc": 0.00024107318620281148,
+        "test_kl_auc": 0.00028609734047475085,
+        "test_antisymmetric_effect": 0.0013538201649983725,
+        "cosine_with_receptor": 9.313225746154785e-10
+      },
+      {
+        "index": 72,
+        "orientation": 1.0,
+        "scale": 1.0497590508428014,
+        "validation_unit_kl_auc": 0.0003333548935036864,
+        "test_kl_auc": 0.00036287141177935054,
+        "test_antisymmetric_effect": 0.0015413893593682183,
+        "cosine_with_receptor": -3.958120942115784e-09
+      },
+      {
+        "index": 73,
+        "orientation": 1.0,
+        "scale": 1.2314874392145667,
+        "validation_unit_kl_auc": 0.00024222898935022386,
+        "test_kl_auc": 0.00032220261189447937,
+        "test_antisymmetric_effect": 0.00012025733788808186,
+        "cosine_with_receptor": 2.3283064365386963e-09
+      },
+      {
+        "index": 74,
+        "orientation": -1.0,
+        "scale": 1.2156425899714003,
+        "validation_unit_kl_auc": 0.00024858463185258495,
+        "test_kl_auc": 0.000300718625491451,
+        "test_antisymmetric_effect": 0.0010347962379455566,
+        "cosine_with_receptor": 3.725290298461914e-09
+      },
+      {
+        "index": 75,
+        "orientation": -1.0,
+        "scale": 1.2025487728594948,
+        "validation_unit_kl_auc": 0.00025402747492838296,
+        "test_kl_auc": 0.00029283029645436426,
+        "test_antisymmetric_effect": 0.0003142009178797404,
+        "cosine_with_receptor": 9.313225746154785e-10
+      },
+      {
+        "index": 76,
+        "orientation": -1.0,
+        "scale": 1.1971931339448325,
+        "validation_unit_kl_auc": 0.0002563053404477008,
+        "test_kl_auc": 0.0003052499435322413,
+        "test_antisymmetric_effect": 0.0003245903386010064,
+        "cosine_with_receptor": -3.259629011154175e-09
+      },
+      {
+        "index": 77,
+        "orientation": 1.0,
+        "scale": 1.1350730998626686,
+        "validation_unit_kl_auc": 0.0002851270543260398,
+        "test_kl_auc": 0.00030849500790787313,
+        "test_antisymmetric_effect": 0.0003082321749793159,
+        "cosine_with_receptor": 3.725290298461914e-09
+      },
+      {
+        "index": 78,
+        "orientation": 1.0,
+        "scale": 1.1920085121564579,
+        "validation_unit_kl_auc": 0.000258539781119301,
+        "test_kl_auc": 0.00031433025146220136,
+        "test_antisymmetric_effect": 0.0006818605793846978,
+        "cosine_with_receptor": 9.313225746154785e-10
+      },
+      {
+        "index": 79,
+        "orientation": -1.0,
+        "scale": 1.2303224502017467,
+        "validation_unit_kl_auc": 0.0002426879384908413,
+        "test_kl_auc": 0.0002970064076635026,
+        "test_antisymmetric_effect": 0.0006990598307715522,
+        "cosine_with_receptor": -5.587935447692871e-09
+      },
+      {
+        "index": 80,
+        "orientation": -1.0,
+        "scale": 1.1254408375530622,
+        "validation_unit_kl_auc": 0.00029002854948127305,
+        "test_kl_auc": 0.00030537007720946957,
+        "test_antisymmetric_effect": 0.000979145367940267,
+        "cosine_with_receptor": 2.7939677238464355e-09
+      },
+      {
+        "index": 81,
+        "orientation": -1.0,
+        "scale": 1.1769221718761325,
+        "validation_unit_kl_auc": 0.00026521043090118235,
+        "test_kl_auc": 0.00032225836048382916,
+        "test_antisymmetric_effect": 0.0004530996084213257,
+        "cosine_with_receptor": 9.313225746154785e-10
+      },
+      {
+        "index": 82,
+        "orientation": -1.0,
+        "scale": 1.1843808796721025,
+        "validation_unit_kl_auc": 0.0002618805925749257,
+        "test_kl_auc": 0.0003178620419880139,
+        "test_antisymmetric_effect": 0.0006216731336381701,
+        "cosine_with_receptor": -2.6775524020195007e-09
+      },
+      {
+        "index": 83,
+        "orientation": -1.0,
+        "scale": 1.2644042872588304,
+        "validation_unit_kl_auc": 0.00022978102941806355,
+        "test_kl_auc": 0.00028072963722378417,
+        "test_antisymmetric_effect": 0.0007564938730663724,
+        "cosine_with_receptor": -1.3969838619232178e-09
+      },
+      {
+        "index": 84,
+        "orientation": -1.0,
+        "scale": 1.1812978657676536,
+        "validation_unit_kl_auc": 0.00026324931608693686,
+        "test_kl_auc": 0.0003243256324923196,
+        "test_antisymmetric_effect": 0.000990784830517239,
+        "cosine_with_receptor": 1.6298145055770874e-09
+      },
+      {
+        "index": 85,
+        "orientation": 1.0,
+        "scale": 1.2034941212186738,
+        "validation_unit_kl_auc": 0.0002536285529307255,
+        "test_kl_auc": 0.00030921365325614007,
+        "test_antisymmetric_effect": 0.0008918990691502888,
+        "cosine_with_receptor": -9.313225746154785e-10
+      },
+      {
+        "index": 86,
+        "orientation": 1.0,
+        "scale": 1.1048857299648929,
+        "validation_unit_kl_auc": 0.00030092021343837894,
+        "test_kl_auc": 0.00034612077390900394,
+        "test_antisymmetric_effect": 0.0009595139159096612,
+        "cosine_with_receptor": -4.190951585769653e-09
+      },
+      {
+        "index": 87,
+        "orientation": -1.0,
+        "scale": 1.2666345862321995,
+        "validation_unit_kl_auc": 0.00022897254177678406,
+        "test_kl_auc": 0.000289629911978611,
+        "test_antisymmetric_effect": 0.00034686591890123155,
+        "cosine_with_receptor": 0.0
+      },
+      {
+        "index": 88,
+        "orientation": -1.0,
+        "scale": 1.2249934603204637,
+        "validation_unit_kl_auc": 0.0002448040225999648,
+        "test_kl_auc": 0.00028038175135710236,
+        "test_antisymmetric_effect": 0.0016089164548450047,
+        "cosine_with_receptor": 5.587935447692871e-09
+      },
+      {
+        "index": 89,
+        "orientation": -1.0,
+        "scale": 1.2008563252787474,
+        "validation_unit_kl_auc": 0.00025474401551643194,
+        "test_kl_auc": 0.0003185689844132059,
+        "test_antisymmetric_effect": 0.0017059478494856092,
+        "cosine_with_receptor": 1.862645149230957e-09
+      },
+      {
+        "index": 90,
+        "orientation": 1.0,
+        "scale": 1.2533796507578863,
+        "validation_unit_kl_auc": 0.00023384108173255907,
+        "test_kl_auc": 0.0003074816037143238,
+        "test_antisymmetric_effect": 0.0006828390889697606,
+        "cosine_with_receptor": 7.450580596923828e-09
+      },
+      {
+        "index": 91,
+        "orientation": 1.0,
+        "scale": 1.2557410321067557,
+        "validation_unit_kl_auc": 0.00023296244709551198,
+        "test_kl_auc": 0.0003066244831997109,
+        "test_antisymmetric_effect": 0.00039499501387278235,
+        "cosine_with_receptor": -3.725290298461914e-09
+      },
+      {
+        "index": 92,
+        "orientation": -1.0,
+        "scale": 1.1629312996037413,
+        "validation_unit_kl_auc": 0.0002716301486695253,
+        "test_kl_auc": 0.0003186621257656144,
+        "test_antisymmetric_effect": 0.0005984587801827325,
+        "cosine_with_receptor": 9.313225746154785e-10
+      },
+      {
+        "index": 93,
+        "orientation": -1.0,
+        "scale": 1.2696790818719397,
+        "validation_unit_kl_auc": 0.00022787577624209615,
+        "test_kl_auc": 0.00028297848062821786,
+        "test_antisymmetric_effect": -0.00015154315365685357,
+        "cosine_with_receptor": 0.0
+      },
+      {
+        "index": 94,
+        "orientation": 1.0,
+        "scale": 1.2563912662731496,
+        "validation_unit_kl_auc": 0.0002327213741940189,
+        "test_kl_auc": 0.000297519359795236,
+        "test_antisymmetric_effect": -0.0004259049892425537,
+        "cosine_with_receptor": -9.313225746154785e-10
+      },
+      {
+        "index": 95,
+        "orientation": 1.0,
+        "scale": 1.3059003487160838,
+        "validation_unit_kl_auc": 0.00021541007629366504,
+        "test_kl_auc": 0.0002799960472859513,
+        "test_antisymmetric_effect": 0.001366996102862888,
+        "cosine_with_receptor": 0.0
+      },
+      {
+        "index": 96,
+        "orientation": -1.0,
+        "scale": 1.1339329604348598,
+        "validation_unit_kl_auc": 0.00028570071791970497,
+        "test_kl_auc": 0.0003164248808439475,
+        "test_antisymmetric_effect": 0.0002674046489927504,
+        "cosine_with_receptor": -9.313225746154785e-10
+      },
+      {
+        "index": 97,
+        "orientation": -1.0,
+        "scale": 1.2233103892175703,
+        "validation_unit_kl_auc": 0.00024547810501947726,
+        "test_kl_auc": 0.00031332241825212905,
+        "test_antisymmetric_effect": -9.75877046585083e-05,
+        "cosine_with_receptor": -1.862645149230957e-09
+      },
+      {
+        "index": 98,
+        "orientation": -1.0,
+        "scale": 1.247562631567052,
+        "validation_unit_kl_auc": 0.00023602683059683235,
+        "test_kl_auc": 0.00027316234726034355,
+        "test_antisymmetric_effect": 0.00013178752528296577,
+        "cosine_with_receptor": 0.0
+      },
+      {
+        "index": 99,
+        "orientation": 1.0,
+        "scale": 1.1818240116361944,
+        "validation_unit_kl_auc": 0.0002630149720440992,
+        "test_kl_auc": 0.00032876870985395123,
+        "test_antisymmetric_effect": 0.0005874882141749065,
+        "cosine_with_receptor": 0.0
+      },
+      {
+        "index": 100,
+        "orientation": 1.0,
+        "scale": 1.059534006282127,
+        "validation_unit_kl_auc": 0.0003272323942079917,
+        "test_kl_auc": 0.0003478974695351806,
+        "test_antisymmetric_effect": 0.0009460498889287312,
+        "cosine_with_receptor": -1.862645149230957e-09
+      },
+      {
+        "index": 101,
+        "orientation": 1.0,
+        "scale": 1.1996431279102056,
+        "validation_unit_kl_auc": 0.0002552595205618976,
+        "test_kl_auc": 0.0003097728146915162,
+        "test_antisymmetric_effect": 0.00037666658560434974,
+        "cosine_with_receptor": 1.862645149230957e-09
+      },
+      {
+        "index": 102,
+        "orientation": -1.0,
+        "scale": 1.0968652285884386,
+        "validation_unit_kl_auc": 0.0003053370825985743,
+        "test_kl_auc": 0.00034450306232732447,
+        "test_antisymmetric_effect": 0.0008177475796805487,
+        "cosine_with_receptor": 4.6566128730773926e-09
+      },
+      {
+        "index": 103,
+        "orientation": -1.0,
+        "scale": 1.0680488491933116,
+        "validation_unit_kl_auc": 0.000322035580135586,
+        "test_kl_auc": 0.0003615121944575447,
+        "test_antisymmetric_effect": 0.00029170016447703045,
+        "cosine_with_receptor": 2.7939677238464355e-09
+      },
+      {
+        "index": 104,
+        "orientation": 1.0,
+        "scale": 1.2123712250603285,
+        "validation_unit_kl_auc": 0.0002499279632957041,
+        "test_kl_auc": 0.0002981510957751096,
+        "test_antisymmetric_effect": -0.00026052362389034696,
+        "cosine_with_receptor": 3.026798367500305e-09
+      },
+      {
+        "index": 105,
+        "orientation": 1.0,
+        "scale": 1.216697945049338,
+        "validation_unit_kl_auc": 0.0002481535778239655,
+        "test_kl_auc": 0.0002959416871009227,
+        "test_antisymmetric_effect": 0.000686713390880161,
+        "cosine_with_receptor": 3.259629011154175e-09
+      },
+      {
+        "index": 106,
+        "orientation": 1.0,
+        "scale": 1.1530602171973525,
+        "validation_unit_kl_auc": 0.0002763007815929086,
+        "test_kl_auc": 0.00032774507760930445,
+        "test_antisymmetric_effect": -0.00016278690761990019,
+        "cosine_with_receptor": -1.862645149230957e-09
+      },
+      {
+        "index": 107,
+        "orientation": 1.0,
+        "scale": 1.2449764522091906,
+        "validation_unit_kl_auc": 0.0002370084422788447,
+        "test_kl_auc": 0.0002940838811203624,
+        "test_antisymmetric_effect": 0.0005339913898044162,
+        "cosine_with_receptor": 5.587935447692871e-09
+      },
+      {
+        "index": 108,
+        "orientation": -1.0,
+        "scale": 1.1983834338264399,
+        "validation_unit_kl_auc": 0.0002557964403801331,
+        "test_kl_auc": 0.0002907963817304133,
+        "test_antisymmetric_effect": 0.00020661122269100612,
+        "cosine_with_receptor": 2.561137080192566e-09
+      },
+      {
+        "index": 109,
+        "orientation": -1.0,
+        "scale": 1.1452905794489858,
+        "validation_unit_kl_auc": 0.000280062340114758,
+        "test_kl_auc": 0.0003159527988777376,
+        "test_antisymmetric_effect": 0.0018624183204438952,
+        "cosine_with_receptor": 1.862645149230957e-09
+      },
+      {
+        "index": 110,
+        "orientation": 1.0,
+        "scale": 1.2108259907885803,
+        "validation_unit_kl_auc": 0.00025056627744864574,
+        "test_kl_auc": 0.00028979761438879196,
+        "test_antisymmetric_effect": 0.001470082336001926,
+        "cosine_with_receptor": -9.313225746154785e-10
+      },
+      {
+        "index": 111,
+        "orientation": 1.0,
+        "scale": 1.295095183462807,
+        "validation_unit_kl_auc": 0.00021901946502111969,
+        "test_kl_auc": 0.00030965291469126695,
+        "test_antisymmetric_effect": -0.0008669843276341757,
+        "cosine_with_receptor": -1.862645149230957e-09
+      },
+      {
+        "index": 112,
+        "orientation": 1.0,
+        "scale": 1.2214862072119002,
+        "validation_unit_kl_auc": 0.00024621185233778914,
+        "test_kl_auc": 0.00031385433281785587,
+        "test_antisymmetric_effect": 0.0006417913569344415,
+        "cosine_with_receptor": 3.026798367500305e-09
+      },
+      {
+        "index": 113,
+        "orientation": -1.0,
+        "scale": 1.183880197294316,
+        "validation_unit_kl_auc": 0.00026210214662114595,
+        "test_kl_auc": 0.00030105050000707304,
+        "test_antisymmetric_effect": 0.0006612903541988796,
+        "cosine_with_receptor": -1.862645149230957e-09
+      },
+      {
+        "index": 114,
+        "orientation": 1.0,
+        "scale": 1.2010841040895013,
+        "validation_unit_kl_auc": 0.00025464740315328527,
+        "test_kl_auc": 0.00033062821295162494,
+        "test_antisymmetric_effect": -0.00037137998474968807,
+        "cosine_with_receptor": -1.862645149230957e-09
+      },
+      {
+        "index": 115,
+        "orientation": 1.0,
+        "scale": 1.0988970574437513,
+        "validation_unit_kl_auc": 0.00030420900759509095,
+        "test_kl_auc": 0.0003428948882881539,
+        "test_antisymmetric_effect": 0.00010212096903059217,
+        "cosine_with_receptor": -4.656612873077393e-10
+      },
+      {
+        "index": 116,
+        "orientation": 1.0,
+        "scale": 1.225184733459889,
+        "validation_unit_kl_auc": 0.0002447275920379373,
+        "test_kl_auc": 0.0003179191887486215,
+        "test_antisymmetric_effect": 0.001248740487628513,
+        "cosine_with_receptor": -3.725290298461914e-09
+      },
+      {
+        "index": 117,
+        "orientation": -1.0,
+        "scale": 1.1978811630615973,
+        "validation_unit_kl_auc": 0.0002560109959025188,
+        "test_kl_auc": 0.00031889350308726233,
+        "test_antisymmetric_effect": 0.0012854254908031887,
+        "cosine_with_receptor": -4.656612873077393e-10
+      },
+      {
+        "index": 118,
+        "orientation": 1.0,
+        "scale": 1.2378957450033123,
+        "validation_unit_kl_auc": 0.00023972755165383813,
+        "test_kl_auc": 0.0003015953263153885,
+        "test_antisymmetric_effect": 0.0007954686880111694,
+        "cosine_with_receptor": 6.984919309616089e-10
+      },
+      {
+        "index": 119,
+        "orientation": 1.0,
+        "scale": 1.1432960906244614,
+        "validation_unit_kl_auc": 0.00028104033424369845,
+        "test_kl_auc": 0.0003208483894417845,
+        "test_antisymmetric_effect": -0.00011394586828019883,
+        "cosine_with_receptor": -2.561137080192566e-09
+      },
+      {
+        "index": 120,
+        "orientation": -1.0,
+        "scale": 1.2181211806021466,
+        "validation_unit_kl_auc": 0.0002475740383260927,
+        "test_kl_auc": 0.00030075625469786854,
+        "test_antisymmetric_effect": 0.0004888375600179036,
+        "cosine_with_receptor": 1.862645149230957e-09
+      },
+      {
+        "index": 121,
+        "orientation": 1.0,
+        "scale": 1.2047353015758766,
+        "validation_unit_kl_auc": 0.0002531062197400994,
+        "test_kl_auc": 0.00029801860217857105,
+        "test_antisymmetric_effect": 0.0006672607527838813,
+        "cosine_with_receptor": 5.587935447692871e-09
+      },
+      {
+        "index": 122,
+        "orientation": 1.0,
+        "scale": 1.059956805949621,
+        "validation_unit_kl_auc": 0.000326971390829082,
+        "test_kl_auc": 0.0003414457934367318,
+        "test_antisymmetric_effect": 0.0002698285712136163,
+        "cosine_with_receptor": 8.149072527885437e-10
+      },
+      {
+        "index": 123,
+        "orientation": -1.0,
+        "scale": 1.273023684524532,
+        "validation_unit_kl_auc": 0.00022667995760154253,
+        "test_kl_auc": 0.00030617242461832776,
+        "test_antisymmetric_effect": -0.00046617123815748427,
+        "cosine_with_receptor": 2.7939677238464355e-09
+      },
+      {
+        "index": 124,
+        "orientation": -1.0,
+        "scale": 1.1739054388394685,
+        "validation_unit_kl_auc": 0.00026657527181820717,
+        "test_kl_auc": 0.0003382440698310853,
+        "test_antisymmetric_effect": 0.0014992422527737087,
+        "cosine_with_receptor": -1.979060471057892e-09
+      },
+      {
+        "index": 125,
+        "orientation": 1.0,
+        "scale": 1.2463026182592973,
+        "validation_unit_kl_auc": 0.00023650431861218144,
+        "test_kl_auc": 0.0003103778289970352,
+        "test_antisymmetric_effect": -0.0002682672606574164,
+        "cosine_with_receptor": -9.313225746154785e-10
+      },
+      {
+        "index": 126,
+        "orientation": 1.0,
+        "scale": 1.2186453478180306,
+        "validation_unit_kl_auc": 0.0002473611096244591,
+        "test_kl_auc": 0.0003063576020849723,
+        "test_antisymmetric_effect": 0.0007329881191253662,
+        "cosine_with_receptor": 9.313225746154785e-10
+      },
+      {
+        "index": 127,
+        "orientation": 1.0,
+        "scale": 1.2702803171697963,
+        "validation_unit_kl_auc": 0.00022766011591102142,
+        "test_kl_auc": 0.00029120943716204946,
+        "test_antisymmetric_effect": 0.00040323204464382597,
+        "cosine_with_receptor": 9.313225746154785e-10
+      }
+    ],
+    "q95": 0.0015479723612467446,
+    "receptor_percentile": 1.0,
+    "mean": 0.0005543839522740907,
+    "std": 0.0005563050403767026
+  },
+  "gates": {
+    "claim_group_disjoint": true,
+    "response_lengths_matched": true,
+    "sign": true,
+    "random_null": true
+  },
+  "cuda": {
+    "device": "NVIDIA GeForce GTX 1050 Ti",
+    "capability": [
+      6,
+      1
+    ],
+    "torch_version": "2.7.1+cu118",
+    "cuda_build": "11.8",
+    "device_map": {
+      "model.embed_tokens": 0,
+      "lm_head": 0,
+      "model.layers.0": 0,
+      "model.layers.1": 0,
+      "model.layers.2": 0,
+      "model.layers.3": 0,
+      "model.layers.4": 0,
+      "model.layers.5": 0,
+      "model.layers.6": 0,
+      "model.layers.7": 0,
+      "model.layers.8": 0,
+      "model.layers.9": 0,
+      "model.layers.10": 0,
+      "model.layers.11": 0,
+      "model.layers.12": 0,
+      "model.layers.13": 0,
+      "model.layers.14": 0,
+      "model.layers.15": 0,
+      "model.layers.16": 0,
+      "model.layers.17": 0,
+      "model.layers.18": 0,
+      "model.layers.19": 0,
+      "model.layers.20": 0,
+      "model.layers.21": 0,
+      "model.layers.22": 0,
+      "model.layers.23": 0,
+      "model.layers.24": 0,
+      "model.layers.25": "cpu",
+      "model.layers.26": "cpu",
+      "model.layers.27": "cpu",
+      "model.norm": "cpu",
+      "model.rotary_emb": "cpu"
+    },
+    "peak_allocated_bytes": 3186826240,
+    "peak_reserved_bytes": 3221225472
+  },
+  "elapsed_seconds": 9284.485340356827,
+  "overall_passed": true
+}

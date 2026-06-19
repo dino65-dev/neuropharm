@@ -1,0 +1,293 @@
+{
+  "experiment": "R2_receptor_geometry_audit",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "layer": 12,
+  "site": "block_input_residual_pre",
+  "seed": 20260619,
+  "claim_group_split": {
+    "construction": [
+      18,
+      40
+    ],
+    "validation": [
+      31
+    ],
+    "test": [
+      54
+    ]
+  },
+  "split_prompt_counts": {
+    "construction": 8,
+    "validation": 4,
+    "test": 4
+  },
+  "legacy_r1_test_marked_spent": true,
+  "construction_response_pairs": [
+    [
+      "I am confident that this conclusion is correct.",
+      "I am uncertain whether this conclusion is correct."
+    ],
+    [
+      "The evidence provides a clear basis for this conclusion.",
+      "The evidence provides a weak basis for this conclusion."
+    ],
+    [
+      "This conclusion has strong evidential support.",
+      "This conclusion has weak evidential support."
+    ],
+    [
+      "The evidence warrants high confidence here.",
+      "The evidence warrants low confidence here."
+    ],
+    [
+      "I consider this conclusion highly reliable.",
+      "I consider this conclusion highly uncertain."
+    ]
+  ],
+  "evaluation_response_pairs": [
+    [
+      "The evidence clearly supports this conclusion.",
+      "The evidence barely supports this conclusion."
+    ],
+    [
+      "This claim is clearly supported by evidence.",
+      "This claim is barely supported by evidence."
+    ],
+    [
+      "The result is definitely supported by evidence.",
+      "The result is possibly supported by evidence."
+    ],
+    [
+      "The conclusion is certainly supported by evidence.",
+      "The conclusion is perhaps supported by evidence."
+    ],
+    [
+      "Evidence makes this conclusion highly certain.",
+      "Evidence makes this conclusion highly uncertain."
+    ],
+    [
+      "I am highly confident in this conclusion.",
+      "I am highly uncertain about this conclusion."
+    ],
+    [
+      "This answer is definitely correct overall.",
+      "This answer is possibly correct overall."
+    ],
+    [
+      "The conclusion follows decisively from evidence.",
+      "The conclusion follows tentatively from evidence."
+    ],
+    [
+      "The evidence gives strong support overall.",
+      "The evidence gives weak support overall."
+    ],
+    [
+      "This is a well-supported conclusion overall.",
+      "This is a poorly-supported conclusion overall."
+    ],
+    [
+      "Confidence in this conclusion should be high.",
+      "Confidence in this conclusion should be low."
+    ],
+    [
+      "The evidence makes the answer quite certain.",
+      "The evidence makes the answer quite uncertain."
+    ]
+  ],
+  "response_pair_token_lengths": [
+    7,
+    8,
+    8,
+    8,
+    7,
+    8,
+    7,
+    8,
+    7,
+    8,
+    9,
+    8
+  ],
+  "teacher_forcing": true,
+  "pkpd_effect_schedule": [
+    0.20000000298023224,
+    0.1737067699432373,
+    0.1502211093902588,
+    0.12941347062587738,
+    0.1111111119389534,
+    0.09511439502239227,
+    0.08121032267808914,
+    0.06918337196111679,
+    0.36000001430511475
+  ],
+  "geometry": {
+    "n_contrasts": 8,
+    "coherence": 0.822680652141571,
+    "mean_pairwise_cosine_from_coherence": 0.6306325204663779,
+    "explained_variance": {
+      "1": 0.6742557287216187,
+      "2": 0.8386409878730774,
+      "4": 0.9573760032653809,
+      "8": 0.9999999403953552,
+      "16": 0.9999999403953552
+    },
+    "singular_values": [
+      30.736404418945312,
+      15.176522254943848,
+      9.991082191467285,
+      8.157365798950195,
+      4.868954181671143,
+      3.8094377517700195,
+      3.5234150886535645,
+      3.014824390411377
+    ],
+    "split_half": {
+      "replicates": 20,
+      "median": 0.8620158135890961,
+      "p05": 0.7074309587478638,
+      "p95": 0.9540719389915466,
+      "minimum": 0.7074309587478638,
+      "fraction_below_zero": 0.0
+    }
+  },
+  "contrast_metadata": [
+    {
+      "claim_id": 18,
+      "prompt": "Assess whether a compiler translates source code.",
+      "response_pair_index": 0,
+      "difference_norm": 15.882403373718262
+    },
+    {
+      "claim_id": 18,
+      "prompt": "What evidence supports the statement that a compiler translates source code?",
+      "response_pair_index": 1,
+      "difference_norm": 13.575812339782715
+    },
+    {
+      "claim_id": 18,
+      "prompt": "Give a concise judgment on this claim: a compiler translates source code.",
+      "response_pair_index": 2,
+      "difference_norm": 12.339971542358398
+    },
+    {
+      "claim_id": 18,
+      "prompt": "Evaluate the following statement: a compiler translates source code.",
+      "response_pair_index": 3,
+      "difference_norm": 9.676586151123047
+    },
+    {
+      "claim_id": 40,
+      "prompt": "Assess whether the derivative describes a local rate of change.",
+      "response_pair_index": 4,
+      "difference_norm": 12.648855209350586
+    },
+    {
+      "claim_id": 40,
+      "prompt": "What evidence supports the statement that the derivative describes a local rate of change?",
+      "response_pair_index": 0,
+      "difference_norm": 16.255632400512695
+    },
+    {
+      "claim_id": 40,
+      "prompt": "Give a concise judgment on this claim: the derivative describes a local rate of change.",
+      "response_pair_index": 1,
+      "difference_norm": 11.970268249511719
+    },
+    {
+      "claim_id": 40,
+      "prompt": "Evaluate the following statement: the derivative describes a local rate of change.",
+      "response_pair_index": 2,
+      "difference_norm": 12.294304847717285
+    }
+  ],
+  "receptor": {
+    "norm": 0.9999999403953552,
+    "validation_positive_delta": 0.002777576446533203,
+    "validation_negative_delta": -0.002785205841064453,
+    "validation_kl_auc": 0.00041102208342636004,
+    "test_positive_delta": 0.001568913459777832,
+    "test_negative_delta": -0.005637407302856445,
+    "test_antisymmetric_effect": 0.0036031603813171387,
+    "test_kl_auc": 0.00033449396141804755
+  },
+  "random_null": {
+    "count": 2,
+    "controls": [
+      {
+        "index": 0,
+        "orientation": 1.0,
+        "scale": 1.1873655280653799,
+        "validation_unit_kl_auc": 0.0002915387476605247,
+        "test_kl_auc": 0.00033804990016506054,
+        "test_antisymmetric_effect": 0.0008519291877746582,
+        "cosine_with_receptor": -1.6298145055770874e-09
+      },
+      {
+        "index": 1,
+        "orientation": 1.0,
+        "scale": 1.503659036551753,
+        "validation_unit_kl_auc": 0.00018178850541517022,
+        "test_kl_auc": 0.0002677435577425058,
+        "test_antisymmetric_effect": 0.0011322498321533203,
+        "cosine_with_receptor": -1.3969838619232178e-09
+      }
+    ],
+    "q95": 0.0011322498321533203,
+    "receptor_percentile": 1.0,
+    "mean": 0.0009920895099639893,
+    "std": 0.00019821662854673463
+  },
+  "gates": {
+    "claim_group_disjoint": true,
+    "response_lengths_matched": true,
+    "sign": true,
+    "random_null": true
+  },
+  "cuda": {
+    "device": "NVIDIA GeForce GTX 1050 Ti",
+    "capability": [
+      6,
+      1
+    ],
+    "torch_version": "2.7.1+cu118",
+    "cuda_build": "11.8",
+    "device_map": {
+      "model.embed_tokens": 0,
+      "lm_head": 0,
+      "model.layers.0": 0,
+      "model.layers.1": 0,
+      "model.layers.2": 0,
+      "model.layers.3": 0,
+      "model.layers.4": 0,
+      "model.layers.5": 0,
+      "model.layers.6": 0,
+      "model.layers.7": 0,
+      "model.layers.8": 0,
+      "model.layers.9": 0,
+      "model.layers.10": 0,
+      "model.layers.11": 0,
+      "model.layers.12": 0,
+      "model.layers.13": 0,
+      "model.layers.14": 0,
+      "model.layers.15": 0,
+      "model.layers.16": 0,
+      "model.layers.17": 0,
+      "model.layers.18": 0,
+      "model.layers.19": 0,
+      "model.layers.20": 0,
+      "model.layers.21": 0,
+      "model.layers.22": 0,
+      "model.layers.23": "cpu",
+      "model.layers.24": "cpu",
+      "model.layers.25": "cpu",
+      "model.layers.26": "cpu",
+      "model.layers.27": "cpu",
+      "model.norm": "cpu",
+      "model.rotary_emb": "cpu"
+    },
+    "peak_allocated_bytes": 2965323776,
+    "peak_reserved_bytes": 2996830208
+  },
+  "elapsed_seconds": 23.93033719062805,
+  "overall_passed": true
+}
