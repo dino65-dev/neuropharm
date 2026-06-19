@@ -1,0 +1,121 @@
+{
+  "experiment": "R1_receptor_identification_and_causal_alignment_stage1",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "layer": 12,
+  "site": "block_input_residual_pre",
+  "device_map": {
+    "model.embed_tokens": 0,
+    "lm_head": 0,
+    "model.layers.0": 0,
+    "model.layers.1": 0,
+    "model.layers.2": 0,
+    "model.layers.3": 0,
+    "model.layers.4": 0,
+    "model.layers.5": 0,
+    "model.layers.6": 0,
+    "model.layers.7": 0,
+    "model.layers.8": 0,
+    "model.layers.9": 0,
+    "model.layers.10": 0,
+    "model.layers.11": 0,
+    "model.layers.12": 0,
+    "model.layers.13": 0,
+    "model.layers.14": 0,
+    "model.layers.15": 0,
+    "model.layers.16": 0,
+    "model.layers.17": 0,
+    "model.layers.18": 0,
+    "model.layers.19": 0,
+    "model.layers.20": "cpu",
+    "model.layers.21": "cpu",
+    "model.layers.22": "cpu",
+    "model.layers.23": "cpu",
+    "model.layers.24": "cpu",
+    "model.layers.25": "cpu",
+    "model.layers.26": "cpu",
+    "model.layers.27": "cpu",
+    "model.norm": "cpu",
+    "model.rotary_emb": "cpu"
+  },
+  "cuda_device": "NVIDIA GeForce GTX 1050 Ti",
+  "cuda_capability": [
+    6,
+    1
+  ],
+  "torch_version": "2.7.1+cu118",
+  "cuda_build": "11.8",
+  "peak_cuda_allocated_bytes": 2381835776,
+  "peak_cuda_reserved_bytes": 2415919104,
+  "seed": 0,
+  "splits": {
+    "construction": 4,
+    "validation": 2,
+    "test": 2
+  },
+  "teacher_forcing": true,
+  "score": "length_normalized_sequence_log_odds",
+  "positive_response": "Overall, this conclusion is well supported by the available evidence.",
+  "negative_response": "Overall, this conclusion is only tentatively supported by the available evidence.",
+  "positive_tokens": 12,
+  "negative_tokens": 14,
+  "pkpd_effect_schedule": [
+    0.800000011920929,
+    0.7708306908607483,
+    0.7387961745262146,
+    0.7040031552314758,
+    0.6666666865348816,
+    0.6271151304244995,
+    0.5857865214347839,
+    0.5432137250900269,
+    0.8999999761581421,
+    0.8832876086235046,
+    0.8642034530639648,
+    0.8425551652908325,
+    0.8181818127632141,
+    0.7909713387489319
+  ],
+  "receptor_norm": 0.9999999403953552,
+  "contrast_difference_norm_mean": 13.857951879501343,
+  "contrast_difference_norm_std": 2.0255178588741387,
+  "validation": {
+    "receptor_mean_delta": 0.009708642959594727,
+    "opposite_mean_delta": -0.008658409118652344,
+    "receptor_prompt_deltas": [
+      0.00764775276184082,
+      0.011769533157348633
+    ],
+    "opposite_prompt_deltas": [
+      -0.008613824844360352,
+      -0.008702993392944336
+    ]
+  },
+  "test": {
+    "receptor_mean_delta": 0.0009686946868896484,
+    "opposite_mean_delta": -0.004201769828796387,
+    "symmetry_mean": 0.0025852322578430176,
+    "receptor_prompt_deltas": [
+      -0.0020186901092529297,
+      0.0039560794830322266
+    ],
+    "opposite_prompt_deltas": [
+      -3.0994415283203125e-06,
+      -0.008400440216064453
+    ],
+    "random_effects": [
+      0.004275798797607422,
+      0.0017145872116088867,
+      0.0016556978225708008,
+      -0.003996610641479492
+    ],
+    "random_cosine_max_abs": 3.725290298461914e-09,
+    "random_q95": 0.004275798797607422,
+    "receptor_percentile": 0.4
+  },
+  "gates": {
+    "sign": true,
+    "random_null": false,
+    "receptor_positive": true
+  },
+  "elapsed_seconds": 21.107152700424194,
+  "overall_passed": false
+}

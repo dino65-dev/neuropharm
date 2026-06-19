@@ -1,0 +1,45 @@
+{
+  "source": "artifacts\\pkpd\\r1_receptor_gpu_50_20_30_m128.json",
+  "gpu_verified": {
+    "device": "NVIDIA GeForce GTX 1050 Ti",
+    "capability": [
+      6,
+      1
+    ],
+    "torch_version": "2.7.1+cu118",
+    "cuda_build": "11.8",
+    "peak_cuda_allocated_gib": 2.2199554443359375,
+    "peak_cuda_reserved_gib": 2.25
+  },
+  "test": {
+    "receptor_mean_delta": 0.00348967711130778,
+    "receptor_95pct_prompt_bootstrap": [
+      0.0007174173990885417,
+      0.0060792207717895504
+    ],
+    "opposite_mean_delta": -0.005564451217651367,
+    "opposite_95pct_prompt_bootstrap": [
+      -0.008182136217753093,
+      -0.0026807149251302084
+    ],
+    "symmetry_mean": 0.004527064164479574,
+    "symmetry_95pct_prompt_bootstrap": [
+      0.0017775893211364746,
+      0.0070717096328735355
+    ],
+    "random_count": 128,
+    "random_mean": -0.0008486870676279068,
+    "random_std": 0.0055269786455827,
+    "random_min": -0.01717998186747233,
+    "random_max": 0.010943984985351563,
+    "random_q95": 0.00859072208404541,
+    "receptor_percentile": 0.751937984496124
+  },
+  "gates": {
+    "sign": true,
+    "symmetry": true,
+    "random_null": false
+  },
+  "overall_passed": false,
+  "decision": "Do not enable tolerance or homeostasis. The receptor has a replicated signed effect but does not exceed the matched random direction null."
+}
