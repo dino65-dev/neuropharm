@@ -4,15 +4,17 @@ This experiment repairs the remaining R1 confounds:
 
 * claim IDs, not prompt rows, define train/validation/test splits;
 * all response alternatives are tokenizer-length matched;
-* twelve held-out response pairs are averaged;
+* twelve held-out response pairs are distributed across evaluation contexts;
 * random directions use the identical PK/PD temporal schedule;
 * random orientation is selected on validation and fixed on test;
 * the test statistic is antisymmetric: (effect(+v) - effect(-v)) / 2;
+* a single bolus gives every response length the same dosing protocol;
 * random controls are approximately matched to the receptor's validation
   KL-AUC using an empirical local quadratic scaling.
 
-It also performs the R2 contrast geometry audit: coherence, pairwise cosine,
-SVD explained variance, and 500 split-half stability replicates.
+It also performs the R2 contrast geometry audit: raw and centered spectra,
+effective rank, claim-grouped split halves, claim bootstrap, and leave-group-
+out stability.
 """
 from __future__ import annotations
 
@@ -98,6 +100,26 @@ CLAIMS = [
     "distributed systems can experience partial failure",
     "retries can amplify load during outages",
 ]
+
+CLAIM_DOMAINS = [
+    "health", "finance", "general_knowledge", "health", "science",
+    "software", "mathematics", "health", "software", "security",
+    "science", "research_methods", "computing", "research_methods",
+    "science", "finance", "computing", "statistics", "computing", "health",
+    "research_methods", "software", "mathematics", "research_methods",
+    "research_methods", "health", "software", "research_methods", "science",
+    "software", "security", "security", "software", "research_methods",
+    "statistics", "research_methods", "computing", "security", "software",
+    "systems", "mathematics", "mathematics", "machine_learning",
+    "machine_learning", "machine_learning", "research_methods",
+    "machine_learning", "machine_learning", "machine_learning",
+    "machine_learning", "research_methods", "research_methods",
+    "research_methods", "statistics", "statistics", "computing",
+    "machine_learning", "machine_learning", "systems", "systems",
+]
+
+if len(CLAIMS) != len(CLAIM_DOMAINS):
+    raise RuntimeError("CLAIMS and CLAIM_DOMAINS must have equal length")
 
 QUESTION_TEMPLATES = [
     "Assess whether {claim}.",
@@ -231,7 +253,10 @@ def make_pkpd_effects(steps: int, dose: float) -> list[float]:
         desensitization=torch.zeros(1, device="cuda"),
     ))
     state = model.initial_state()
-    schedule = protocol_schedule("pulses", dose=dose, stop=steps)
+    # Receptor identification uses a single bolus. Repeated pulses belong to
+    # later pharmacodynamic experiments and would otherwise expose 9-token
+    # response templates to a second dose that 7/8-token templates never see.
+    schedule = protocol_schedule("bolus", dose=dose, stop=steps)
     effects = []
     for step_index in range(steps):
         step = model.step(
@@ -283,6 +308,7 @@ def capture_contrast_matrix(
         differences.append(difference)
         metadata.append({
             "claim_id": claim_id,
+            "domain": CLAIM_DOMAINS[claim_id],
             "prompt": prompt,
             "response_pair_index": row_index % len(CONSTRUCTION_RESPONSE_PAIRS),
             "difference_norm": float(difference.norm().item()),
@@ -290,8 +316,65 @@ def capture_contrast_matrix(
     return torch.stack(differences), metadata
 
 
+def spectrum(values: torch.Tensor) -> dict[str, Any]:
+    singular_values = torch.linalg.svdvals(values)
+    squared = singular_values.square()
+    total = squared.sum()
+    probabilities = squared / total.clamp_min(1e-30)
+    cumulative = torch.cumsum(probabilities, dim=0)
+    explained = {
+        str(k): float(cumulative[min(k, len(cumulative)) - 1].item())
+        for k in (1, 2, 4, 8, 16)
+    }
+    positive_probabilities = probabilities[probabilities > 0]
+    effective_rank = float(
+        torch.exp(
+            -(positive_probabilities * torch.log(positive_probabilities)).sum()
+        ).item()
+    )
+    return {
+        "explained_variance": explained,
+        "effective_rank": effective_rank,
+        "singular_values": [float(value) for value in singular_values.cpu()],
+    }
+
+
+def grouped_mean(
+    differences: torch.Tensor,
+    row_indices_by_claim: dict[int, list[int]],
+    claim_ids: list[int],
+) -> torch.Tensor:
+    indices = [
+        row_index
+        for claim_id in claim_ids
+        for row_index in row_indices_by_claim[claim_id]
+    ]
+    return differences[indices].mean(dim=0)
+
+
+def cosine_with_full(candidate: torch.Tensor, full: torch.Tensor) -> float:
+    return float(
+        torch.nn.functional.cosine_similarity(
+            candidate.unsqueeze(0), full.unsqueeze(0)
+        ).item()
+    )
+
+
+def summarize(values: list[float]) -> dict[str, float]:
+    ordered = sorted(values)
+    n = len(values)
+    return {
+        "median": statistics.median(values),
+        "p05": ordered[int(0.05 * n)],
+        "p95": ordered[min(n - 1, math.ceil(0.95 * n) - 1)],
+        "minimum": min(values),
+        "fraction_below_zero": sum(value < 0 for value in values) / n,
+    }
+
+
 def geometry_audit(
     differences: torch.Tensor,
+    metadata: list[dict[str, Any]],
     seed: int,
     split_half_replicates: int,
 ) -> dict[str, Any]:
@@ -299,38 +382,115 @@ def geometry_audit(
     coherence = float(unit.mean(dim=0).norm().item())
     n = differences.shape[0]
     mean_pairwise = (n * coherence**2 - 1) / (n - 1)
-    singular_values = torch.linalg.svdvals(differences)
-    squared = singular_values.square()
-    cumulative = torch.cumsum(squared, dim=0) / squared.sum()
-    explained = {
-        str(k): float(cumulative[min(k, len(cumulative)) - 1].item())
-        for k in (1, 2, 4, 8, 16)
-    }
+    mean = differences.mean(dim=0)
+    centered = differences - mean
+    raw_spectrum = spectrum(differences)
+    centered_spectrum = spectrum(centered)
+    row_indices_by_claim: dict[int, list[int]] = {}
+    for row_index, row in enumerate(metadata):
+        row_indices_by_claim.setdefault(int(row["claim_id"]), []).append(row_index)
+    claim_ids = sorted(row_indices_by_claim)
+    if any(len(indices) != len(QUESTION_TEMPLATES) for indices in row_indices_by_claim.values()):
+        raise ValueError("each construction claim must contribute every question template")
+
     generator = torch.Generator(device="cpu").manual_seed(seed)
-    cosines = []
+    split_half_cosines = []
     for _ in range(split_half_replicates):
-        permutation = torch.randperm(n, generator=generator)
-        midpoint = n // 2
-        left = differences[permutation[:midpoint]].mean(dim=0)
-        right = differences[permutation[midpoint:]].mean(dim=0)
+        permutation = torch.randperm(len(claim_ids), generator=generator)
+        midpoint = len(claim_ids) // 2
+        left_claims = [claim_ids[index] for index in permutation[:midpoint].tolist()]
+        right_claims = [claim_ids[index] for index in permutation[midpoint:].tolist()]
+        left = grouped_mean(differences, row_indices_by_claim, left_claims)
+        right = grouped_mean(differences, row_indices_by_claim, right_claims)
         cosine = torch.nn.functional.cosine_similarity(
             left.unsqueeze(0), right.unsqueeze(0)
         )
-        cosines.append(float(cosine.item()))
-    ordered = sorted(cosines)
+        split_half_cosines.append(float(cosine.item()))
+
+    bootstrap_cosines = []
+    bootstrap_generator = random.Random(seed)
+    for _ in range(split_half_replicates):
+        sampled_claims = [
+            claim_ids[bootstrap_generator.randrange(len(claim_ids))]
+            for _ in claim_ids
+        ]
+        candidate = grouped_mean(
+            differences, row_indices_by_claim, sampled_claims
+        )
+        bootstrap_cosines.append(cosine_with_full(candidate, mean))
+
+    leave_one_claim_out = {
+        str(claim_id): cosine_with_full(
+            grouped_mean(
+                differences,
+                row_indices_by_claim,
+                [other for other in claim_ids if other != claim_id],
+            ),
+            mean,
+        )
+        for claim_id in claim_ids
+    }
+    construction_domains = sorted(
+        {str(row["domain"]) for row in metadata}
+    )
+    leave_one_domain_out = {}
+    for domain in construction_domains:
+        retained_indices = [
+            index
+            for index, row in enumerate(metadata)
+            if row["domain"] != domain
+        ]
+        if not retained_indices:
+            continue
+        leave_one_domain_out[domain] = cosine_with_full(
+            differences[retained_indices].mean(dim=0), mean
+        )
+    template_indices = sorted(
+        {int(row["response_pair_index"]) for row in metadata}
+    )
+    leave_one_response_pair_out = {
+        str(template_index): cosine_with_full(
+            differences[
+                [
+                    row_index
+                    for row_index, row in enumerate(metadata)
+                    if int(row["response_pair_index"]) != template_index
+                ]
+            ].mean(dim=0),
+            mean,
+        )
+        for template_index in template_indices
+    }
+
     return {
         "n_contrasts": n,
+        "n_claims": len(claim_ids),
         "coherence": coherence,
         "mean_pairwise_cosine_from_coherence": mean_pairwise,
-        "explained_variance": explained,
-        "singular_values": [float(value) for value in singular_values.cpu()],
-        "split_half": {
+        "raw_spectrum": raw_spectrum,
+        "centered_spectrum": centered_spectrum,
+        "claim_grouped_split_half": {
             "replicates": split_half_replicates,
-            "median": statistics.median(cosines),
-            "p05": ordered[int(0.05 * split_half_replicates)],
-            "p95": ordered[int(0.95 * split_half_replicates) - 1],
-            "minimum": min(cosines),
-            "fraction_below_zero": sum(value < 0 for value in cosines) / len(cosines),
+            **summarize(split_half_cosines),
+        },
+        "claim_bootstrap": {
+            "replicates": split_half_replicates,
+            **summarize(bootstrap_cosines),
+        },
+        "leave_one_claim_out": {
+            "cosines": leave_one_claim_out,
+            "minimum": min(leave_one_claim_out.values()),
+            "median": statistics.median(leave_one_claim_out.values()),
+        },
+        "leave_one_domain_out": {
+            "cosines": leave_one_domain_out,
+            "minimum": min(leave_one_domain_out.values()),
+            "median": statistics.median(leave_one_domain_out.values()),
+        },
+        "leave_one_construction_response_pair_out": {
+            "cosines": leave_one_response_pair_out,
+            "minimum": min(leave_one_response_pair_out.values()),
+            "median": statistics.median(leave_one_response_pair_out.values()),
         },
     }
 
@@ -570,6 +730,11 @@ def main() -> None:
     parser.add_argument("--batch-size", type=int, default=4)
     parser.add_argument("--offload-folder", type=Path, default=Path("artifacts/_cache/r2_offload"))
     parser.add_argument("--output", type=Path, default=Path("artifacts/pkpd/r2_geometry_gpu.json"))
+    parser.add_argument(
+        "--contrast-output",
+        type=Path,
+        default=Path("artifacts/pkpd/r2_contrast_matrix.pt"),
+    )
     args = parser.parse_args()
 
     torch.manual_seed(args.seed)
@@ -591,8 +756,16 @@ def main() -> None:
         model, tokenizer, rows["construction"], args.layer
     )
     geometry = geometry_audit(
-        differences, args.seed, args.split_half_replicates
+        differences, contrast_metadata, args.seed, args.split_half_replicates
     )
+    args.contrast_output.parent.mkdir(parents=True, exist_ok=True)
+    torch.save({
+        "differences": differences.detach().cpu(),
+        "metadata": contrast_metadata,
+        "layer": args.layer,
+        "site": "block_input_residual_pre",
+        "claim_group_split": split_ids,
+    }, args.contrast_output)
     receptor = differences.mean(dim=0)
     receptor = receptor / receptor.norm().clamp_min(1e-12)
     max_steps = max(pair_lengths)
@@ -680,6 +853,10 @@ def main() -> None:
 
     random_effects = [row["test_antisymmetric_effect"] for row in random_null]
     q95 = quantile(random_effects, 0.95)
+    exceedances = sum(
+        value >= receptor_test_antisymmetric for value in random_effects
+    )
+    empirical_p = (exceedances + 1) / (len(random_effects) + 1)
     percentile = (
         1 + sum(value <= receptor_test_antisymmetric for value in random_effects)
     ) / (len(random_effects) + 1)
@@ -696,7 +873,9 @@ def main() -> None:
         "evaluation_response_pairs": EVALUATION_RESPONSE_PAIRS,
         "response_pair_token_lengths": pair_lengths,
         "teacher_forcing": True,
+        "administration_protocol": "single_bolus_no_repeated_pulse",
         "pkpd_effect_schedule": effects,
+        "contrast_matrix_artifact": str(args.contrast_output),
         "geometry": geometry,
         "contrast_metadata": contrast_metadata,
         "receptor": {
@@ -716,6 +895,8 @@ def main() -> None:
             "controls": random_null,
             "q95": q95,
             "receptor_percentile": percentile,
+            "receptor_exceedances": exceedances,
+            "empirical_p_plus_one": empirical_p,
             "mean": statistics.fmean(random_effects),
             "std": statistics.stdev(random_effects),
         },

@@ -47,10 +47,11 @@ def main() -> None:
         math.ceil(0.95 * len(conservative_effects)) - 1
     ]
     geometry = payload["geometry"]
-    ev = geometry["explained_variance"]
-    if ev["1"] >= 0.8:
+    raw_ev = geometry["raw_spectrum"]["explained_variance"]
+    centered_ev = geometry["centered_spectrum"]["explained_variance"]
+    if raw_ev["1"] >= 0.8 and centered_ev["1"] >= 0.5:
         geometry_case = "A_coherent_rank_one"
-    elif ev["4"] >= 0.85 and geometry["coherence"] >= 0.5:
+    elif centered_ev["4"] >= 0.75 and geometry["coherence"] >= 0.5:
         geometry_case = "B_coherent_low_rank"
     else:
         geometry_case = "C_high_rank_or_context_dependent"
@@ -76,8 +77,15 @@ def main() -> None:
             "case": geometry_case,
             "coherence": geometry["coherence"],
             "mean_pairwise_cosine": geometry["mean_pairwise_cosine_from_coherence"],
-            "explained_variance": ev,
-            "split_half": geometry["split_half"],
+            "raw_spectrum": geometry["raw_spectrum"],
+            "centered_spectrum": geometry["centered_spectrum"],
+            "claim_grouped_split_half": geometry["claim_grouped_split_half"],
+            "claim_bootstrap": geometry["claim_bootstrap"],
+            "leave_one_claim_out": geometry["leave_one_claim_out"],
+            "leave_one_domain_out": geometry["leave_one_domain_out"],
+            "leave_one_construction_response_pair_out": (
+                geometry["leave_one_construction_response_pair_out"]
+            ),
         },
         "causal_test": {
             "receptor_validation_positive_delta": receptor["validation_positive_delta"],
@@ -87,7 +95,14 @@ def main() -> None:
             "receptor_test_antisymmetric_effect": receptor["test_antisymmetric_effect"],
             "random_count": len(random_effects),
             "random_q95": payload["random_null"]["q95"],
-            "receptor_percentile": payload["random_null"]["receptor_percentile"],
+            "random_exceedances": payload["random_null"]["receptor_exceedances"],
+            "empirical_p_plus_one": payload["random_null"]["empirical_p_plus_one"],
+            "monte_carlo_statement": (
+                f"The receptor exceeded "
+                f"{len(random_effects) - payload['random_null']['receptor_exceedances']}"
+                f"/{len(random_effects)} matched random controls; empirical "
+                f"p={payload['random_null']['empirical_p_plus_one']:.4f}."
+            ),
             "conservative_test_kl_rescaled_random_q95": conservative_q95,
         },
         "disturbance_matching": {
@@ -108,7 +123,22 @@ def main() -> None:
                 receptor["test_antisymmetric_effect"] > conservative_q95
             ),
             "disturbance_match_within_20pct": 0.8 <= kl_ratio <= 1.2,
-            "split_half_identifiable": geometry["split_half"]["p05"] > 0.8,
+            "claim_grouped_split_half_identifiable": (
+                geometry["claim_grouped_split_half"]["p05"] > 0.8
+            ),
+            "claim_bootstrap_identifiable": (
+                geometry["claim_bootstrap"]["p05"] > 0.8
+            ),
+            "leave_one_claim_stable": (
+                geometry["leave_one_claim_out"]["minimum"] > 0.8
+            ),
+            "leave_one_domain_stable": (
+                geometry["leave_one_domain_out"]["minimum"] > 0.8
+            ),
+            "leave_one_response_pair_stable": (
+                geometry["leave_one_construction_response_pair_out"]["minimum"]
+                > 0.8
+            ),
         },
     }
     analysis["overall_passed"] = all(analysis["gates"].values())
@@ -124,4 +154,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

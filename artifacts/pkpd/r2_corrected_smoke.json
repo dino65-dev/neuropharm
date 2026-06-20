@@ -1,0 +1,444 @@
+{
+  "experiment": "R2_receptor_geometry_audit",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "layer": 12,
+  "site": "block_input_residual_pre",
+  "seed": 20260619,
+  "claim_group_split": {
+    "construction": [
+      18,
+      40,
+      31,
+      54
+    ],
+    "validation": [
+      23,
+      19
+    ],
+    "test": [
+      0,
+      35
+    ]
+  },
+  "split_prompt_counts": {
+    "construction": 16,
+    "validation": 8,
+    "test": 8
+  },
+  "legacy_r1_test_marked_spent": true,
+  "construction_response_pairs": [
+    [
+      "I am confident that this conclusion is correct.",
+      "I am uncertain whether this conclusion is correct."
+    ],
+    [
+      "The evidence provides a clear basis for this conclusion.",
+      "The evidence provides a weak basis for this conclusion."
+    ],
+    [
+      "This conclusion has strong evidential support.",
+      "This conclusion has weak evidential support."
+    ],
+    [
+      "The evidence warrants high confidence here.",
+      "The evidence warrants low confidence here."
+    ],
+    [
+      "I consider this conclusion highly reliable.",
+      "I consider this conclusion highly uncertain."
+    ]
+  ],
+  "evaluation_response_pairs": [
+    [
+      "The evidence clearly supports this conclusion.",
+      "The evidence barely supports this conclusion."
+    ],
+    [
+      "This claim is clearly supported by evidence.",
+      "This claim is barely supported by evidence."
+    ],
+    [
+      "The result is definitely supported by evidence.",
+      "The result is possibly supported by evidence."
+    ],
+    [
+      "The conclusion is certainly supported by evidence.",
+      "The conclusion is perhaps supported by evidence."
+    ],
+    [
+      "Evidence makes this conclusion highly certain.",
+      "Evidence makes this conclusion highly uncertain."
+    ],
+    [
+      "I am highly confident in this conclusion.",
+      "I am highly uncertain about this conclusion."
+    ],
+    [
+      "This answer is definitely correct overall.",
+      "This answer is possibly correct overall."
+    ],
+    [
+      "The conclusion follows decisively from evidence.",
+      "The conclusion follows tentatively from evidence."
+    ],
+    [
+      "The evidence gives strong support overall.",
+      "The evidence gives weak support overall."
+    ],
+    [
+      "This is a well-supported conclusion overall.",
+      "This is a poorly-supported conclusion overall."
+    ],
+    [
+      "Confidence in this conclusion should be high.",
+      "Confidence in this conclusion should be low."
+    ],
+    [
+      "The evidence makes the answer quite certain.",
+      "The evidence makes the answer quite uncertain."
+    ]
+  ],
+  "response_pair_token_lengths": [
+    7,
+    8,
+    8,
+    8,
+    7,
+    8,
+    7,
+    8,
+    7,
+    8,
+    9,
+    8
+  ],
+  "teacher_forcing": true,
+  "administration_protocol": "single_bolus_no_repeated_pulse",
+  "pkpd_effect_schedule": [
+    0.20000000298023224,
+    0.1737067699432373,
+    0.1502211093902588,
+    0.12941347062587738,
+    0.1111111119389534,
+    0.09511439502239227,
+    0.08121032267808914,
+    0.06918337196111679,
+    0.05882352963089943
+  ],
+  "contrast_matrix_artifact": "artifacts\\pkpd\\r2_corrected_smoke_contrasts.pt",
+  "geometry": {
+    "n_contrasts": 16,
+    "n_claims": 4,
+    "coherence": 0.8010575175285339,
+    "mean_pairwise_cosine_from_coherence": 0.6178060228149093,
+    "raw_spectrum": {
+      "explained_variance": {
+        "1": 0.6456406712532043,
+        "2": 0.8010367155075073,
+        "4": 0.9250693917274475,
+        "8": 0.9690644145011902,
+        "16": 0.9999999403953552
+      },
+      "effective_rank": 3.5831310749053955,
+      "singular_values": [
+        41.07115173339844,
+        20.149368286132812,
+        14.664554595947266,
+        10.440596580505371,
+        6.654748916625977,
+        5.317196369171143,
+        4.8996500968933105,
+        4.287097454071045,
+        3.975471019744873,
+        3.7350411415100098,
+        3.32316255569458,
+        3.134810209274292,
+        2.997772216796875,
+        2.9467761516571045,
+        2.6805968284606934,
+        2.3115382194519043
+      ]
+    },
+    "centered_spectrum": {
+      "explained_variance": {
+        "1": 0.4503488540649414,
+        "2": 0.6792904734611511,
+        "4": 0.8442598581314087,
+        "8": 0.9337539672851562,
+        "16": 1.0
+      },
+      "effective_rank": 5.705280303955078,
+      "singular_values": [
+        21.10123062133789,
+        15.04511833190918,
+        10.511331558227539,
+        7.253816604614258,
+        5.4760003089904785,
+        4.915236949920654,
+        4.289576053619385,
+        3.992068290710449,
+        3.743077039718628,
+        3.3477320671081543,
+        3.136573314666748,
+        3.0063252449035645,
+        2.9774506092071533,
+        2.6816768646240234,
+        2.312385082244873,
+        7.888023674240685e-07
+      ]
+    },
+    "claim_grouped_split_half": {
+      "replicates": 20,
+      "median": 0.9719220399856567,
+      "p05": 0.9672184586524963,
+      "p95": 0.9730435609817505,
+      "minimum": 0.9672184586524963,
+      "fraction_below_zero": 0.0
+    },
+    "claim_bootstrap": {
+      "replicates": 20,
+      "median": 0.9961375296115875,
+      "p05": 0.9878708124160767,
+      "p95": 1.0,
+      "minimum": 0.9869926571846008,
+      "fraction_below_zero": 0.0
+    },
+    "leave_one_claim_out": {
+      "cosines": {
+        "18": 0.9968357086181641,
+        "31": 0.9976885318756104,
+        "40": 0.9980443120002747,
+        "54": 0.9975841641426086
+      },
+      "minimum": 0.9968357086181641,
+      "median": 0.9976363480091095
+    },
+    "leave_one_domain_out": {
+      "cosines": {
+        "computing": 0.9968357086181641,
+        "mathematics": 0.9980443120002747,
+        "security": 0.9976885318756104,
+        "statistics": 0.9975841641426086
+      },
+      "minimum": 0.9968357086181641,
+      "median": 0.9976363480091095
+    },
+    "leave_one_construction_response_pair_out": {
+      "cosines": {
+        "0": 0.9535118937492371,
+        "1": 0.987113356590271,
+        "2": 0.9922283887863159,
+        "3": 0.9946918487548828,
+        "4": 0.9866838455200195
+      },
+      "minimum": 0.9535118937492371,
+      "median": 0.987113356590271
+    }
+  },
+  "contrast_metadata": [
+    {
+      "claim_id": 18,
+      "domain": "computing",
+      "prompt": "Assess whether a compiler translates source code.",
+      "response_pair_index": 0,
+      "difference_norm": 15.882403373718262
+    },
+    {
+      "claim_id": 18,
+      "domain": "computing",
+      "prompt": "What evidence supports the statement that a compiler translates source code?",
+      "response_pair_index": 1,
+      "difference_norm": 13.575812339782715
+    },
+    {
+      "claim_id": 18,
+      "domain": "computing",
+      "prompt": "Give a concise judgment on this claim: a compiler translates source code.",
+      "response_pair_index": 2,
+      "difference_norm": 12.339971542358398
+    },
+    {
+      "claim_id": 18,
+      "domain": "computing",
+      "prompt": "Evaluate the following statement: a compiler translates source code.",
+      "response_pair_index": 3,
+      "difference_norm": 9.676586151123047
+    },
+    {
+      "claim_id": 40,
+      "domain": "mathematics",
+      "prompt": "Assess whether the derivative describes a local rate of change.",
+      "response_pair_index": 4,
+      "difference_norm": 12.648855209350586
+    },
+    {
+      "claim_id": 40,
+      "domain": "mathematics",
+      "prompt": "What evidence supports the statement that the derivative describes a local rate of change?",
+      "response_pair_index": 0,
+      "difference_norm": 16.255632400512695
+    },
+    {
+      "claim_id": 40,
+      "domain": "mathematics",
+      "prompt": "Give a concise judgment on this claim: the derivative describes a local rate of change.",
+      "response_pair_index": 1,
+      "difference_norm": 11.970268249511719
+    },
+    {
+      "claim_id": 40,
+      "domain": "mathematics",
+      "prompt": "Evaluate the following statement: the derivative describes a local rate of change.",
+      "response_pair_index": 2,
+      "difference_norm": 12.294304847717285
+    },
+    {
+      "claim_id": 31,
+      "domain": "security",
+      "prompt": "Assess whether encryption protects data confidentiality.",
+      "response_pair_index": 3,
+      "difference_norm": 9.416797637939453
+    },
+    {
+      "claim_id": 31,
+      "domain": "security",
+      "prompt": "What evidence supports the statement that encryption protects data confidentiality?",
+      "response_pair_index": 4,
+      "difference_norm": 11.53924560546875
+    },
+    {
+      "claim_id": 31,
+      "domain": "security",
+      "prompt": "Give a concise judgment on this claim: encryption protects data confidentiality.",
+      "response_pair_index": 0,
+      "difference_norm": 14.898836135864258
+    },
+    {
+      "claim_id": 31,
+      "domain": "security",
+      "prompt": "Evaluate the following statement: encryption protects data confidentiality.",
+      "response_pair_index": 1,
+      "difference_norm": 12.914058685302734
+    },
+    {
+      "claim_id": 54,
+      "domain": "statistics",
+      "prompt": "Assess whether median statistics are robust to extreme values.",
+      "response_pair_index": 2,
+      "difference_norm": 11.76831340789795
+    },
+    {
+      "claim_id": 54,
+      "domain": "statistics",
+      "prompt": "What evidence supports the statement that median statistics are robust to extreme values?",
+      "response_pair_index": 3,
+      "difference_norm": 9.954543113708496
+    },
+    {
+      "claim_id": 54,
+      "domain": "statistics",
+      "prompt": "Give a concise judgment on this claim: median statistics are robust to extreme values.",
+      "response_pair_index": 4,
+      "difference_norm": 10.77039909362793
+    },
+    {
+      "claim_id": 54,
+      "domain": "statistics",
+      "prompt": "Evaluate the following statement: median statistics are robust to extreme values.",
+      "response_pair_index": 0,
+      "difference_norm": 15.727377891540527
+    }
+  ],
+  "receptor": {
+    "norm": 1.0,
+    "validation_positive_delta": 0.005437135696411133,
+    "validation_negative_delta": -0.002805173397064209,
+    "validation_kl_auc": 0.00045083246232024976,
+    "test_positive_delta": 0.003800302743911743,
+    "test_negative_delta": -0.005520910024642944,
+    "test_antisymmetric_effect": 0.004660606384277344,
+    "test_kl_auc": 0.0005125528396092704
+  },
+  "random_null": {
+    "count": 2,
+    "controls": [
+      {
+        "index": 0,
+        "orientation": -1.0,
+        "scale": 1.1767925771962915,
+        "validation_unit_kl_auc": 0.00032554823064856464,
+        "test_kl_auc": 0.0003855746531371551,
+        "test_antisymmetric_effect": -1.582503318786621e-05,
+        "cosine_with_receptor": 0.0
+      },
+      {
+        "index": 1,
+        "orientation": 1.0,
+        "scale": 1.3857285120603158,
+        "validation_unit_kl_auc": 0.00023477879767597187,
+        "test_kl_auc": 0.00030938993813833804,
+        "test_antisymmetric_effect": 0.0009519755840301514,
+        "cosine_with_receptor": 1.862645149230957e-09
+      }
+    ],
+    "q95": 0.0009519755840301514,
+    "receptor_percentile": 1.0,
+    "receptor_exceedances": 0,
+    "empirical_p_plus_one": 0.3333333333333333,
+    "mean": 0.0004680752754211426,
+    "std": 0.0006843383792713864
+  },
+  "gates": {
+    "claim_group_disjoint": true,
+    "response_lengths_matched": true,
+    "sign": true,
+    "random_null": true
+  },
+  "cuda": {
+    "device": "NVIDIA GeForce GTX 1050 Ti",
+    "capability": [
+      6,
+      1
+    ],
+    "torch_version": "2.7.1+cu118",
+    "cuda_build": "11.8",
+    "device_map": {
+      "model.embed_tokens": 0,
+      "lm_head": 0,
+      "model.layers.0": 0,
+      "model.layers.1": 0,
+      "model.layers.2": 0,
+      "model.layers.3": 0,
+      "model.layers.4": 0,
+      "model.layers.5": 0,
+      "model.layers.6": 0,
+      "model.layers.7": 0,
+      "model.layers.8": 0,
+      "model.layers.9": 0,
+      "model.layers.10": 0,
+      "model.layers.11": 0,
+      "model.layers.12": 0,
+      "model.layers.13": 0,
+      "model.layers.14": 0,
+      "model.layers.15": 0,
+      "model.layers.16": 0,
+      "model.layers.17": 0,
+      "model.layers.18": 0,
+      "model.layers.19": 0,
+      "model.layers.20": 0,
+      "model.layers.21": 0,
+      "model.layers.22": 0,
+      "model.layers.23": 0,
+      "model.layers.24": 0,
+      "model.layers.25": "cpu",
+      "model.layers.26": "cpu",
+      "model.layers.27": "cpu",
+      "model.norm": "cpu",
+      "model.rotary_emb": "cpu"
+    },
+    "peak_allocated_bytes": 3146277376,
+    "peak_reserved_bytes": 3181379584
+  },
+  "elapsed_seconds": 50.54535984992981,
+  "overall_passed": true
+}
