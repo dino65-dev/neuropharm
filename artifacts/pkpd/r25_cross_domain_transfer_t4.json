@@ -1,0 +1,877 @@
+{
+  "experiment": "R2.5_cross_domain_causal_transfer",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "layer": 12,
+  "site": "block_input_residual_pre",
+  "administration_protocol": "single_bolus_no_repeated_pulse",
+  "effect_schedule": [
+    0.20000000298023224,
+    0.1737067699432373,
+    0.1502211093902588,
+    0.12941347062587738,
+    0.1111111119389534,
+    0.09511439502239227,
+    0.08121032267808914,
+    0.06918337196111679,
+    0.05882352963089943
+  ],
+  "construction_domain_claim_counts": {
+    "computing": 3,
+    "mathematics": 1,
+    "security": 3,
+    "statistics": 1,
+    "research_methods": 6,
+    "health": 5,
+    "software": 4,
+    "general_knowledge": 1,
+    "finance": 1,
+    "machine_learning": 3,
+    "science": 1,
+    "systems": 1
+  },
+  "test_domain_claim_ids": {
+    "science": [
+      10
+    ],
+    "machine_learning": [
+      56,
+      46,
+      48,
+      44
+    ],
+    "statistics": [
+      53,
+      34
+    ],
+    "systems": [
+      58,
+      59
+    ],
+    "research_methods": [
+      24,
+      13,
+      52
+    ],
+    "security": [
+      37
+    ],
+    "computing": [
+      36
+    ],
+    "mathematics": [
+      41,
+      6,
+      22
+    ],
+    "software": [
+      21
+    ]
+  },
+  "full_receptor_transfer": {
+    "computing": {
+      "positive_delta": 0.004673004150390625,
+      "negative_delta": -0.006707489490509033,
+      "antisymmetric_effect": 0.005690246820449829,
+      "kl_auc": 0.0005413527942437213
+    },
+    "machine_learning": {
+      "positive_delta": 0.004731267690658569,
+      "negative_delta": -0.004906639456748962,
+      "antisymmetric_effect": 0.004818953573703766,
+      "kl_auc": 0.00041345228987665905
+    },
+    "mathematics": {
+      "positive_delta": 0.004253268241882324,
+      "negative_delta": -0.003257314364115397,
+      "antisymmetric_effect": 0.0037552913029988604,
+      "kl_auc": 0.0003285639850219013
+    },
+    "research_methods": {
+      "positive_delta": 0.0055936773618062334,
+      "negative_delta": -0.005817115306854248,
+      "antisymmetric_effect": 0.00570539633433024,
+      "kl_auc": 0.0004280687977977019
+    },
+    "science": {
+      "positive_delta": 0.0029243826866149902,
+      "negative_delta": -0.003896653652191162,
+      "antisymmetric_effect": 0.003410518169403076,
+      "kl_auc": 0.0002827609423547983
+    },
+    "security": {
+      "positive_delta": 0.005060076713562012,
+      "negative_delta": -0.0021593570709228516,
+      "antisymmetric_effect": 0.0036097168922424316,
+      "kl_auc": 0.0005467272403620882
+    },
+    "software": {
+      "positive_delta": 0.003972768783569336,
+      "negative_delta": -0.00346982479095459,
+      "antisymmetric_effect": 0.003721296787261963,
+      "kl_auc": 0.00039934423057275126
+    },
+    "statistics": {
+      "positive_delta": 0.0060034096240997314,
+      "negative_delta": -0.004319936037063599,
+      "antisymmetric_effect": 0.005161672830581665,
+      "kl_auc": 0.00038610014780715574
+    },
+    "systems": {
+      "positive_delta": 0.0047051310539245605,
+      "negative_delta": -0.004932433366775513,
+      "antisymmetric_effect": 0.004818782210350037,
+      "kl_auc": 0.0004042473296976823
+    }
+  },
+  "leave_target_domain_out_transfer": {
+    "computing": {
+      "positive_delta": 0.00614166259765625,
+      "negative_delta": -0.004181027412414551,
+      "antisymmetric_effect": 0.0051613450050354,
+      "kl_auc": 0.0005326522696122993
+    },
+    "machine_learning": {
+      "positive_delta": 0.004546001553535461,
+      "negative_delta": -0.005256161093711853,
+      "antisymmetric_effect": 0.004901081323623657,
+      "kl_auc": 0.0004178549839934931
+    },
+    "mathematics": {
+      "positive_delta": 0.005122542381286621,
+      "negative_delta": -0.0038178364435831704,
+      "antisymmetric_effect": 0.0044701894124348955,
+      "kl_auc": 0.00032389161272779654
+    },
+    "research_methods": {
+      "positive_delta": 0.005100707213083903,
+      "negative_delta": -0.005362391471862793,
+      "antisymmetric_effect": 0.0052315493424733486,
+      "kl_auc": 0.00044447944098161923
+    },
+    "science": {
+      "positive_delta": 0.003413856029510498,
+      "negative_delta": -0.0036126375198364258,
+      "antisymmetric_effect": 0.003513246774673462,
+      "kl_auc": 0.00030251186444729683
+    },
+    "security": {
+      "positive_delta": 0.004693269729614258,
+      "negative_delta": -0.004700362682342529,
+      "antisymmetric_effect": 0.0046968162059783936,
+      "kl_auc": 0.0005182823915674817
+    },
+    "software": {
+      "positive_delta": 0.0036259889602661133,
+      "negative_delta": -0.00677335262298584,
+      "antisymmetric_effect": 0.0051996707916259766,
+      "kl_auc": 0.00038416623374359915
+    },
+    "statistics": {
+      "positive_delta": 0.006377428770065308,
+      "negative_delta": -0.004852980375289917,
+      "antisymmetric_effect": 0.005615204572677612,
+      "kl_auc": 0.00039284859576582676
+    },
+    "systems": {
+      "positive_delta": 0.0036556124687194824,
+      "negative_delta": -0.004905909299850464,
+      "antisymmetric_effect": 0.004280760884284973,
+      "kl_auc": 0.00039827649470680626
+    }
+  },
+  "domain_to_domain_transfer_matrix": {
+    "computing": {
+      "computing": {
+        "positive_delta": 0.006077826023101807,
+        "negative_delta": -0.0025538206100463867,
+        "antisymmetric_effect": 0.004315823316574097,
+        "kl_auc": 0.0005317295381246367
+      },
+      "machine_learning": {
+        "positive_delta": 0.004576101899147034,
+        "negative_delta": -0.005436047911643982,
+        "antisymmetric_effect": 0.005006074905395508,
+        "kl_auc": 0.0004287198914880719
+      },
+      "mathematics": {
+        "positive_delta": 0.0055951277414957685,
+        "negative_delta": -0.003653923670450846,
+        "antisymmetric_effect": 0.004624525705973308,
+        "kl_auc": 0.00031985745249585307
+      },
+      "research_methods": {
+        "positive_delta": 0.005906462669372559,
+        "negative_delta": -0.005884190400441487,
+        "antisymmetric_effect": 0.0058953265349070225,
+        "kl_auc": 0.00044258425653727806
+      },
+      "science": {
+        "positive_delta": 0.00025528669357299805,
+        "negative_delta": -0.0036143064498901367,
+        "antisymmetric_effect": 0.0019347965717315674,
+        "kl_auc": 0.0003057027688555536
+      },
+      "security": {
+        "positive_delta": 0.003624260425567627,
+        "negative_delta": -0.004947304725646973,
+        "antisymmetric_effect": 0.0042857825756073,
+        "kl_auc": 0.0004864302854912239
+      },
+      "software": {
+        "positive_delta": 0.0038666129112243652,
+        "negative_delta": -0.004861354827880859,
+        "antisymmetric_effect": 0.004363983869552612,
+        "kl_auc": 0.00040566405641584424
+      },
+      "statistics": {
+        "positive_delta": 0.006284087896347046,
+        "negative_delta": -0.004191577434539795,
+        "antisymmetric_effect": 0.00523783266544342,
+        "kl_auc": 0.0003907748596247984
+      },
+      "systems": {
+        "positive_delta": 0.0029054582118988037,
+        "negative_delta": -0.005616545677185059,
+        "antisymmetric_effect": 0.004261001944541931,
+        "kl_auc": 0.00041098191650235094
+      }
+    },
+    "finance": {
+      "computing": {
+        "positive_delta": 0.0064394474029541016,
+        "negative_delta": -0.005377769470214844,
+        "antisymmetric_effect": 0.005908608436584473,
+        "kl_auc": 0.0005484378089022357
+      },
+      "machine_learning": {
+        "positive_delta": 0.004886656999588013,
+        "negative_delta": -0.005319640040397644,
+        "antisymmetric_effect": 0.005103148519992828,
+        "kl_auc": 0.000428313173870265
+      },
+      "mathematics": {
+        "positive_delta": 0.005678892135620117,
+        "negative_delta": -0.002458969751993815,
+        "antisymmetric_effect": 0.004068930943806966,
+        "kl_auc": 0.00032156374512245145
+      },
+      "research_methods": {
+        "positive_delta": 0.00464699665705363,
+        "negative_delta": -0.005587617556254069,
+        "antisymmetric_effect": 0.00511730710665385,
+        "kl_auc": 0.00042639568558418733
+      },
+      "science": {
+        "positive_delta": 0.0025281906127929688,
+        "negative_delta": -0.0025118589401245117,
+        "antisymmetric_effect": 0.0025200247764587402,
+        "kl_auc": 0.00028091651074646506
+      },
+      "security": {
+        "positive_delta": 0.004231154918670654,
+        "negative_delta": -0.004151403903961182,
+        "antisymmetric_effect": 0.004191279411315918,
+        "kl_auc": 0.0005089759033580776
+      },
+      "software": {
+        "positive_delta": 0.003560483455657959,
+        "negative_delta": -0.005162537097930908,
+        "antisymmetric_effect": 0.004361510276794434,
+        "kl_auc": 0.00039399395154759986
+      },
+      "statistics": {
+        "positive_delta": 0.005500108003616333,
+        "negative_delta": -0.004344373941421509,
+        "antisymmetric_effect": 0.004922240972518921,
+        "kl_auc": 0.0003888040355377598
+      },
+      "systems": {
+        "positive_delta": 0.0034078359603881836,
+        "negative_delta": -0.005322486162185669,
+        "antisymmetric_effect": 0.004365161061286926,
+        "kl_auc": 0.0004045632213092176
+      }
+    },
+    "general_knowledge": {
+      "computing": {
+        "positive_delta": 0.005100548267364502,
+        "negative_delta": -0.003260493278503418,
+        "antisymmetric_effect": 0.00418052077293396,
+        "kl_auc": 0.0005222088848313433
+      },
+      "machine_learning": {
+        "positive_delta": 0.004979997873306274,
+        "negative_delta": -0.004975244402885437,
+        "antisymmetric_effect": 0.004977621138095856,
+        "kl_auc": 0.00039456826880268636
+      },
+      "mathematics": {
+        "positive_delta": 0.005595803260803223,
+        "negative_delta": -0.0030378897984822593,
+        "antisymmetric_effect": 0.004316846529642741,
+        "kl_auc": 0.00030962272217038844
+      },
+      "research_methods": {
+        "positive_delta": 0.0043688615163167315,
+        "negative_delta": -0.0053128401438395185,
+        "antisymmetric_effect": 0.004840850830078125,
+        "kl_auc": 0.0003835073766822461
+      },
+      "science": {
+        "positive_delta": 0.002107083797454834,
+        "negative_delta": -0.0032666921615600586,
+        "antisymmetric_effect": 0.0026868879795074463,
+        "kl_auc": 0.00029089154850225896
+      },
+      "security": {
+        "positive_delta": 0.0027115345001220703,
+        "negative_delta": -0.004139959812164307,
+        "antisymmetric_effect": 0.0034257471561431885,
+        "kl_auc": 0.00047639760214224225
+      },
+      "software": {
+        "positive_delta": 0.002377927303314209,
+        "negative_delta": -0.004866242408752441,
+        "antisymmetric_effect": 0.003622084856033325,
+        "kl_auc": 0.0003504029400573927
+      },
+      "statistics": {
+        "positive_delta": 0.004237323999404907,
+        "negative_delta": -0.004690021276473999,
+        "antisymmetric_effect": 0.004463672637939453,
+        "kl_auc": 0.0003505535487420275
+      },
+      "systems": {
+        "positive_delta": 0.002907872200012207,
+        "negative_delta": -0.0049156248569488525,
+        "antisymmetric_effect": 0.00391174852848053,
+        "kl_auc": 0.0003756954520213185
+      }
+    },
+    "health": {
+      "computing": {
+        "positive_delta": 0.004590034484863281,
+        "negative_delta": -0.005749344825744629,
+        "antisymmetric_effect": 0.005169689655303955,
+        "kl_auc": 0.0005769616582256276
+      },
+      "machine_learning": {
+        "positive_delta": 0.004673868417739868,
+        "negative_delta": -0.004519149661064148,
+        "antisymmetric_effect": 0.004596509039402008,
+        "kl_auc": 0.00039570696390001103
+      },
+      "mathematics": {
+        "positive_delta": 0.004726052284240723,
+        "negative_delta": -0.003114938735961914,
+        "antisymmetric_effect": 0.003920495510101318,
+        "kl_auc": 0.00030908485602291574
+      },
+      "research_methods": {
+        "positive_delta": 0.004806419213612874,
+        "negative_delta": -0.006119449933369954,
+        "antisymmetric_effect": 0.005462934573491414,
+        "kl_auc": 0.0004177466377465559
+      },
+      "science": {
+        "positive_delta": 0.003097832202911377,
+        "negative_delta": -0.005304574966430664,
+        "antisymmetric_effect": 0.0042012035846710205,
+        "kl_auc": 0.00028184635812067427
+      },
+      "security": {
+        "positive_delta": 0.004052579402923584,
+        "negative_delta": -0.0020374059677124023,
+        "antisymmetric_effect": 0.003044992685317993,
+        "kl_auc": 0.0005316074948495952
+      },
+      "software": {
+        "positive_delta": 0.003507375717163086,
+        "negative_delta": -0.004712581634521484,
+        "antisymmetric_effect": 0.004109978675842285,
+        "kl_auc": 0.0003914543567589135
+      },
+      "statistics": {
+        "positive_delta": 0.0050393640995025635,
+        "negative_delta": -0.004899889230728149,
+        "antisymmetric_effect": 0.0049696266651153564,
+        "kl_auc": 0.0003715684238159156
+      },
+      "systems": {
+        "positive_delta": 0.0018095672130584717,
+        "negative_delta": -0.005974262952804565,
+        "antisymmetric_effect": 0.0038919150829315186,
+        "kl_auc": 0.0003909494162144256
+      }
+    },
+    "machine_learning": {
+      "computing": {
+        "positive_delta": 0.005387723445892334,
+        "negative_delta": -0.0058803558349609375,
+        "antisymmetric_effect": 0.005634039640426636,
+        "kl_auc": 0.0005296518675095285
+      },
+      "machine_learning": {
+        "positive_delta": 0.00501801073551178,
+        "negative_delta": -0.00564044713973999,
+        "antisymmetric_effect": 0.005329228937625885,
+        "kl_auc": 0.0004160181927090889
+      },
+      "mathematics": {
+        "positive_delta": 0.005187431971232097,
+        "negative_delta": -0.0038700501124064126,
+        "antisymmetric_effect": 0.004528741041819255,
+        "kl_auc": 0.0003078000951669916
+      },
+      "research_methods": {
+        "positive_delta": 0.005256871382395427,
+        "negative_delta": -0.004686594009399414,
+        "antisymmetric_effect": 0.004971732695897421,
+        "kl_auc": 0.0004183391074548126
+      },
+      "science": {
+        "positive_delta": 0.0017027854919433594,
+        "negative_delta": -0.005191683769226074,
+        "antisymmetric_effect": 0.003447234630584717,
+        "kl_auc": 0.0002975868019348127
+      },
+      "security": {
+        "positive_delta": 0.005110621452331543,
+        "negative_delta": -0.004392862319946289,
+        "antisymmetric_effect": 0.004751741886138916,
+        "kl_auc": 0.0004903514573015855
+      },
+      "software": {
+        "positive_delta": 0.00282365083694458,
+        "negative_delta": -0.005034387111663818,
+        "antisymmetric_effect": 0.003929018974304199,
+        "kl_auc": 0.0003742246144611272
+      },
+      "statistics": {
+        "positive_delta": 0.005815684795379639,
+        "negative_delta": -0.004951953887939453,
+        "antisymmetric_effect": 0.005383819341659546,
+        "kl_auc": 0.0003886765071001719
+      },
+      "systems": {
+        "positive_delta": 0.0030207037925720215,
+        "negative_delta": -0.0069634318351745605,
+        "antisymmetric_effect": 0.004992067813873291,
+        "kl_auc": 0.00040928842327048187
+      }
+    },
+    "mathematics": {
+      "computing": {
+        "positive_delta": 0.0053119659423828125,
+        "negative_delta": -0.004554867744445801,
+        "antisymmetric_effect": 0.004933416843414307,
+        "kl_auc": 0.0004649357952075661
+      },
+      "machine_learning": {
+        "positive_delta": 0.005917087197303772,
+        "negative_delta": -0.004987806081771851,
+        "antisymmetric_effect": 0.005452446639537811,
+        "kl_auc": 0.0004186431294783688
+      },
+      "mathematics": {
+        "positive_delta": 0.005166331926981608,
+        "negative_delta": -0.0032390753428141275,
+        "antisymmetric_effect": 0.004202703634897868,
+        "kl_auc": 0.0003203611179287691
+      },
+      "research_methods": {
+        "positive_delta": 0.005323251088460286,
+        "negative_delta": -0.005421241124471028,
+        "antisymmetric_effect": 0.005372246106465657,
+        "kl_auc": 0.0004317107877795934
+      },
+      "science": {
+        "positive_delta": 0.0037854909896850586,
+        "negative_delta": -0.005091249942779541,
+        "antisymmetric_effect": 0.0044383704662323,
+        "kl_auc": 0.0003086936758336378
+      },
+      "security": {
+        "positive_delta": 0.0030459165573120117,
+        "negative_delta": -0.00397568941116333,
+        "antisymmetric_effect": 0.003510802984237671,
+        "kl_auc": 0.0004857467210968025
+      },
+      "software": {
+        "positive_delta": 0.003212451934814453,
+        "negative_delta": -0.004790306091308594,
+        "antisymmetric_effect": 0.0040013790130615234,
+        "kl_auc": 0.00034112211051251506
+      },
+      "statistics": {
+        "positive_delta": 0.006797224283218384,
+        "negative_delta": -0.004133731126785278,
+        "antisymmetric_effect": 0.005465477705001831,
+        "kl_auc": 0.00037191214823906193
+      },
+      "systems": {
+        "positive_delta": 0.003855586051940918,
+        "negative_delta": -0.005187273025512695,
+        "antisymmetric_effect": 0.004521429538726807,
+        "kl_auc": 0.0004047939296469849
+      }
+    },
+    "research_methods": {
+      "computing": {
+        "positive_delta": 0.0054062604904174805,
+        "negative_delta": -0.0024511218070983887,
+        "antisymmetric_effect": 0.003928691148757935,
+        "kl_auc": 0.0004940591807098826
+      },
+      "machine_learning": {
+        "positive_delta": 0.0038828998804092407,
+        "negative_delta": -0.005067050457000732,
+        "antisymmetric_effect": 0.004474975168704987,
+        "kl_auc": 0.00039137508792919107
+      },
+      "mathematics": {
+        "positive_delta": 0.00508578618367513,
+        "negative_delta": -0.0033866564432779946,
+        "antisymmetric_effect": 0.0042362213134765625,
+        "kl_auc": 0.0003165342479102643
+      },
+      "research_methods": {
+        "positive_delta": 0.005321403344472249,
+        "negative_delta": -0.005047937234242757,
+        "antisymmetric_effect": 0.005184670289357503,
+        "kl_auc": 0.0003990766120599195
+      },
+      "science": {
+        "positive_delta": 0.0029067397117614746,
+        "negative_delta": -0.004824817180633545,
+        "antisymmetric_effect": 0.0038657784461975098,
+        "kl_auc": 0.0003223731209800462
+      },
+      "security": {
+        "positive_delta": 0.003530561923980713,
+        "negative_delta": -0.004355013370513916,
+        "antisymmetric_effect": 0.0039427876472473145,
+        "kl_auc": 0.0005184972987990477
+      },
+      "software": {
+        "positive_delta": 0.000849604606628418,
+        "negative_delta": -0.005277454853057861,
+        "antisymmetric_effect": 0.0030635297298431396,
+        "kl_auc": 0.0003976100388172199
+      },
+      "statistics": {
+        "positive_delta": 0.004251748323440552,
+        "negative_delta": -0.0041678547859191895,
+        "antisymmetric_effect": 0.004209801554679871,
+        "kl_auc": 0.00034423096803948283
+      },
+      "systems": {
+        "positive_delta": 0.0026880204677581787,
+        "negative_delta": -0.004336446523666382,
+        "antisymmetric_effect": 0.0035122334957122803,
+        "kl_auc": 0.0003961653278565791
+      }
+    },
+    "science": {
+      "computing": {
+        "positive_delta": 0.004128694534301758,
+        "negative_delta": -0.004069626331329346,
+        "antisymmetric_effect": 0.004099160432815552,
+        "kl_auc": 0.0005057346998000867
+      },
+      "machine_learning": {
+        "positive_delta": 0.004611402750015259,
+        "negative_delta": -0.004373103380203247,
+        "antisymmetric_effect": 0.004492253065109253,
+        "kl_auc": 0.00039456910781154875
+      },
+      "mathematics": {
+        "positive_delta": 0.005144039789835612,
+        "negative_delta": -0.0027244091033935547,
+        "antisymmetric_effect": 0.003934224446614584,
+        "kl_auc": 0.0003081250924121074
+      },
+      "research_methods": {
+        "positive_delta": 0.005301256974538167,
+        "negative_delta": -0.006234407424926758,
+        "antisymmetric_effect": 0.005767832199732462,
+        "kl_auc": 0.0004062162151967641
+      },
+      "science": {
+        "positive_delta": 0.0027943849563598633,
+        "negative_delta": -0.0048735737800598145,
+        "antisymmetric_effect": 0.003833979368209839,
+        "kl_auc": 0.0003144748943668674
+      },
+      "security": {
+        "positive_delta": 0.003910064697265625,
+        "negative_delta": -0.004430949687957764,
+        "antisymmetric_effect": 0.004170507192611694,
+        "kl_auc": 0.0004881923578068381
+      },
+      "software": {
+        "positive_delta": 0.004232168197631836,
+        "negative_delta": -0.004856467247009277,
+        "antisymmetric_effect": 0.004544317722320557,
+        "kl_auc": 0.0004252959579389426
+      },
+      "statistics": {
+        "positive_delta": 0.006071001291275024,
+        "negative_delta": -0.00420379638671875,
+        "antisymmetric_effect": 0.005137398838996887,
+        "kl_auc": 0.00036950979119865224
+      },
+      "systems": {
+        "positive_delta": 0.0023414194583892822,
+        "negative_delta": -0.006181001663208008,
+        "antisymmetric_effect": 0.004261210560798645,
+        "kl_auc": 0.0004106775263608142
+      }
+    },
+    "security": {
+      "computing": {
+        "positive_delta": 0.0069429874420166016,
+        "negative_delta": -0.0031769275665283203,
+        "antisymmetric_effect": 0.005059957504272461,
+        "kl_auc": 0.0005614180818156456
+      },
+      "machine_learning": {
+        "positive_delta": 0.004916146397590637,
+        "negative_delta": -0.0056235045194625854,
+        "antisymmetric_effect": 0.005269825458526611,
+        "kl_auc": 0.0004166873484336975
+      },
+      "mathematics": {
+        "positive_delta": 0.005251487096150716,
+        "negative_delta": -0.002973635991414388,
+        "antisymmetric_effect": 0.004112561543782552,
+        "kl_auc": 0.00033294531188706367
+      },
+      "research_methods": {
+        "positive_delta": 0.005787114302317302,
+        "negative_delta": -0.005298137664794922,
+        "antisymmetric_effect": 0.005542625983556112,
+        "kl_auc": 0.0004534080802235015
+      },
+      "science": {
+        "positive_delta": 0.0029735565185546875,
+        "negative_delta": -0.002850472927093506,
+        "antisymmetric_effect": 0.0029120147228240967,
+        "kl_auc": 0.00032587558507657377
+      },
+      "security": {
+        "positive_delta": 0.003853142261505127,
+        "negative_delta": -0.003236114978790283,
+        "antisymmetric_effect": 0.003544628620147705,
+        "kl_auc": 0.0005312056409820798
+      },
+      "software": {
+        "positive_delta": 0.0048716068267822266,
+        "negative_delta": -0.004188358783721924,
+        "antisymmetric_effect": 0.004529982805252075,
+        "kl_auc": 0.0004179086427029688
+      },
+      "statistics": {
+        "positive_delta": 0.004919260740280151,
+        "negative_delta": -0.005347758531570435,
+        "antisymmetric_effect": 0.005133509635925293,
+        "kl_auc": 0.0004248417812959815
+      },
+      "systems": {
+        "positive_delta": 0.003003031015396118,
+        "negative_delta": -0.004806160926818848,
+        "antisymmetric_effect": 0.003904595971107483,
+        "kl_auc": 0.0004250364399922546
+      }
+    },
+    "software": {
+      "computing": {
+        "positive_delta": 0.006396114826202393,
+        "negative_delta": -0.005023360252380371,
+        "antisymmetric_effect": 0.005709737539291382,
+        "kl_auc": 0.0005877966868865769
+      },
+      "machine_learning": {
+        "positive_delta": 0.005194485187530518,
+        "negative_delta": -0.005501985549926758,
+        "antisymmetric_effect": 0.005348235368728638,
+        "kl_auc": 0.00045266238566910033
+      },
+      "mathematics": {
+        "positive_delta": 0.005896329879760742,
+        "negative_delta": -0.0036608378092447915,
+        "antisymmetric_effect": 0.004778583844502767,
+        "kl_auc": 0.00033540046388225164
+      },
+      "research_methods": {
+        "positive_delta": 0.006473441918690999,
+        "negative_delta": -0.006328105926513672,
+        "antisymmetric_effect": 0.006400773922602335,
+        "kl_auc": 0.0004476917335220302
+      },
+      "science": {
+        "positive_delta": 0.00452423095703125,
+        "negative_delta": -0.003850221633911133,
+        "antisymmetric_effect": 0.004187226295471191,
+        "kl_auc": 0.00032624532923364313
+      },
+      "security": {
+        "positive_delta": 0.005635678768157959,
+        "negative_delta": -0.003970682621002197,
+        "antisymmetric_effect": 0.004803180694580078,
+        "kl_auc": 0.000543588777873083
+      },
+      "software": {
+        "positive_delta": 0.003384113311767578,
+        "negative_delta": -0.0061931610107421875,
+        "antisymmetric_effect": 0.004788637161254883,
+        "kl_auc": 0.00042156156541750534
+      },
+      "statistics": {
+        "positive_delta": 0.005589812994003296,
+        "negative_delta": -0.005721479654312134,
+        "antisymmetric_effect": 0.005655646324157715,
+        "kl_auc": 0.0004105393309146166
+      },
+      "systems": {
+        "positive_delta": 0.004251003265380859,
+        "negative_delta": -0.005549520254135132,
+        "antisymmetric_effect": 0.004900261759757996,
+        "kl_auc": 0.00044494934900285443
+      }
+    },
+    "statistics": {
+      "computing": {
+        "positive_delta": 0.00491642951965332,
+        "negative_delta": -0.0036202669143676758,
+        "antisymmetric_effect": 0.004268348217010498,
+        "kl_auc": 0.0005621207119475002
+      },
+      "machine_learning": {
+        "positive_delta": 0.005047008395195007,
+        "negative_delta": -0.005120918154716492,
+        "antisymmetric_effect": 0.0050839632749557495,
+        "kl_auc": 0.0003908186135959113
+      },
+      "mathematics": {
+        "positive_delta": 0.004789868990580241,
+        "negative_delta": -0.00277098019917806,
+        "antisymmetric_effect": 0.0037804245948791504,
+        "kl_auc": 0.00030344549228781637
+      },
+      "research_methods": {
+        "positive_delta": 0.004753708839416504,
+        "negative_delta": -0.006072441736857097,
+        "antisymmetric_effect": 0.005413075288136801,
+        "kl_auc": 0.0004461390508367913
+      },
+      "science": {
+        "positive_delta": 0.0021393895149230957,
+        "negative_delta": -0.003559410572052002,
+        "antisymmetric_effect": 0.002849400043487549,
+        "kl_auc": 0.00030628119475295534
+      },
+      "security": {
+        "positive_delta": 0.0032342076301574707,
+        "negative_delta": -0.003038644790649414,
+        "antisymmetric_effect": 0.0031364262104034424,
+        "kl_auc": 0.0005553952523769112
+      },
+      "software": {
+        "positive_delta": 0.0042844414710998535,
+        "negative_delta": -0.004293680191040039,
+        "antisymmetric_effect": 0.004289060831069946,
+        "kl_auc": 0.0004075217884746962
+      },
+      "statistics": {
+        "positive_delta": 0.004679203033447266,
+        "negative_delta": -0.004060506820678711,
+        "antisymmetric_effect": 0.004369854927062988,
+        "kl_auc": 0.0003877056979035842
+      },
+      "systems": {
+        "positive_delta": 0.003519713878631592,
+        "negative_delta": -0.0038907229900360107,
+        "antisymmetric_effect": 0.0037052184343338013,
+        "kl_auc": 0.0003992325164290378
+      }
+    },
+    "systems": {
+      "computing": {
+        "positive_delta": 0.004618465900421143,
+        "negative_delta": -0.005341589450836182,
+        "antisymmetric_effect": 0.004980027675628662,
+        "kl_auc": 0.0005390023679865408
+      },
+      "machine_learning": {
+        "positive_delta": 0.004625409841537476,
+        "negative_delta": -0.006208643317222595,
+        "antisymmetric_effect": 0.005417026579380035,
+        "kl_auc": 0.0004147527677105245
+      },
+      "mathematics": {
+        "positive_delta": 0.005876819292704265,
+        "negative_delta": -0.0036979118982950845,
+        "antisymmetric_effect": 0.004787365595499675,
+        "kl_auc": 0.0003381184618168239
+      },
+      "research_methods": {
+        "positive_delta": 0.00562294324239095,
+        "negative_delta": -0.005902389685312907,
+        "antisymmetric_effect": 0.005762666463851929,
+        "kl_auc": 0.0004456098658920382
+      },
+      "science": {
+        "positive_delta": 0.002256453037261963,
+        "negative_delta": -0.002917766571044922,
+        "antisymmetric_effect": 0.0025871098041534424,
+        "kl_auc": 0.00033650883506197715
+      },
+      "security": {
+        "positive_delta": 0.0057978034019470215,
+        "negative_delta": -0.004129528999328613,
+        "antisymmetric_effect": 0.004963666200637817,
+        "kl_auc": 0.000475913378977566
+      },
+      "software": {
+        "positive_delta": 0.0054337382316589355,
+        "negative_delta": -0.006206870079040527,
+        "antisymmetric_effect": 0.0058203041553497314,
+        "kl_auc": 0.0004016019211121602
+      },
+      "statistics": {
+        "positive_delta": 0.00545164942741394,
+        "negative_delta": -0.0033876001834869385,
+        "antisymmetric_effect": 0.0044196248054504395,
+        "kl_auc": 0.00038461738085970865
+      },
+      "systems": {
+        "positive_delta": 0.003267437219619751,
+        "negative_delta": -0.005044758319854736,
+        "antisymmetric_effect": 0.004156097769737244,
+        "kl_auc": 0.00043055167589045595
+      }
+    }
+  },
+  "summary": {
+    "full_receptor_mean_effect_across_test_domains": 0.00452131943570243,
+    "full_receptor_positive_domain_fraction": 1.0,
+    "leave_domain_out_mean_effect": 0.004785540479200857,
+    "leave_domain_out_positive_domain_fraction": 1.0,
+    "domain_specific_matrix_mean_effect": 0.004483090759611424,
+    "domain_specific_matrix_positive_fraction": 1.0
+  },
+  "cuda": {
+    "device": "Tesla T4",
+    "capability": [
+      7,
+      5
+    ],
+    "device_map": {
+      "": 0
+    },
+    "peak_allocated_bytes": 4643479040,
+    "peak_reserved_bytes": 5127536640
+  },
+  "elapsed_seconds": 58.28536534309387
+}

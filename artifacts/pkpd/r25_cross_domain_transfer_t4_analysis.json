@@ -1,0 +1,46 @@
+{
+  "subspace_source": "artifacts\\pkpd\\r25_subspace_reproducibility_t4_analysis.json",
+  "transfer_source": "artifacts\\pkpd\\r25_cross_domain_transfer_t4.json",
+  "mean_receptor_transfer": {
+    "test_domains": 9,
+    "positive_domains": 9,
+    "mean_effect": 0.00452131943570243,
+    "minimum_effect": 0.003410518169403076
+  },
+  "leave_target_domain_out_transfer": {
+    "test_domains": 9,
+    "positive_domains": 9,
+    "mean_effect": 0.004785540479200857,
+    "minimum_effect": 0.003513246774673462
+  },
+  "domain_to_domain_matrix": {
+    "source_domains": 12,
+    "target_domains": 9,
+    "cells": 108,
+    "positive_cells": 108,
+    "mean_effect": 0.004483090759611424,
+    "minimum_effect": 0.0019347965717315674,
+    "maximum_effect": 0.006400773922602335
+  },
+  "subspace_verdict": "The centered variation is predictively low-dimensional but not fully reproducible at the cross-validation-selected k. Four dimensions are principal-angle stable, but they are dominated by construction-response wording. Do not lock V_k as a semantic receptor family until contrasts are fully crossed across response templates.",
+  "combined_verdict": "The mean epistemic-assertiveness receptor is causally transferable across the tested domains. The centered variation is not yet a validated semantic receptor family: only four dimensions are principal-angle stable, and those axes are dominated by response-template wording. Preserve the mean receptor baseline and redesign the construction matrix as a full claim\u00d7question\u00d7response crossing before R3 subspace ligand synthesis.",
+  "limitations": [
+    "Cross-domain tests reuse the same linguistic-certainty endpoint templates.",
+    "Several source or target domains contain only one construction or test claim.",
+    "The transfer matrix establishes sign consistency, not unique receptor identification."
+  ],
+  "next_action": "Create a fully crossed construction design, then repeat R2.5. Do not optimize a ligand over the current centered PCs.",
+  "cuda": {
+    "device": "Tesla T4",
+    "capability": [
+      7,
+      5
+    ],
+    "device_map": {
+      "": 0
+    },
+    "peak_allocated_bytes": 4643479040,
+    "peak_reserved_bytes": 5127536640
+  },
+  "elapsed_seconds": 58.28536534309387
+}
