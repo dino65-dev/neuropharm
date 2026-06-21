@@ -1,0 +1,479 @@
+{
+  "experiment": "R2.6_combined_research_verdict",
+  "sources": {
+    "crossed_analysis": "artifacts\\pkpd\\r26_crossed_analysis_t4.json",
+    "causal_and_dose": "artifacts\\pkpd\\r26_causal_and_dose_t4.json"
+  },
+  "balanced_design": {
+    "activation_tensor_shape": [
+      72,
+      4,
+      8,
+      2,
+      1536
+    ],
+    "construction_claims": 36,
+    "validation_claims": 18,
+    "test_claims": 18
+  },
+  "factorial_decomposition": {
+    "certainty_main_energy_fraction": 0.49038344621658325,
+    "certainty_x_response_energy_fraction": 0.4136844873428345,
+    "certainty_x_claim_energy_fraction": 0.014373601414263248,
+    "certainty_x_question_energy_fraction": 0.011157476343214512,
+    "higher_interaction_energy_fraction": 0.07040095329284668
+  },
+  "centered_subspace": {
+    "nested_cv_selected_k": 16,
+    "pass_gates": {
+      "template_disjoint_stability": true,
+      "heldout_response_reconstruction": true,
+      "low_response_family_leakage": false,
+      "preserved_certainty_information": true
+    },
+    "validated": false,
+    "response_family_leakage_accuracy": 0.9982638955116272,
+    "response_family_chance": 0.25,
+    "response_frame_leakage_accuracy": 0.960069477558136,
+    "response_frame_chance": 0.125,
+    "verdict": "No centered semantic subspace is validated. Reconstruction and average overlap exceed random controls, but held-out template identity is almost perfectly linearly decodable."
+  },
+  "mean_receptor": {
+    "wording_nuisance_projection_fraction": 0.3554522395133972,
+    "cosine_raw_vs_nuisance_projected": 0.8028377294540405,
+    "unseen_family_point_positive": 4,
+    "unseen_families_tested": 4,
+    "unseen_family_claim_bootstrap_lower_positive": 3,
+    "phrase_position_transfer": {
+      "initial": {
+        "positive_delta": 0.0019701719284057617,
+        "negative_delta": -0.0009732842445373535,
+        "antisymmetric_effect": 0.0014717280864715576,
+        "mean_kl": 0.00032101568187196483,
+        "claim_block_bootstrap": {
+          "claims": 18,
+          "replicates": 2000,
+          "mean": 0.0014717280864715576,
+          "lower_95": 0.0007955200142330594,
+          "upper_95": 0.002158325579431322,
+          "positive_claim_fraction": 0.8888888888888888
+        }
+      },
+      "final": {
+        "positive_delta": 0.004045738114251031,
+        "negative_delta": -0.004581822289360894,
+        "antisymmetric_effect": 0.004313780201805962,
+        "mean_kl": 0.0004164748013156188,
+        "claim_block_bootstrap": {
+          "claims": 18,
+          "replicates": 2000,
+          "mean": 0.004313780201805962,
+          "lower_95": 0.0038867443799972534,
+          "upper_95": 0.0047172605991363525,
+          "positive_claim_fraction": 1.0
+        }
+      }
+    },
+    "verdict": "The mean receptor transfers across all four unseen response families by point estimate, with claim-block 95% intervals above zero for 3/4 families. It is not wording-pure: 35.5% of its unit energy lies in the stable same-certainty wording-control subspace."
+  },
+  "dose_response_at_maximum_tested_dose": {
+    "dose": 1.0,
+    "language_effect": {
+      "mean_pair_log_odds": 0.667225761546029,
+      "mean_score_delta": 0.015060146649678549,
+      "claim_block_bootstrap": {
+        "claims": 18,
+        "replicates": 2000,
+        "mean": 0.015060146649678549,
+        "lower_95": 0.013656255271699693,
+        "upper_95": 0.016734778881072998,
+        "positive_claim_fraction": 1.0
+      },
+      "kl": 0.004891479913365199
+    },
+    "decision_confidence_effect": {
+      "mean_pair_log_odds": 1.2182958920796711,
+      "mean_score_delta": 0.03146297401852078,
+      "claim_block_bootstrap": {
+        "claims": 18,
+        "replicates": 2000,
+        "mean": 0.03146297401852078,
+        "lower_95": 0.02905350261264377,
+        "upper_95": 0.03380123111936781,
+        "positive_claim_fraction": 1.0
+      },
+      "kl": 0.004826602254373332
+    },
+    "numeric_confidence_effect": {
+      "mean_pair_log_odds": 0.2515806357065837,
+      "mean_score_delta": 0.016365442011091445,
+      "claim_block_bootstrap": {
+        "claims": 18,
+        "replicates": 2000,
+        "mean": 0.016365442011091445,
+        "lower_95": 0.012094822194841173,
+        "upper_95": 0.021283547083536785,
+        "positive_claim_fraction": 1.0
+      },
+      "kl": 0.008518844975494884
+    },
+    "factual": {
+      "accuracy": 0.9722222222222222,
+      "brier": 0.06061869881100384,
+      "negative_log_likelihood": 0.25208332840581654,
+      "expected_calibration_error_5_bins": 0.15928931429201126,
+      "mean_correct_log_odds_margin": 1.7095108044644196,
+      "claim_block_bootstrap": {
+        "accuracy": {
+          "estimate": 0.9722222222222222,
+          "lower_95": 0.9166666666666666,
+          "upper_95": 1.0
+        },
+        "brier": {
+          "estimate": 0.06061869881100384,
+          "lower_95": 0.02459158304937491,
+          "upper_95": 0.1181544481167175
+        },
+        "mean_correct_log_odds_margin": {
+          "estimate": 1.7095108044644196,
+          "lower_95": 1.2780751585960388,
+          "upper_95": 2.0710692347751722
+        }
+      },
+      "mean_score_delta": -0.009739839368396334,
+      "kl": 0.000504422412834376
+    },
+    "mean_kl": 0.0046853373890169475,
+    "accuracy_changed_from_baseline": false
+  },
+  "constrained_curve_fits": {
+    "language_effect": {
+      "models": {
+        "linear": {
+          "parameters": {
+            "E0": -0.0010879012128165485,
+            "beta": 0.01556593805460238
+          },
+          "sse": 3.5729755750098954e-06,
+          "parameter_count": 2,
+          "aic": -97.41615374793751
+        },
+        "hill": {
+          "parameters": {
+            "E0": -0.0001789844945448952,
+            "Emax": 0.027680467070788393,
+            "EC50": 0.9066649113412797,
+            "hill": 2.0
+          },
+          "sse": 5.7871605670253505e-08,
+          "parameter_count": 4,
+          "aic": -122.27664387248936
+        },
+        "biphasic": {
+          "parameters": {
+            "E0": -0.00012644817733810037,
+            "Emax": 0.1328034289198031,
+            "EC50": 1.5926768208766646,
+            "hill": 2.0,
+            "gamma": 0.022364365392058792
+          },
+          "sse": 3.068856801678155e-08,
+          "parameter_count": 5,
+          "aic": -124.71700044643225
+        }
+      },
+      "best_by_aic": "biphasic"
+    },
+    "decision_confidence_effect": {
+      "models": {
+        "linear": {
+          "parameters": {
+            "E0": -0.0011615578393290805,
+            "beta": 0.033070083316472605
+          },
+          "sse": 6.573557046274211e-06,
+          "parameter_count": 2,
+          "aic": -93.14855929578434
+        },
+        "hill": {
+          "parameters": {
+            "E0": 0.00011402009884881658,
+            "Emax": 0.044690914858295155,
+            "EC50": 0.6466038674475177,
+            "hill": 2.0
+          },
+          "sse": 2.87607048076174e-07,
+          "parameter_count": 4,
+          "aic": -111.05306597752093
+        },
+        "biphasic": {
+          "parameters": {
+            "E0": 4.155254947947473e-05,
+            "Emax": 0.04673352917037166,
+            "EC50": 0.6466038674475177,
+            "hill": 2.0,
+            "gamma": 0.0015456385302721825
+          },
+          "sse": 1.3926667848802613e-07,
+          "parameter_count": 5,
+          "aic": -114.12949738465127
+        }
+      },
+      "best_by_aic": "biphasic"
+    },
+    "numeric_confidence_effect": {
+      "models": {
+        "linear": {
+          "parameters": {
+            "E0": -0.0002756627928543421,
+            "beta": 0.016543994936495568
+          },
+          "sse": 1.9664314965410506e-06,
+          "parameter_count": 2,
+          "aic": -101.59640160969215
+        },
+        "hill": {
+          "parameters": {
+            "E0": 0.0004909916851794048,
+            "Emax": 0.02419918521402898,
+            "EC50": 0.7237264883730212,
+            "hill": 2.0
+          },
+          "sse": 4.7230894386128163e-07,
+          "parameter_count": 4,
+          "aic": -107.58079870719496
+        },
+        "biphasic": {
+          "parameters": {
+            "E0": 0.0005204095399393006,
+            "Emax": 0.04034698434884219,
+            "EC50": 0.9066649113412797,
+            "hill": 2.0,
+            "gamma": 0.006298833926906158
+          },
+          "sse": 4.6019580094345083e-07,
+          "parameter_count": 5,
+          "aic": -105.76266753001126
+        }
+      },
+      "best_by_aic": "hill"
+    },
+    "accuracy": {
+      "models": {
+        "linear": {
+          "parameters": {
+            "E0": 0.9722222222222221,
+            "beta": 1.0751052448326783e-16
+          },
+          "sse": 7.395570986446986e-32,
+          "parameter_count": 2,
+          "aic": -479.5428695287496
+        },
+        "hill": {
+          "parameters": {
+            "E0": 0.9722222222222222,
+            "Emax": 1.2431416022104586e-16,
+            "EC50": 0.26251186425124967,
+            "hill": 1.0
+          },
+          "sse": 3.697785493223493e-32,
+          "parameter_count": 4,
+          "aic": -475.5428695287496
+        },
+        "biphasic": {
+          "parameters": {
+            "E0": 0.9722222222222223,
+            "Emax": -1.1350107194161141e-16,
+            "EC50": 0.030857568527160522,
+            "hill": 1.0,
+            "gamma": 1.6727127881278338e-17
+          },
+          "sse": 1.232595164407831e-32,
+          "parameter_count": 5,
+          "aic": -473.5428695287496
+        }
+      },
+      "best_by_aic": "linear"
+    },
+    "brier": {
+      "models": {
+        "linear": {
+          "parameters": {
+            "E0": 0.06106245211609317,
+            "beta": -0.0004696271705954942
+          },
+          "sse": 1.3181666391751025e-08,
+          "parameter_count": 2,
+          "aic": -136.63244322088056
+        },
+        "hill": {
+          "parameters": {
+            "E0": 0.061085175628864154,
+            "Emax": -0.001217468583267256,
+            "EC50": 1.5926768208766646,
+            "hill": 1.0
+          },
+          "sse": 9.893728615144923e-09,
+          "parameter_count": 4,
+          "aic": -134.64092431965457
+        },
+        "biphasic": {
+          "parameters": {
+            "E0": 0.06112994433948022,
+            "Emax": -0.0007659123421464535,
+            "EC50": 1.9952623149688795,
+            "hill": 0.5,
+            "gamma": 0.00020263996924737768
+          },
+          "sse": 9.056991094165655e-09,
+          "parameter_count": 5,
+          "aic": -133.25947320943243
+        }
+      },
+      "best_by_aic": "linear"
+    },
+    "calibration_ece": {
+      "models": {
+        "linear": {
+          "parameters": {
+            "E0": 0.16032471927278116,
+            "beta": -0.0011042940923640383
+          },
+          "sse": 5.2918038089473443e-08,
+          "parameter_count": 2,
+          "aic": -126.90302204406976
+        },
+        "hill": {
+          "parameters": {
+            "E0": 0.160313763165498,
+            "Emax": -0.0012460554287427642,
+            "EC50": 0.4611368060770914,
+            "hill": 2.0
+          },
+          "sse": 3.451979900159463e-08,
+          "parameter_count": 4,
+          "aic": -125.89350059728108
+        },
+        "biphasic": {
+          "parameters": {
+            "E0": 0.1603099015754051,
+            "Emax": 0.018646389003948396,
+            "EC50": 1.4229560593919783,
+            "hill": 3.0,
+            "gamma": 0.005825130027695606
+          },
+          "sse": 3.368811697892423e-08,
+          "parameter_count": 5,
+          "aic": -124.06421575908871
+        }
+      },
+      "best_by_aic": "linear"
+    },
+    "mean_kl": {
+      "models": {
+        "linear": {
+          "parameters": {
+            "E0": -0.0003341279334910619,
+            "beta": 0.004630132894022783
+          },
+          "sse": 9.455651292676636e-07,
+          "parameter_count": 2,
+          "aic": -106.72175251803299
+        },
+        "hill": {
+          "parameters": {
+            "E0": 8.42783606675241e-05,
+            "Emax": 0.007061935010343554,
+            "EC50": 0.81004778403256,
+            "hill": 3.0
+          },
+          "sse": 9.544839335235891e-09,
+          "parameter_count": 4,
+          "aic": -134.89222752919756
+        },
+        "biphasic": {
+          "parameters": {
+            "E0": 8.48070480390455e-05,
+            "Emax": 0.007889818779648594,
+            "EC50": 0.81004778403256,
+            "hill": 3.0,
+            "gamma": 0.0005468705229047868
+          },
+          "sse": 8.925115450036012e-09,
+          "parameter_count": 5,
+          "aic": -133.36214705988994
+        }
+      },
+      "best_by_aic": "hill"
+    }
+  },
+  "raw_vs_nuisance_projected_at_dose_0_25": {
+    "raw": {
+      "language": {
+        "mean_score_delta": 0.0016888082027435303,
+        "kl": 0.00033265892059514753
+      },
+      "decision_confidence": {
+        "mean_score_delta": 0.006225208441416423,
+        "kl": 0.0003766172610792435
+      },
+      "numeric_confidence": {
+        "mean_score_delta": 0.00297240416208903,
+        "kl": 0.00038554794456205046
+      },
+      "factual_true_false": {
+        "mean_score_delta": -0.0029631306727727256,
+        "kl": 5.302495904402349e-05,
+        "accuracy": 0.9722222222222222,
+        "brier": 0.0609337079943549,
+        "negative_log_likelihood": 0.25293225525191754,
+        "expected_calibration_error_5_bins": 0.16006523807836662,
+        "mean_correct_log_odds_margin": 1.7002549117638006
+      }
+    },
+    "projected": {
+      "language": {
+        "mean_score_delta": 0.00047856238153245713,
+        "kl": 0.00029423994616687804
+      },
+      "decision_confidence": {
+        "mean_score_delta": 0.0028474794493781198,
+        "kl": 0.0003560628279552071
+      },
+      "numeric_confidence": {
+        "mean_score_delta": 0.005187571048736572,
+        "kl": 0.0002924949950384972
+      },
+      "factual_true_false": {
+        "mean_score_delta": -0.0031665944390826756,
+        "kl": 5.132322574910278e-05,
+        "accuracy": 0.9722222222222222,
+        "brier": 0.060929226590640054,
+        "negative_log_likelihood": 0.2529519961485357,
+        "expected_calibration_error_5_bins": 0.15997886384499152,
+        "mean_correct_log_odds_margin": 1.7012747820052836
+      }
+    },
+    "projected_over_raw_effect_ratio": {
+      "language": 0.28337284290484566,
+      "decision_confidence": 0.4574111013590787,
+      "numeric_confidence": 1.7452441746988758,
+      "factual_true_false": 1.0686651345414884
+    }
+  },
+  "phenotype_verdict": "The validated mean direction is a mixed linguistic-assertiveness and subjective-confidence receptor. Across the tested doses it raises definite-answer and numeric-confidence preferences while factual accuracy remains 97.2%. The small Brier/ECE improvements are far below claim-block uncertainty, so this experiment does not establish improved calibration or overconfidence.",
+  "research_decision": {
+    "outcome": "A",
+    "proceed_to_R3_subspace_ligands": false,
+    "recommended_control": "Retain one mean receptor, explicitly distinguish raw and wording-projected variants, and study context-dependent gain.",
+    "enable_tolerance_or_homeostasis": false
+  },
+  "limitations": [
+    "Teacher-forced candidate probabilities are normalized over two response sequences, not the model's full open-ended answer distribution.",
+    "Factual test items are synthetic matched true/false statements and do not constitute a broad knowledge benchmark.",
+    "Causal family-transfer cells share test claims and are not independent replications.",
+    "The wording nuisance basis estimates stable response-frame effects after averaging claims and questions.",
+    "Linear leakage and certainty classifiers are claim-disjoint but use repeated question and response cells within each held-out claim.",
+    "Causal unseen-family transfer is evaluated in a separate GPU experiment."
+  ]
+}
