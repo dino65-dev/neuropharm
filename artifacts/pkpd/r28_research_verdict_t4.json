@@ -1,0 +1,135 @@
+{
+  "experiment": "R2.8_combined_research_verdict",
+  "sources": {
+    "r27": "artifacts\\pkpd\\r27_research_verdict_t4.json",
+    "slopes": "artifacts\\pkpd\\r28_context_slopes_t4.json",
+    "controller": "artifacts\\pkpd\\r28_gain_controller_t4.json"
+  },
+  "receptor_variant": {
+    "selected": "lambda_0.00",
+    "verdict": "No partially nuisance-attenuated receptor dominates the raw direction at matched validation KL. The nuisance component has a style/definite-answer phenotype and lowers numeric confidence; the fully projected component raises numeric confidence but also raises confidence on baseline-wrong items. Retain the raw fixed receptor for the context-gain diagnostic; do not interpret the geometric projection as a clean causal decomposition."
+  },
+  "local_causal_geometry": {
+    "gain_gate": {
+      "target_endpoint": "definite_answer_log_odds",
+      "minimum_positive_fraction_across_epsilon": 0.8472222222222222,
+      "stable_sign_threshold": 0.8,
+      "frequent_reversal_threshold": 0.7,
+      "variable_magnitude": true,
+      "outcome": "stable_sign_variable_magnitude",
+      "recommendation": "A bounded nonnegative context-dependent gain is justified for validation testing with fixed receptor direction."
+    },
+    "definite_beta": {
+      "mean": 0.045785212958300556,
+      "variance": 0.0004133974831456837,
+      "standard_deviation": 0.02033217851450463,
+      "coefficient_of_variation": 0.44407740405231727,
+      "p05": 0.010239919026692709,
+      "median": 0.04581562678019206,
+      "p95": 0.07999642690022786,
+      "minimum": -0.014134407043457031,
+      "maximum": 0.09577560424804688,
+      "positive_fraction": 0.9861111111111112
+    },
+    "numeric_beta": {
+      "mean": 0.01523719452045582,
+      "variance": 0.0009587619501810372,
+      "standard_deviation": 0.03096388138107103,
+      "coefficient_of_variation": 2.0321248337088726,
+      "p05": -0.03855196634928385,
+      "median": 0.019636789957682293,
+      "p95": 0.059232076009114586,
+      "minimum": -0.0801553726196289,
+      "maximum": 0.11773395538330078,
+      "positive_fraction": 0.6944444444444444
+    },
+    "factual_beta_baseline_incorrect": {
+      "mean": -0.005438601648485339,
+      "variance": 0.00096226951356574,
+      "standard_deviation": 0.031020469267336044,
+      "coefficient_of_variation": 5.703758295291824,
+      "p05": -0.06732177734375,
+      "median": -0.0037200450897216797,
+      "p95": 0.05037506421407064,
+      "minimum": -0.0791185696919759,
+      "maximum": 0.051264047622680664,
+      "positive_fraction": 0.40540540540540543
+    },
+    "interpretation": "The fixed receptor has a highly consistent positive local effect on definite-answer preference, but factual-margin effects vary in sign and are negative on average for baseline-wrong items."
+  },
+  "controller_predictability": {
+    "heldout_validation_correlation": -0.21797909083021647,
+    "passed": false,
+    "interpretation": "The tested baseline margin, entropy, endpoint-score, and prompt-length features do not predict local efficacy."
+  },
+  "untouched_test": {
+    "gated": {
+      "mean_absolute_language_delta": 0.0027206987142562866,
+      "definite_answer_delta": 0.003166303038597107,
+      "numeric_confidence_delta": 0.0010341679056485493,
+      "numeric_confidence_delta_baseline_incorrect": 0.0013045171896616619,
+      "answer_margin_delta": 0.001056954057680236,
+      "accuracy_delta": 0.0,
+      "brier_delta": -1.7914073762781424e-05,
+      "nll_delta": -9.902857256932629e-05,
+      "mean_kl": 0.00014952053131879318
+    },
+    "validation_kl_matched_fixed_for_gate": {
+      "mean_absolute_language_delta": 0.0038554022709528604,
+      "definite_answer_delta": 0.0034156557586457995,
+      "numeric_confidence_delta": 0.0008780434727668762,
+      "numeric_confidence_delta_baseline_incorrect": 0.0007385876443650988,
+      "answer_margin_delta": 0.0007997594980729951,
+      "accuracy_delta": 0.0,
+      "brier_delta": -9.257769085058154e-06,
+      "nll_delta": -5.9239779341357934e-05,
+      "mean_kl": 0.00017286797605652203
+    },
+    "gate_beats_fixed_safety_and_efficacy": false,
+    "continuous": {
+      "mean_absolute_language_delta": 0.0033587680922614205,
+      "definite_answer_delta": 0.0027836942010455662,
+      "numeric_confidence_delta": 0.0005668823917706808,
+      "numeric_confidence_delta_baseline_incorrect": 0.001120063993665907,
+      "answer_margin_delta": 0.000526361684832308,
+      "accuracy_delta": 0.0,
+      "brier_delta": -6.0851344469897706e-05,
+      "nll_delta": -0.0001514103895846608,
+      "mean_kl": 0.0001597753260717353
+    },
+    "validation_kl_matched_fixed_for_continuous": {
+      "mean_absolute_language_delta": 0.0034009450011783177,
+      "definite_answer_delta": 0.003307554456922743,
+      "numeric_confidence_delta": 0.0009431665142377218,
+      "numeric_confidence_delta_baseline_incorrect": 0.0009636912080976698,
+      "answer_margin_delta": 0.00085920426580641,
+      "accuracy_delta": 0.0,
+      "brier_delta": -4.471690647361859e-05,
+      "nll_delta": -0.00017587271616203992,
+      "mean_kl": 0.00016502904491155768
+    },
+    "continuous_beats_fixed_safety_and_efficacy": false,
+    "oracle_upper_bound": {
+      "mean_absolute_language_delta": 0.0012228522035810682,
+      "definite_answer_delta": 0.0038317888975143433,
+      "numeric_confidence_delta": 0.0002649310562345717,
+      "numeric_confidence_delta_baseline_incorrect": -0.0006184511714511447,
+      "answer_margin_delta": 0.0005068005993962288,
+      "accuracy_delta": 0.0,
+      "brier_delta": 1.604024526430381e-05,
+      "nll_delta": -1.1814551375666227e-05,
+      "mean_kl": 0.00011790274900924658
+    }
+  },
+  "verdict": "Context-dependent gain is not validated. Local slopes show that selective dosing could help, and the oracle confirms substantial headroom, but the current pre-intervention feature set predicts slope with the wrong sign and both learned policies lose to validation-KL-matched fixed controls on the joint efficacy and baseline-wrong-confidence criteria.",
+  "next_experiment": "Do not deploy adaptive gain. Add semantic uncertainty and prompt-residual features, use cross-fitted policy training, and repeat the matched-KL gate test. Run the adverse-event panel before any policy is considered deployable.",
+  "research_decision": {
+    "use_centered_subspace": false,
+    "use_nuisance_projected_receptor": false,
+    "validated_receptor": "raw_mean_receptor",
+    "validated_controller": null,
+    "default_policy": "zero_or_fixed_dose_only_in_controlled_experiments",
+    "enable_signed_dosing": false,
+    "enable_tolerance_or_homeostasis": false
+  }
+}
