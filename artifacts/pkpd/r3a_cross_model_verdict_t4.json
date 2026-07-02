@@ -1,0 +1,117 @@
+{
+  "experiment": "R3A_cross_model_replication_verdict",
+  "alpha": 0.125,
+  "models": [
+    {
+      "source": "artifacts\\pkpd\\r3a_qwen25_15b_t4.json",
+      "model": "Qwen/Qwen2.5-1.5B-Instruct",
+      "layers": 28,
+      "hidden_size": 1536,
+      "intervention_layer": 12,
+      "intervention_layer_fraction": 0.4444444444444444,
+      "receptor_raw_norm": 9.098079681396484,
+      "baseline_accuracy": 0.9722222222222222,
+      "baseline_incorrect_items": 1,
+      "alpha": 0.125,
+      "language_delta": 0.003316395812564426,
+      "definite_delta": 0.005761775705549452,
+      "definite_claim_block_95": [
+        0.00467987855275472,
+        0.006872514883677165
+      ],
+      "definite_positive_claim_fraction": 1.0,
+      "numeric_delta": 0.0019804835319519043,
+      "numeric_claim_block_95": [
+        0.0007736351754930285,
+        0.003084970845116509
+      ],
+      "numeric_delta_baseline_incorrect": -0.0065860748291015625,
+      "factual_margin_delta": 0.0028238859441545275,
+      "accuracy_delta": 0.0,
+      "brier_delta": -3.605515363148265e-05,
+      "nll_delta": -0.00015712409928159143,
+      "mean_kl": 0.00026487185282854223,
+      "core_replication_pass": true
+    },
+    {
+      "source": "artifacts\\pkpd\\r3a_qwen25_3b_t4.json",
+      "model": "Qwen/Qwen2.5-3B-Instruct",
+      "layers": 36,
+      "hidden_size": 2048,
+      "intervention_layer": 16,
+      "intervention_layer_fraction": 0.45714285714285713,
+      "receptor_raw_norm": 11.37990665435791,
+      "baseline_accuracy": 0.8888888888888888,
+      "baseline_incorrect_items": 4,
+      "alpha": 0.125,
+      "language_delta": 0.0017076002226935492,
+      "definite_delta": 0.0033475756645202637,
+      "definite_claim_block_95": [
+        0.0022107958793640137,
+        0.004470434453752305
+      ],
+      "definite_positive_claim_fraction": 0.9444444444444444,
+      "numeric_delta": 0.001631723509894477,
+      "numeric_claim_block_95": [
+        -0.001246386104159885,
+        0.004558232095506456
+      ],
+      "numeric_delta_baseline_incorrect": 0.0017341375350952148,
+      "factual_margin_delta": 0.0023907853497399222,
+      "accuracy_delta": 0.0,
+      "brier_delta": -0.00021173884862302206,
+      "nll_delta": -0.00019311041115782634,
+      "mean_kl": 0.0002730058489493419,
+      "core_replication_pass": true
+    },
+    {
+      "source": "artifacts\\pkpd\\r3a_gemma2_2b_t4.json",
+      "model": "google/gemma-2-2b-it",
+      "layers": 26,
+      "hidden_size": 2304,
+      "intervention_layer": 12,
+      "intervention_layer_fraction": 0.48,
+      "receptor_raw_norm": 63.512237548828125,
+      "baseline_accuracy": 0.9722222222222222,
+      "baseline_incorrect_items": 1,
+      "alpha": 0.125,
+      "language_delta": 0.0003694891929626465,
+      "definite_delta": 0.0010182129012213813,
+      "definite_claim_block_95": [
+        0.00015579329596625434,
+        0.0018158687485588922
+      ],
+      "definite_positive_claim_fraction": 0.7777777777777778,
+      "numeric_delta": 0.0007098118464152018,
+      "numeric_claim_block_95": [
+        -0.0004164576530456543,
+        0.0017466280195448133
+      ],
+      "numeric_delta_baseline_incorrect": -0.0004029273986816406,
+      "factual_margin_delta": 0.00042870971891615126,
+      "accuracy_delta": 0.0,
+      "brier_delta": -2.1852127935029914e-05,
+      "nll_delta": -4.8519297885962764e-05,
+      "mean_kl": 7.832588763155476e-05,
+      "core_replication_pass": true
+    }
+  ],
+  "core_models_passed": 3,
+  "models_tested": 3,
+  "core_phenotype_replicated": true,
+  "verdict": "The model-local raw receptor replicates the definite-answer phenotype across the original Qwen model, a larger same-family Qwen model, and a different Gemma architecture at alpha=0.125. All claim-block intervals exclude zero and factual accuracy does not decrease. Numeric-confidence and incorrect-confidence effects are not consistent enough to claim a shared safety phenotype.",
+  "constraints": [
+    "Each model uses a separately constructed receptor; vectors are never transferred across hidden dimensions.",
+    "Only 18 held-out claims are available per model.",
+    "The incorrect-confidence strata contain 1, 4, and 1 baseline errors, respectively.",
+    "Standardized safety and abstention benchmarks remain a separate required gate."
+  ],
+  "research_decision": {
+    "fixed_raw_receptor_replication": true,
+    "maximum_research_alpha": 0.125,
+    "adaptive_controller": false,
+    "signed_dosing": false,
+    "vector_field": false,
+    "tolerance_or_homeostasis": false
+  }
+}

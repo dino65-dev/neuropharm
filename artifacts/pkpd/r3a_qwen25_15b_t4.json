@@ -1,0 +1,353 @@
+{
+  "experiment": "R3A_cross_model_fixed_receptor_replication",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "layers": 28,
+  "hidden_size": 1536,
+  "intervention_layer": 12,
+  "intervention_layer_fraction": 0.4444444444444444,
+  "site": "block_input_residual_pre",
+  "fresh_claim_split": {
+    "construction": [
+      2,
+      4,
+      3,
+      9,
+      10,
+      11,
+      15,
+      12,
+      17,
+      22,
+      19,
+      21,
+      24,
+      25,
+      27,
+      33,
+      31,
+      32,
+      39,
+      38,
+      37,
+      45,
+      44,
+      43,
+      48,
+      53,
+      49
+    ],
+    "validation": [
+      0,
+      8,
+      16,
+      23,
+      29,
+      30,
+      36,
+      42,
+      51
+    ],
+    "test": [
+      1,
+      5,
+      6,
+      7,
+      13,
+      14,
+      20,
+      18,
+      26,
+      28,
+      35,
+      34,
+      41,
+      40,
+      47,
+      46,
+      50,
+      52
+    ]
+  },
+  "construction_tensor_shape": [
+    27,
+    4,
+    8,
+    2,
+    1536
+  ],
+  "receptor_raw_norm": 9.098079681396484,
+  "baseline_factual": {
+    "accuracy": 0.9722222222222222,
+    "brier": 0.05096939099465846,
+    "negative_log_likelihood": 0.21144131042639094,
+    "expected_calibration_error_5_bins": 0.11218625726117838,
+    "mean_correct_log_odds_margin": 1.9342705201771524
+  },
+  "baseline_incorrect_items": 1,
+  "rows": [
+    {
+      "alpha": 0.0,
+      "language_delta": 0.0,
+      "definite_delta": 0.0,
+      "numeric_delta": 0.0,
+      "numeric_delta_baseline_incorrect": 0.0,
+      "factual_margin_delta": 0.0,
+      "accuracy": 0.9722222222222222,
+      "accuracy_delta": 0.0,
+      "brier_delta": 0.0,
+      "nll_delta": 0.0,
+      "mean_kl": 0.0,
+      "claim_block_bootstrap": {
+        "language": {
+          "claims": 18,
+          "mean": 0.0,
+          "lower_95": 0.0,
+          "upper_95": 0.0,
+          "positive_claim_fraction": 0.0
+        },
+        "definite": {
+          "claims": 18,
+          "mean": 0.0,
+          "lower_95": 0.0,
+          "upper_95": 0.0,
+          "positive_claim_fraction": 0.0
+        },
+        "numeric": {
+          "claims": 18,
+          "mean": 0.0,
+          "lower_95": 0.0,
+          "upper_95": 0.0,
+          "positive_claim_fraction": 0.0
+        },
+        "factual_margin": {
+          "claims": 18,
+          "mean": 0.0,
+          "lower_95": 0.0,
+          "upper_95": 0.0,
+          "positive_claim_fraction": 0.0
+        }
+      }
+    },
+    {
+      "alpha": 0.03125,
+      "language_delta": 0.0009789930449591742,
+      "definite_delta": 0.0014826258023579915,
+      "numeric_delta": -1.310639911227756e-05,
+      "numeric_delta_baseline_incorrect": -0.0033652782440185547,
+      "factual_margin_delta": 0.0017057197789351146,
+      "accuracy": 0.9722222222222222,
+      "accuracy_delta": 0.0,
+      "brier_delta": 5.292404207592888e-05,
+      "nll_delta": 0.00011895318155238921,
+      "mean_kl": 0.00012389298818031116,
+      "claim_block_bootstrap": {
+        "language": {
+          "claims": 18,
+          "mean": 0.0009789930449591742,
+          "lower_95": 0.00045985314581129287,
+          "upper_95": 0.0014693207210964626,
+          "positive_claim_fraction": 0.7777777777777778
+        },
+        "definite": {
+          "claims": 18,
+          "mean": 0.0014826258023579915,
+          "lower_95": 0.0004525515768263075,
+          "upper_95": 0.0026583141750759548,
+          "positive_claim_fraction": 0.7222222222222222
+        },
+        "numeric": {
+          "claims": 18,
+          "mean": -1.310639911227756e-05,
+          "lower_95": -0.0007975233925713433,
+          "upper_95": 0.0008523066838582357,
+          "positive_claim_fraction": 0.4444444444444444
+        },
+        "factual_margin": {
+          "claims": 18,
+          "mean": 0.0017057197789351146,
+          "lower_95": 7.006939914491441e-05,
+          "upper_95": 0.0032724464933077493,
+          "positive_claim_fraction": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "alpha": 0.0625,
+      "language_delta": 0.0015179945362938775,
+      "definite_delta": 0.0025279720624287925,
+      "numeric_delta": 0.0003612372610304091,
+      "numeric_delta_baseline_incorrect": -0.0011243820190429688,
+      "factual_margin_delta": 0.001776617020368576,
+      "accuracy": 0.9722222222222222,
+      "accuracy_delta": 0.0,
+      "brier_delta": 4.73529459106628e-05,
+      "nll_delta": 8.400364335903188e-05,
+      "mean_kl": 0.00015830333767641807,
+      "claim_block_bootstrap": {
+        "language": {
+          "claims": 18,
+          "mean": 0.0015179945362938775,
+          "lower_95": 0.000793738497628106,
+          "upper_95": 0.0021112428771124948,
+          "positive_claim_fraction": 0.8888888888888888
+        },
+        "definite": {
+          "claims": 18,
+          "mean": 0.0025279720624287925,
+          "lower_95": 0.0014305247200859918,
+          "upper_95": 0.0036074452930026585,
+          "positive_claim_fraction": 0.8888888888888888
+        },
+        "numeric": {
+          "claims": 18,
+          "mean": 0.0003612372610304091,
+          "lower_95": -0.0004235506057739258,
+          "upper_95": 0.001175489690568712,
+          "positive_claim_fraction": 0.4444444444444444
+        },
+        "factual_margin": {
+          "claims": 18,
+          "mean": 0.001776617020368576,
+          "lower_95": 0.00027975605593787297,
+          "upper_95": 0.0032908635007010568,
+          "positive_claim_fraction": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "alpha": 0.125,
+      "language_delta": 0.003316395812564426,
+      "definite_delta": 0.005761775705549452,
+      "numeric_delta": 0.0019804835319519043,
+      "numeric_delta_baseline_incorrect": -0.0065860748291015625,
+      "factual_margin_delta": 0.0028238859441545275,
+      "accuracy": 0.9722222222222222,
+      "accuracy_delta": 0.0,
+      "brier_delta": -3.605515363148265e-05,
+      "nll_delta": -0.00015712409928159143,
+      "mean_kl": 0.00026487185282854223,
+      "claim_block_bootstrap": {
+        "language": {
+          "claims": 18,
+          "mean": 0.003316395812564426,
+          "lower_95": 0.0025364458560943604,
+          "upper_95": 0.004119250509474013,
+          "positive_claim_fraction": 0.9444444444444444
+        },
+        "definite": {
+          "claims": 18,
+          "mean": 0.005761775705549452,
+          "lower_95": 0.00467987855275472,
+          "upper_95": 0.006872514883677165,
+          "positive_claim_fraction": 1.0
+        },
+        "numeric": {
+          "claims": 18,
+          "mean": 0.0019804835319519043,
+          "lower_95": 0.0007736351754930285,
+          "upper_95": 0.003084970845116509,
+          "positive_claim_fraction": 0.7222222222222222
+        },
+        "factual_margin": {
+          "claims": 18,
+          "mean": 0.0028238859441545275,
+          "lower_95": 0.0006858992079893748,
+          "upper_95": 0.004673293895191616,
+          "positive_claim_fraction": 0.7777777777777778
+        }
+      }
+    },
+    {
+      "alpha": 0.25,
+      "language_delta": 0.006942119863298204,
+      "definite_delta": 0.009466350078582764,
+      "numeric_delta": 0.0036337243186102975,
+      "numeric_delta_baseline_incorrect": -0.004023313522338867,
+      "factual_margin_delta": 0.005439198679394192,
+      "accuracy": 0.9722222222222222,
+      "accuracy_delta": 0.0,
+      "brier_delta": -3.9150420337003e-05,
+      "nll_delta": -0.0003607579593727095,
+      "mean_kl": 0.0007068815466684303,
+      "claim_block_bootstrap": {
+        "language": {
+          "claims": 18,
+          "mean": 0.006942119863298204,
+          "lower_95": 0.00567353434032864,
+          "upper_95": 0.008219463957680596,
+          "positive_claim_fraction": 1.0
+        },
+        "definite": {
+          "claims": 18,
+          "mean": 0.009466350078582764,
+          "lower_95": 0.008310596148173014,
+          "upper_95": 0.010758254263136122,
+          "positive_claim_fraction": 1.0
+        },
+        "numeric": {
+          "claims": 18,
+          "mean": 0.0036337243186102975,
+          "lower_95": 0.0022550159030490452,
+          "upper_95": 0.005024837123023139,
+          "positive_claim_fraction": 0.8333333333333334
+        },
+        "factual_margin": {
+          "claims": 18,
+          "mean": 0.005439198679394192,
+          "lower_95": 0.0032438052197297416,
+          "upper_95": 0.007414054125547409,
+          "positive_claim_fraction": 0.8333333333333334
+        }
+      }
+    },
+    {
+      "alpha": 0.5,
+      "language_delta": 0.012566036648220487,
+      "definite_delta": 0.01876146263546414,
+      "numeric_delta": 0.007348100344340007,
+      "numeric_delta_baseline_incorrect": -0.004202604293823242,
+      "factual_margin_delta": 0.011325988090700574,
+      "accuracy": 0.9444444444444444,
+      "accuracy_delta": -0.02777777777777779,
+      "brier_delta": -3.703833929508821e-05,
+      "nll_delta": -0.0007598330887014226,
+      "mean_kl": 0.002437245421080863,
+      "claim_block_bootstrap": {
+        "language": {
+          "claims": 18,
+          "mean": 0.012566036648220487,
+          "lower_95": 0.010197397735383775,
+          "upper_95": 0.014707406361897787,
+          "positive_claim_fraction": 0.9444444444444444
+        },
+        "definite": {
+          "claims": 18,
+          "mean": 0.01876146263546414,
+          "lower_95": 0.0170096755027771,
+          "upper_95": 0.020606617132822674,
+          "positive_claim_fraction": 1.0
+        },
+        "numeric": {
+          "claims": 18,
+          "mean": 0.007348100344340007,
+          "lower_95": 0.004542370637257894,
+          "upper_95": 0.009945697254604764,
+          "positive_claim_fraction": 0.9444444444444444
+        },
+        "factual_margin": {
+          "claims": 18,
+          "mean": 0.011325988090700574,
+          "lower_95": 0.007894802424642775,
+          "upper_95": 0.014438013235727945,
+          "positive_claim_fraction": 0.9444444444444444
+        }
+      }
+    }
+  ],
+  "cuda": {
+    "device": "Tesla T4",
+    "peak_allocated_bytes": 4514430464,
+    "peak_reserved_bytes": 4810866688
+  },
+  "elapsed_seconds": 50.276878118515015
+}
